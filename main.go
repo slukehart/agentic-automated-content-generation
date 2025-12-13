@@ -7,6 +7,7 @@ import (
 
 	"content-generation-automation/audio"
 	"content-generation-automation/news"
+	"content-generation-automation/video"
 
 	"github.com/joho/godotenv"
 )
@@ -24,8 +25,8 @@ func main() {
 	}
 
 	// Verify critical API keys are set
-	if os.Getenv("FAL_KEY") == "" {
-		log.Fatal("❌ FAL_KEY environment variable is not set. Please add it to your .env file or export it.")
+	if os.Getenv("HEYGEN_API_KEY") == "" {
+		log.Fatal("❌ HEYGEN_API_KEY environment variable is not set. Please add it to your .env file or export it.")
 	}
 
 	// Define your custom prompt for Grok
@@ -45,7 +46,7 @@ VERIFICATION:
 If an article is inaccessible or unverifiable, find the story from a reputable outlet (AP, Reuters, BBC, Guardian, Al Jazeera). If no reliable source confirms it, silently exclude it.
 
 OUTPUT:
-Provide only completed news reports for verified articles. Each summary should be detailed enough to speak for at least 1 minute.`
+Provide only completed news reports for verified articles. Each summary should be detailed enough to speak for a maximum of 1 minute.`
 
 	// Fetch news articles from NewsAPI
 	fmt.Println("Fetching news articles...")
@@ -73,8 +74,7 @@ Provide only completed news reports for verified articles. Each summary should b
 	for i, summary := range summaries {
 		baseFilename := fmt.Sprintf("news_%d", i+1)
 		audioPath := fmt.Sprintf("%s_audio.mp3", baseFilename)
-		// videoPath := fmt.Sprintf("%s_video.mp4", baseFilename)
-		// finalPath := fmt.Sprintf("%s_final.mp4", baseFilename)
+		finalPath := fmt.Sprintf("%s_final.mp4", baseFilename)
 
 		fmt.Printf("\n[%d/%d] Processing: %s\n", i+1, len(summaries), baseFilename)
 		fmt.Printf("    Summary: %s...\n", truncateString(summary, 60))
@@ -94,39 +94,32 @@ Provide only completed news reports for verified articles. Each summary should b
 		}
 		fmt.Printf("    ✅ Audio: %s\n", audioResp.AudioPath)
 
-		// // Step 2: Generate video
-		// fmt.Printf("    🎥 Generating video...\n")
-		// videoResp, err := video.GenerateNewsVideo(summary, videoPath)
-		// if err != nil {
-		// 	log.Printf("    ❌ Video failed: %v", err)
-		// 	// Clean up audio file
-		// 	os.Remove(audioPath)
-		// 	failedCount++
-		// 	continue
-		// }
-		// if videoResp.Status != "success" {
-		// 	log.Printf("    ❌ Video error: %s", videoResp.Message)
-		// 	os.Remove(audioPath)
-		// 	failedCount++
-		// 	continue
-		// }
-		// fmt.Printf("    ✅ Video: %s\n", videoResp.VideoPath)
+		// Step 2: Generate AI avatar video with the audio
+		fmt.Printf("    🎬 Generating AI avatar video (this may take 2-3 minutes)...\n")
+		videoResp, err := video.GenerateNewsVideo(audioPath, finalPath)
+		if err != nil {
+			log.Printf("    ❌ Video failed: %v", err)
+			if videoResp != nil && videoResp.Message != "" {
+				log.Printf("    Details: %s", videoResp.Message)
+			}
+			// Keep audio file for manual use
+			log.Printf("    Note: Audio file saved at %s", audioPath)
+			failedCount++
+			continue
+		}
+		if videoResp.Status != "success" {
+			log.Printf("    ❌ Video error: %s", videoResp.Message)
+			failedCount++
+			continue
+		}
 
-		// // Step 3: Merge audio + video
-		// fmt.Printf("    🔀 Merging audio and video...\n")
-		// err = audio.MergeAudioVideo(videoResp.VideoPath, audioResp.AudioPath, finalPath)
-		// if err != nil {
-		// 	log.Printf("    ❌ Merge failed: %v", err)
-		// 	log.Printf("    Note: You still have separate audio (%s) and video (%s) files", audioPath, videoPath)
-		// 	failedCount++
-		// 	continue
-		// }
+		// Clean up intermediate audio file (video already includes it)
+		os.Remove(audioPath)
 
-		// Clean up intermediate files
-		// os.Remove(audioPath)
-		// os.Remove(videoPath)
-
-		// fmt.Printf("    ✅ Final video with audio: %s\n", finalPath)
+		fmt.Printf("    ✅ Final narrated video: %s\n", finalPath)
+		if videoResp.VideoURL != "" {
+			fmt.Printf("    🔗 HeyGen URL: %s\n", videoResp.VideoURL)
+		}
 		successCount++
 	}
 

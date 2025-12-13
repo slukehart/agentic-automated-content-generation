@@ -9,63 +9,56 @@ import (
 	"path/filepath"
 )
 
-// VideoRequest represents a request to generate a video
+// VideoRequest represents a request to generate an avatar video with HeyGen
 type VideoRequest struct {
-	Mode       string `json:"mode"`        // "text_to_video" or "image_to_video"
-	Prompt     string `json:"prompt"`      // Text description
-	ImagePath  string `json:"image_path,omitempty"`  // For image-to-video mode
-	OutputPath string `json:"output_path"` // Where to save the video
-	Model      string `json:"model,omitempty"`       // FAL model (default: fal-ai/ltx-video)
-	Duration   int    `json:"duration,omitempty"`    // Duration in seconds (default: 5)
-	FPS        int    `json:"fps,omitempty"`         // Frames per second (default: 24)
+	AudioPath  string `json:"audio_path"`            // Path to audio file (required)
+	OutputPath string `json:"output_path"`           // Where to save the video
+	AvatarID   string `json:"avatar_id,omitempty"`   // HeyGen avatar ID
+	Background string `json:"background,omitempty"`  // Background color or image URL
 }
 
 // VideoResponse represents the response from video generation
 type VideoResponse struct {
-	Status    string `json:"status"`
-	VideoPath string `json:"video_path,omitempty"`
-	VideoURL  string `json:"video_url,omitempty"`
-	Duration  int    `json:"duration,omitempty"`
-	FPS       int    `json:"fps,omitempty"`
-	Message   string `json:"message,omitempty"`
-	Details   string `json:"details,omitempty"`
+	Status    string  `json:"status"`
+	VideoPath string  `json:"video_path,omitempty"`
+	VideoURL  string  `json:"video_url,omitempty"`
+	VideoID   string  `json:"video_id,omitempty"`   // HeyGen video ID
+	Duration  float64 `json:"duration,omitempty"`   // Video duration in seconds
+	Message   string  `json:"message,omitempty"`
+	Details   string  `json:"details,omitempty"`
 }
 
-// GenerateTextToVideo creates a video from a text prompt
-func GenerateTextToVideo(prompt string, outputPath string) (*VideoResponse, error) {
+// GenerateAvatarVideo creates an AI avatar video from an audio file
+func GenerateAvatarVideo(audioPath string, outputPath string) (*VideoResponse, error) {
+	return GenerateAvatarVideoWithOptions(audioPath, outputPath, "Kristin_public_3_20240108", "#0e1118")
+}
+
+// GenerateAvatarVideoWithOptions creates an avatar video with custom settings
+func GenerateAvatarVideoWithOptions(audioPath, outputPath, avatarID, background string) (*VideoResponse, error) {
 	request := VideoRequest{
-		Mode:       "text_to_video",
-		Prompt:     prompt,
+		AudioPath:  audioPath,
 		OutputPath: outputPath,
-		Duration:   5,
-		FPS:        24,
+		AvatarID:   avatarID,
+		Background: background,
 	}
 
 	return executeVideoGeneration(request)
 }
 
-// GenerateImageToVideo creates a video from an image with animation
-func GenerateImageToVideo(imagePath string, prompt string, outputPath string) (*VideoResponse, error) {
-	request := VideoRequest{
-		Mode:       "image_to_video",
-		ImagePath:  imagePath,
-		Prompt:     prompt,
-		OutputPath: outputPath,
-		Duration:   5,
-	}
+// GenerateNewsVideo creates an AI avatar news video with audio narration
+func GenerateNewsVideo(audioPath string, outputPath string) (*VideoResponse, error) {
+	// Use professional news anchor avatar
+	// Options:
+	// - Kristin_public_3_20240108 (Female, professional)
+	// - Wayne_20240711 (Male, professional)
+	// See: https://app.heygen.com/avatars for more
 
-	return executeVideoGeneration(request)
-}
-
-// GenerateNewsVideo creates a video for a news summary
-func GenerateNewsVideo(newsSummary string, outputPath string) (*VideoResponse, error) {
-	// Create a cinematic prompt from the news summary
-	prompt := fmt.Sprintf(
-		"Generate a video from the following news summary that is read by a female news anchor with brunette hair and dark tan skin: %s",
-		truncateString(newsSummary, 200), // FAL has prompt length limits
+	return GenerateAvatarVideoWithOptions(
+		audioPath,
+		outputPath,
+		"Kristin_public_3_20240108", // Professional female news anchor
+		"#0e1118",                     // Dark news studio background
 	)
-
-	return GenerateTextToVideo(prompt, outputPath)
 }
 
 // executeVideoGeneration handles the actual Python script execution
@@ -83,16 +76,9 @@ func executeVideoGeneration(request VideoRequest) (*VideoResponse, error) {
 	cmd := exec.Command("poetry", "run", "python", scriptPath)
 	cmd.Stdin = bytes.NewReader(jsonData)
 
-	// Pass environment variables to subprocess (critical for FAL_KEY)
+	// Pass environment variables to subprocess (critical for HEYGEN_API_KEY)
 	cmd.Env = append(cmd.Env, "PATH="+os.Getenv("PATH"))
-	cmd.Env = append(cmd.Env, "FAL_KEY="+os.Getenv("FAL_KEY"))
-	// Add any other API keys you might need
-	if newsKey := os.Getenv("NEWS_API_KEY"); newsKey != "" {
-		cmd.Env = append(cmd.Env, "NEWS_API_KEY="+newsKey)
-	}
-	if grokKey := os.Getenv("GROK_API_KEY"); grokKey != "" {
-		cmd.Env = append(cmd.Env, "GROK_API_KEY="+grokKey)
-	}
+	cmd.Env = append(cmd.Env, "HEYGEN_API_KEY="+os.Getenv("HEYGEN_API_KEY"))
 
 	// Capture output
 	var stdout, stderr bytes.Buffer
@@ -118,11 +104,4 @@ func executeVideoGeneration(request VideoRequest) (*VideoResponse, error) {
 	return &response, nil
 }
 
-// truncateString truncates a string to maxLen characters
-func truncateString(s string, maxLen int) string {
-	if len(s) <= maxLen {
-		return s
-	}
-	return s[:maxLen-3] + "..."
-}
 

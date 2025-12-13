@@ -1,171 +1,187 @@
 #!/usr/bin/env python3
 """
-Video Generation Module using FAL AI
-Supports both text-to-video and image-to-video generation
+Video Generation Module using HeyGen AI Avatar
+Generates talking head videos with AI avatars
 """
 
 import os
 import sys
 import json
 import requests
-import fal_client as fal
-from typing import Optional, Dict, Any, Literal
+import time
+from typing import Optional, Dict, Any
+import base64
 
 
-def text_to_video(
-    prompt: str,
+def generate_avatar_video(
+    audio_path: str,
     output_path: str = "output.mp4",
-    model: str = "fal-ai/ltx-video",
-    duration: int = 5,
-    fps: int = 24
+    avatar_id: str = "Kristin_public_3_20240108",
+    background: str = "#0e1118"
 ) -> Dict[str, Any]:
     """
-    Generate a video from a text prompt using FAL AI.
+    Generate a talking head video using HeyGen with pre-recorded audio.
 
     Args:
-        prompt: Text description of the desired video
+        audio_path: Path to the audio file (from Google TTS)
         output_path: Path to save the generated video
-        model: FAL model to use (ltx-video, fast-animatediff, etc.)
-        duration: Video duration in seconds
-        fps: Frames per second
+        avatar_id: HeyGen avatar ID (see available avatars in HeyGen dashboard)
+        background: Background color or image URL
 
     Returns:
         Dict with status, video_path, and video_url
     """
     try:
-        print(f"Generating video from prompt: {prompt[:50]}...", file=sys.stderr)
-
-        # Submit the request to FAL
-        result = fal.submit(
-            model,
-            arguments={
-                "prompt": prompt,
-                "num_frames": duration * fps,
-                "num_inference_steps": 30,
-                "guidance_scale": 3.0,
-            }
-        )
-
-        # Wait for the result
-        print("Waiting for video generation...", file=sys.stderr)
-        output = result.get()
-
-        # Extract video URL
-        video_url = None
-        if isinstance(output, dict):
-            video_url = output.get("video", {}).get("url") or output.get("video_url")
-
-        if not video_url:
+        api_key = os.getenv("HEYGEN_API_KEY")
+        if not api_key:
             return {
                 "status": "error",
-                "message": "No video URL in response",
-                "details": str(output)
+                "message": "HEYGEN_API_KEY not set in environment"
             }
 
-        # Download the video
-        print(f"Downloading video to {output_path}...", file=sys.stderr)
-        response = requests.get(video_url, timeout=60)
-        response.raise_for_status()
+        print(f"Generating avatar video with audio: {audio_path}", file=sys.stderr)
 
-        with open(output_path, "wb") as f:
-            f.write(response.content)
+        # Step 1: Upload audio file to HeyGen
+        print("Uploading audio file...", file=sys.stderr)
+        upload_url = "https://upload.heygen.com/v1/asset"
 
-        print(f"✅ Video saved to {output_path}", file=sys.stderr)
+        with open(audio_path, "rb") as audio_file:
+            file_data = audio_file.read()
 
-        return {
-            "status": "success",
-            "video_path": output_path,
-            "video_url": video_url,
-            "duration": duration,
-            "fps": fps
+        headers = {
+            "X-Api-Key": api_key,
+            "Content-Type": "audio/mpeg"
         }
 
-    except Exception as e:
+        upload_response = requests.post(upload_url, headers=headers, data=file_data)
+        upload_response.raise_for_status()
+        upload_data = upload_response.json()
+
+            # Get the uploaded audio URL
+        audio_url = upload_data.get("data", {}).get("url")
+
+        if not audio_url:
+            return {
+                "status": "error",
+                "message": "Failed to upload audio file",
+                "details": str(upload_data)
+            }
+
+        print(f"Audio uploaded successfully: {audio_url}", file=sys.stderr)
+
+        # Step 2: Create video with avatar
+        print("Creating avatar video...", file=sys.stderr)
+        create_url = "https://api.heygen.com/v2/video/generate"
+
+        headers = {
+            "X-Api-Key": api_key,
+            "Content-Type": "application/json"
+        }
+
+        payload = {
+            "video_inputs": [{
+                "character": {
+                    "type": "avatar",
+                    "avatar_id": avatar_id,
+                    "avatar_style": "normal"
+                },
+                "voice": {
+                    "type": "audio",
+                    "audio_url": audio_url
+                },
+                "background": {
+                    "type": "color",
+                    "value": background
+                }
+            }],
+            "dimension": {
+                "width": 1280,
+                "height": 720
+            },
+            "aspect_ratio": "16:9",
+            "test": False
+        }
+
+        create_response = requests.post(create_url, json=payload, headers=headers)
+        create_response.raise_for_status()
+        video_id = create_response.json().get("data", {}).get("video_id")
+
+        if not video_id:
+            return {
+                "status": "error",
+                "message": "Failed to create video",
+                "details": create_response.json()
+            }
+
+        print(f"Video creation started. ID: {video_id}", file=sys.stderr)
+
+        # Step 3: Poll for completion
+        status_url = f"https://api.heygen.com/v1/video_status.get?video_id={video_id}"
+        max_attempts = 180  # 15 minutes max wait (videos can take 5-10 minutes)
+        attempt = 0
+
+        while attempt < max_attempts:
+            time.sleep(5)  # Check every 5 seconds
+            attempt += 1
+
+            status_response = requests.get(status_url, headers=headers)
+            status_response.raise_for_status()
+            status_data = status_response.json().get("data", {})
+
+            video_status = status_data.get("status")
+            print(f"Status: {video_status} ({attempt}/{max_attempts})", file=sys.stderr)
+
+            if video_status == "completed":
+                video_url = status_data.get("video_url")
+
+                if not video_url:
+                    return {
+                        "status": "error",
+                        "message": "Video completed but no URL provided"
+                    }
+
+                # Download the video
+                print(f"Downloading video to {output_path}...", file=sys.stderr)
+                video_response = requests.get(video_url, timeout=120)
+                video_response.raise_for_status()
+
+                with open(output_path, "wb") as f:
+                    f.write(video_response.content)
+
+                print(f"✅ Video saved to {output_path}", file=sys.stderr)
+
+                return {
+                    "status": "success",
+                    "video_path": output_path,
+                    "video_url": video_url,
+                    "video_id": video_id,
+                    "duration": status_data.get("duration", 0)
+                }
+
+            elif video_status == "failed":
+                return {
+                    "status": "error",
+                    "message": f"Video generation failed: {status_data.get('error', 'Unknown error')}"
+                }
+
         return {
             "status": "error",
-            "message": str(e),
-            "prompt": prompt
-        }
-
-
-def image_to_video(
-    image_path: str,
-    prompt: str,
-    output_path: str = "output.mp4",
-    model: str = "fal-ai/ltx-video",
-    duration: int = 5
-) -> Dict[str, Any]:
-    """
-    Generate a video from an image with motion described by prompt.
-
-    Args:
-        image_path: Path to input image
-        prompt: Description of desired motion/animation
-        output_path: Path to save the generated video
-        model: FAL model to use
-        duration: Video duration in seconds
-
-    Returns:
-        Dict with status, video_path, and video_url
-    """
-    try:
-        print(f"Generating video from image: {image_path}", file=sys.stderr)
-
-        # Upload the image
-        image_url = fal.upload_file(image_path)
-
-        # Submit the request
-        result = fal.submit(
-            model,
-            arguments={
-                "prompt": prompt,
-                "image_url": image_url,
-                "num_inference_steps": 30,
-                "guidance_scale": 3.0,
-            }
-        )
-
-        # Wait for result
-        print("Waiting for video generation...", file=sys.stderr)
-        output = result.get()
-
-        # Extract video URL
-        video_url = None
-        if isinstance(output, dict):
-            video_url = output.get("video", {}).get("url") or output.get("video_url")
-
-        if not video_url:
-            return {
-                "status": "error",
-                "message": "No video URL in response",
-                "details": str(output)
-            }
-
-        # Download the video
-        response = requests.get(video_url, timeout=60)
-        response.raise_for_status()
-
-        with open(output_path, "wb") as f:
-            f.write(response.content)
-
-        print(f"✅ Video saved to {output_path}", file=sys.stderr)
-
-        return {
-            "status": "success",
-            "video_path": output_path,
-            "video_url": video_url
+            "message": "Video generation timed out after 5 minutes"
         }
 
     except Exception as e:
+        print(f"Error: {str(e)}")
         return {
             "status": "error",
             "message": str(e)
         }
 
 
+
+
 def main():
     """
-    CLI interface for video generation.
+    CLI interface for avatar video generation using HeyGen.
     Supports both command-line args and JSON stdin input.
     """
     # Check for stdin JSON input (for Go integration)
@@ -173,32 +189,24 @@ def main():
         try:
             input_data = json.loads(sys.stdin.read())
 
-            mode = input_data.get("mode", "text_to_video")
-            prompt = input_data.get("prompt", "")
+            audio_path = input_data.get("audio_path", "")
             output_path = input_data.get("output_path", "output.mp4")
+            avatar_id = input_data.get("avatar_id", "Kristin_public_3_20240108")
+            background = input_data.get("background", "#0e1118")
 
-            if mode == "text_to_video":
-                result = text_to_video(
-                    prompt=prompt,
-                    output_path=output_path,
-                    model=input_data.get("model", "fal-ai/ltx-video"),
-                    duration=input_data.get("duration", 5),
-                    fps=input_data.get("fps", 24)
-                )
-            elif mode == "image_to_video":
-                image_path = input_data.get("image_path", "")
-                result = image_to_video(
-                    image_path=image_path,
-                    prompt=prompt,
-                    output_path=output_path,
-                    model=input_data.get("model", "fal-ai/ltx-video"),
-                    duration=input_data.get("duration", 5)
-                )
-            else:
-                result = {
+            if not audio_path:
+                print(json.dumps({
                     "status": "error",
-                    "message": f"Unknown mode: {mode}"
-                }
+                    "message": "No audio_path provided"
+                }))
+                return
+
+            result = generate_avatar_video(
+                audio_path=audio_path,
+                output_path=output_path,
+                avatar_id=avatar_id,
+                background=background
+            )
 
             print(json.dumps(result))
 
@@ -214,33 +222,19 @@ def main():
             }))
 
     # Command-line arguments mode
-    elif len(sys.argv) >= 3:
-        mode = sys.argv[1]
+    elif len(sys.argv) >= 2:
+        audio_path = sys.argv[1]
+        output_path = sys.argv[2] if len(sys.argv) > 2 else "output.mp4"
+        avatar_id = sys.argv[3] if len(sys.argv) > 3 else "Kristin_public_3_20240108"
 
-        if mode == "text":
-            prompt = sys.argv[2]
-            output_path = sys.argv[3] if len(sys.argv) > 3 else "output.mp4"
-            result = text_to_video(prompt, output_path)
-            print(json.dumps(result))
-
-        elif mode == "image":
-            image_path = sys.argv[2]
-            prompt = sys.argv[3] if len(sys.argv) > 3 else "animate this image"
-            output_path = sys.argv[4] if len(sys.argv) > 4 else "output.mp4"
-            result = image_to_video(image_path, prompt, output_path)
-            print(json.dumps(result))
-
-        else:
-            print(json.dumps({
-                "status": "error",
-                "message": f"Unknown mode: {mode}. Use 'text' or 'image'"
-            }))
+        result = generate_avatar_video(audio_path, output_path, avatar_id)
+        print(json.dumps(result))
 
     else:
         print("Usage:")
-        print("  Text-to-video: python video_generation.py text 'your prompt' [output.mp4]")
-        print("  Image-to-video: python video_generation.py image image.png 'motion prompt' [output.mp4]")
-        print("  JSON stdin: echo '{\"mode\":\"text_to_video\",\"prompt\":\"...\"...}' | python video_generation.py")
+        print("  CLI: python video_generation.py audio.mp3 [output.mp4] [avatar_id]")
+        print("  JSON stdin: echo '{\"audio_path\":\"audio.mp3\",\"output_path\":\"output.mp4\"}' | python video_generation.py")
+        print("\nAvailable avatars: See https://app.heygen.com/avatars")
 
 
 if __name__ == "__main__":
