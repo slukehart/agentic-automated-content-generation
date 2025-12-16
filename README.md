@@ -8,14 +8,12 @@ This project automates the complete workflow of fetching news articles, generati
 
 **Pipeline:**
 ```
-NewsAPI → AI Summarization → Google Cloud TTS (audio)
+NewsAPI → AI Summarization → Grok Image Gen → HeyGen (TTS + AI Avatar + Dynamic Background)
                                      ↓
-                              HeyGen AI Avatar
-                                     ↓
-                          Talking Head News Video ✨
+                          Talking Head News Video with Custom Newsroom ✨
 ```
 
-**Technologies:** Go • Python • Google Cloud TTS • HeyGen AI Avatars • JSON-based IPC
+**Technologies:** Go • Python • HeyGen AI Avatars & TTS • JSON-based IPC
 
 ## Quick Start
 
@@ -24,24 +22,21 @@ NewsAPI → AI Summarization → Google Cloud TTS (audio)
 poetry install
 go mod download
 
-# 2. Authenticate with Google Cloud
-gcloud auth application-default login
-
-# 3. Set environment variables in .env file
+# 2. Set environment variables in .env file
 HEYGEN_API_KEY=your-heygen-api-key    # Get from https://app.heygen.com/settings/api
 NEWS_API_KEY=your-newsapi-key         # Get from https://newsapi.org
-GROK_API_KEY=your-grok-key            # Your AI service key
+X_AI_KEY=your-x-ai-key                # Your Grok AI key
 
-# 4. Run the complete workflow
+# 3. Run the complete workflow
 go run main.go
 ```
 
 ## What It Does
 
 1. **Fetches News** - Retrieves latest articles from NewsAPI
-2. **Generates Summaries** - Creates broadcast-quality summaries using AI
-3. **Creates Audio Narration** - Professional voiceover using Google Cloud Text-to-Speech
-4. **Generates AI Avatar Videos** - Photorealistic news anchors with perfect lip-sync using HeyGen
+2. **Generates Summaries** - Creates broadcast-quality summaries with platform-specific metadata using AI
+3. **Generates Custom Backgrounds** - Creates unique newsroom backgrounds for each video using Grok image generation
+4. **Generates AI Avatar Videos** - Photorealistic news anchors with built-in text-to-speech, perfect lip-sync, and dynamic backgrounds using HeyGen
 
 ### Output
 
@@ -60,13 +55,20 @@ Each video features a professional AI news anchor with perfect lip-sync, ready t
 content-generation-automation/
 ├── main.go                     # Main orchestration
 ├── news/                       # News processing (Go)
-│   └── parseNewsArticles.go
-├── audio/                      # Audio generation (TTS)
+│   ├── parseNewsArticles.go    # NewsAPI fetching
+│   └── metadata_generation.go  # Grok AI summaries + image generation
+├── audio/                      # Audio generation (LEGACY - optional)
 │   ├── tts.go                  # Go interface
-│   └── tts_generation.py       # Google Cloud TTS integration
-├── video/                      # Video generation
+│   └── tts_generation.py       # Google Cloud TTS (use HeyGen TTS instead)
+├── video/                      # Video generation with TTS
 │   ├── video.go                # Go interface
-│   └── video_generation.py     # HeyGen AI avatar integration
+│   ├── constants.go            # Configuration constants (avatar, voice, dimensions, etc.)
+│   └── video_generation.py     # HeyGen AI avatar + TTS integration
+├── metadata/                   # Content metadata & manifest
+│   ├── types.go                # Data structures for all platforms
+│   ├── manifest.go             # Manifest CRUD operations
+│   └── prompts.go              # LLM prompts for metadata generation
+├── backgrounds/                # Generated newsroom backgrounds
 └── [documentation files]
 ```
 
@@ -154,10 +156,16 @@ VIDEO GENERATION (AI Avatar):
 ## Features
 
 ✅ **Photorealistic AI Avatars** - Professional news anchors with HeyGen
-✅ **Perfect Lip-Sync** - HeyGen automatically syncs avatar mouth movements to audio
-✅ **Professional Audio** - Google Cloud Neural2 voices for broadcast-quality speech
-✅ **Automated Workflow** - Audio generation → HeyGen upload → Avatar rendering
-✅ **Fast Generation** - 5-10 minutes per video (HeyGen processing time)
+✅ **Perfect Lip-Sync** - HeyGen automatically syncs avatar mouth movements to voice
+✅ **Built-in Text-to-Speech** - Professional voices directly from HeyGen (no separate TTS needed!)
+✅ **Dynamic Backgrounds** - AI-generated unique newsroom backgrounds for each video using Grok
+✅ **Portrait Mode Support** - Generate videos in landscape (16:9), portrait (9:16), or square (1:1) aspect ratios
+✅ **Speech Speed Control** - Adjust narration speed from 0.5x to 1.5x
+✅ **Webhook Support** - Optional webhook integration for long video generation without timeouts
+✅ **Centralized Configuration** - Global constants for avatar, voice, dimensions, and styling
+✅ **Automated Workflow** - Text → Background Gen → HeyGen TTS + Avatar rendering in one pipeline
+✅ **Fast Generation** - 5-20 minutes per video (varies by aspect ratio and length)
+✅ **Platform-Optimized Metadata** - Generate YouTube, TikTok, Instagram, Twitter, Facebook, LinkedIn metadata in one LLM call
 ✅ **Token-Efficient** - Batch processing reduces API calls and costs
 ✅ **Error Handling** - Failed items don't stop the pipeline
 ✅ **Progress Tracking** - Real-time console output with status updates
@@ -237,26 +245,52 @@ echo '{"audio_path":"output.mp3","output_path":"final.mp4","avatar_id":"Kristin_
 
 ## Configuration
 
-### Audio/Voice Settings
+### Global Video Constants
 
-Edit `audio/tts.go` (line 58) to customize:
+All default video settings are centralized in `video/constants.go`:
+
+```go
+const (
+    DefaultAvatarID          = "Angela-inblackskirt-20220820"  // Professional female avatar
+    DefaultVoiceID           = "1bd001e7e50f421d891986aad5158bc8"  // Professional female voice
+    DefaultBackground        = "newsroom"  // Will generate AI newsroom image
+    DefaultBackgroundColor   = "#0e1118"  // Fallback dark blue
+    DefaultSpeechSpeed       = 1.0  // Normal speed (0.5 to 1.5)
+    DefaultVideoWidth        = 1080  // Portrait mode width
+    DefaultVideoHeight       = 1920  // Portrait mode height
+    DefaultAspectRatio       = "9:16"  // Portrait mode for social media
+)
+```
+
+**Popular Configurations:**
+
+**Portrait Mode (TikTok/Instagram Reels):**
+- Width: 1080, Height: 1920, Aspect Ratio: "9:16"
+
+**Landscape Mode (YouTube):**
+- Width: 1920, Height: 1080, Aspect Ratio: "16:9"
+
+**Square Mode (Instagram Feed):**
+- Width: 1080, Height: 1080, Aspect Ratio: "1:1"
+
+### Audio/Voice Settings (LEGACY - Use HeyGen TTS)
+
+Edit `audio/tts.go` (line 58) to customize Google Cloud TTS:
 - Voice selection (default: `en-US-Neural2-J` - male professional)
 - Speaking speed (default: 1.0)
 - See [AUDIO_SETUP.md](AUDIO_SETUP.md) for all available voices
 
-Popular options:
-- `en-US-Neural2-J` - Male, authoritative
-- `en-US-Neural2-F` - Female, professional
-- `en-US-Studio-M` - Premium male voice
-- `en-GB-Neural2-B` - British male
+**Note:** We recommend using HeyGen's built-in TTS (text input) instead of separate audio generation for better lip-sync quality.
 
-### Video/Avatar Parameters
+### Background Generation
 
-Edit `video/video.go` (line 59) to customize:
-- Avatar selection (default: `Kristin_public_3_20240108` - female professional)
-- Background color/image (default: `#0e1118` - dark news studio)
-- Dimension settings (default: 1280×720, 16:9 aspect ratio)
-- See [HEYGEN_SETUP.md](HEYGEN_SETUP.md) for avatar gallery and customization
+Backgrounds are automatically generated using Grok image generation API with prompts like:
+```
+"A professional modern newsroom background with a blue and white color scheme,
+soft lighting, bokeh effect, clean minimalist design, TV studio aesthetic"
+```
+
+To customize, edit the prompt in `news/metadata_generation.go` → `GenerateNewsroomBackground`
 
 ### News Sources
 
@@ -336,12 +370,13 @@ curl -sSL https://install.python-poetry.org | python3 -
 ### Video generation fails (HeyGen)
 - Verify HEYGEN_API_KEY is set in `.env`
 - Check API credits/subscription at https://app.heygen.com/
-- Ensure audio file exists before calling video generation
 - Review stderr output for detailed errors (Python script logs progress)
 - Ensure poetry dependencies are installed: `poetry install`
 - Check avatar ID is valid: https://app.heygen.com/avatars
-- HeyGen videos take 5-10 minutes to generate - be patient!
+- **Portrait videos take longer!** Landscape: 5-10 min, Portrait: 10-20 min
+- For timeouts, consider using webhook support (see `video/video_generation.py`)
 - Check video status manually: https://app.heygen.com/videos
+- Verify background image was generated in `backgrounds/` folder
 
 ### Google Cloud TTS fails
 - Verify Text-to-Speech API is enabled
@@ -360,11 +395,16 @@ go mod download
 - [x] Audio narration with Google Cloud TTS
 - [x] AI avatar video generation with HeyGen
 - [x] Automated lip-sync (HeyGen handles this)
-- [ ] Multiple avatar selection/rotation
+- [x] Dynamic background generation with Grok AI
+- [x] Portrait/landscape/square aspect ratio support
+- [x] Speech speed control
+- [x] Webhook support for long video generation
+- [x] Centralized configuration constants
+- [x] Built-in captions (HeyGen native support)
+- [ ] Multiple avatar selection/rotation per video
 - [ ] Background music and sound effects
-- [ ] Text overlays and captions (subtitles via HeyGen API)
 - [ ] Multi-clip video assembly (full news programs)
-- [ ] Social media auto-upload (YouTube, Twitter, etc.)
+- [ ] Social media auto-upload (YouTube, TikTok, Instagram, etc.)
 - [ ] Scheduled automation (cron jobs)
 - [ ] Web dashboard for monitoring
 - [ ] Multiple video styles/templates

@@ -10,6 +10,8 @@ import (
 	"os"
 	"time"
 
+	"content-generation-automation/metadata"
+
 	grok "github.com/SimonMorphy/grok-go"
 	"github.com/joho/godotenv"
 )
@@ -81,8 +83,15 @@ func ParseNewsArticles() AiArticleParameters {
 }
 
 
+// EnrichedNewsContent contains the summary and metadata for a news article
+type EnrichedNewsContent struct {
+	Summary  string
+	Metadata metadata.LLMMetadataResponse
+}
+
 // GenerateBatchNewsReportSummaries - MOST TOKEN EFFICIENT
 // Processes ALL articles in a single API call with prompt sent only once
+// DEPRECATED: Use GenerateEnrichedNewsContent for metadata generation
 func GenerateBatchNewsReportSummaries(articles AiArticleParameters, systemPrompt string) ([]string, error) {
 	err := godotenv.Load()
 	if err != nil {

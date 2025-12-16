@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
-	"content-generation-automation/audio"
+	"content-generation-automation/metadata"
 	"content-generation-automation/news"
 	"content-generation-automation/video"
 
@@ -29,108 +30,113 @@ func main() {
 		log.Fatal("❌ HEYGEN_API_KEY environment variable is not set. Please add it to your .env file or export it.")
 	}
 
-	// Define your custom prompt for Grok
-	// This prompt is sent ONCE for all articles (token efficient)
-	systemPrompt := `You are a professional news writer. Visit each article URL provided, read the article title and the article content, and create a comprehensive news report summarized from the article content suitable for broadcast:
-REQUIREMENTS:
-- Start with an engaging hook
-- Use neutral, factual, authoritative tone
-- Each summary must be 150-200 words minimum (for ~60 seconds of speech)
-- Include all key points, context, background, and verified facts
-- Provide sufficient detail to fully explain the story
-- Cite the original source
-- No speculation, opinions, or emotional language
-- Summary provides a meaningful conclusion to convey the result of the article or what the article is about
-
-VERIFICATION:
-If an article is inaccessible or unverifiable, find the story from a reputable outlet (AP, Reuters, BBC, Guardian, Al Jazeera). If no reliable source confirms it, silently exclude it.
-
-OUTPUT:
-Provide only completed news reports for verified articles. Each summary should be detailed enough to speak for a maximum of 1 minute.`
+	// Initialize manifest manager
+	manifestManager := metadata.NewManifestManager("content_manifest.json")
+	fmt.Println("📋 Initialized content manifest manager")
 
 	// Fetch news articles from NewsAPI
-	fmt.Println("Fetching news articles...")
-	articles := news.ParseNewsArticles()
+	fmt.Println("\n🔍 Fetching news articles...")
+	article := news.ParseNewsArticles()
+	fmt.Printf("✅ Found article: %s\n", truncateString(article.ArticleTitle, 60))
 
-	fmt.Printf("Found %d articles\n\n", articles.ArticleTitle)
-
-	fmt.Println("=== Batch Processing All Articles (Token Efficient) ===")
-	summaries, err := news.GenerateBatchNewsReportSummaries(articles, systemPrompt)
+	// Generate enriched content (summary + platform metadata) in single LLM call
+	fmt.Println("\n🤖 Generating news summary and platform metadata...")
+	enrichedContent, err := news.GenerateEnrichedNewsContent(article)
 	if err != nil {
-		log.Fatalf("Error in batch summarization: %v", err)
+		log.Fatalf("❌ Error generating enriched content: %v", err)
+	}
+	fmt.Printf("✅ Generated summary (%d words) and metadata for all platforms\n", len(enrichedContent.Summary)/5)
+
+	// Generate custom newsroom background
+	fmt.Println("\n🎨 Generating custom newsroom background with Grok AI...")
+	backgroundResult, err := news.GenerateNewsroomBackground("")
+	if err != nil {
+		log.Printf("⚠️  Warning: Failed to generate background image: %v", err)
+		log.Printf("    Falling back to default newsroom background")
+		backgroundResult = nil
+	} else {
+		fmt.Printf("✅ Background image saved: %s\n", backgroundResult.ImagePath)
 	}
 
-	fmt.Println("\n=== News Summaries ===")
-	for i, summary := range summaries {
-		fmt.Printf("\n[%d/%d] %s\n", i+1, len(summaries), truncateString(summary, 80))
+	// Generate video with HeyGen's built-in text-to-speech
+	fmt.Println("\n=== Generating AI Avatar Video with Text-to-Speech ===")
+
+	// Generate unique content ID
+	contentID := fmt.Sprintf("news_%s", time.Now().Format("20060102_150405"))
+	finalPath := fmt.Sprintf("%s_final.mp4", contentID)
+
+	fmt.Printf("\n📝 Processing: %s\n", contentID)
+	fmt.Printf("    Summary: %s...\n", truncateString(enrichedContent.Summary, 60))
+
+	// Generate AI avatar video directly from text (no separate audio step!)
+	fmt.Printf("    🎬 Generating AI avatar video with TTS (this may take 5-10 minutes)...\n")
+	fmt.Printf("    📺 Avatar: Professional female news anchor\n")
+	fmt.Printf("    🎙️ Voice: HeyGen professional female (US)\n")
+	if backgroundResult != nil {
+		fmt.Printf("    🏢 Background: Custom AI-generated newsroom (%s)\n", backgroundResult.ImagePath)
+	} else {
+		fmt.Printf("    🏢 Background: Default professional newsroom\n")
 	}
 
-	// Generate audio + video for each news summary
-	fmt.Println("\n=== Generating Audio + Video from Summaries ===")
-
-	successCount := 0
-	failedCount := 0
-
-	for i, summary := range summaries {
-		baseFilename := fmt.Sprintf("news_%d", i+1)
-		audioPath := fmt.Sprintf("%s_audio.mp3", baseFilename)
-		finalPath := fmt.Sprintf("%s_final.mp4", baseFilename)
-
-		fmt.Printf("\n[%d/%d] Processing: %s\n", i+1, len(summaries), baseFilename)
-		fmt.Printf("    Summary: %s...\n", truncateString(summary, 60))
-
-		// Step 1: Generate audio narration
-		fmt.Printf("    🎤 Generating audio narration...\n")
-		audioResp, err := audio.GenerateNewsAudio(summary, audioPath)
-		if err != nil {
-			log.Printf("    ❌ Audio failed: %v", err)
-			failedCount++
-			continue
-		}
-		if audioResp.Status != "success" {
-			log.Printf("    ❌ Audio error: %s", audioResp.Message)
-			failedCount++
-			continue
-		}
-		fmt.Printf("    ✅ Audio: %s\n", audioResp.AudioPath)
-
-		// Step 2: Generate AI avatar video with the audio
-		fmt.Printf("    🎬 Generating AI avatar video (this may take 2-3 minutes)...\n")
-		videoResp, err := video.GenerateNewsVideo(audioPath, finalPath)
-		if err != nil {
-			log.Printf("    ❌ Video failed: %v", err)
-			if videoResp != nil && videoResp.Message != "" {
-				log.Printf("    Details: %s", videoResp.Message)
-			}
-			// Keep audio file for manual use
-			log.Printf("    Note: Audio file saved at %s", audioPath)
-			failedCount++
-			continue
-		}
-		if videoResp.Status != "success" {
-			log.Printf("    ❌ Video error: %s", videoResp.Message)
-			failedCount++
-			continue
-		}
-
-		// Clean up intermediate audio file (video already includes it)
-		os.Remove(audioPath)
-
-		fmt.Printf("    ✅ Final narrated video: %s\n", finalPath)
-		if videoResp.VideoURL != "" {
-			fmt.Printf("    🔗 HeyGen URL: %s\n", videoResp.VideoURL)
-		}
-		successCount++
+	var videoResp *video.VideoResponse
+	if backgroundResult != nil {
+		// Use custom background image
+		videoResp, err = video.GenerateNewsVideoWithBackgroundImage(enrichedContent.Summary, finalPath, backgroundResult.ImagePath)
+	} else {
+		// Fall back to default background
+		videoResp, err = video.GenerateNewsVideoFromText(enrichedContent.Summary, finalPath)
 	}
+	if err != nil {
+		log.Printf("    ❌ Video failed: %v", err)
+		if videoResp != nil && videoResp.Message != "" {
+			log.Printf("    Details: %s", videoResp.Message)
+		}
+		log.Fatalf("Cannot continue without video")
+	}
+	if videoResp.Status != "success" {
+		log.Fatalf("    ❌ Video error: %s", videoResp.Message)
+	}
+
+	fmt.Printf("    ✅ Final narrated video: %s\n", finalPath)
+	if videoResp.VideoURL != "" {
+		fmt.Printf("    🔗 HeyGen URL: %s\n", videoResp.VideoURL)
+	}
+
+	fmt.Printf("    💡 Note: Video generated with HeyGen's TTS (no Google Cloud TTS needed!)\n")
+
+	// Step 3: Create content item with all metadata
+	fmt.Println("\n💾 Saving content metadata to manifest...")
+	avatarID := video.DefaultAvatarID
+	contentItem := news.ConvertToContentItem(
+		article,
+		enrichedContent,
+		contentID,
+		"", // Audio was deleted (already in video)
+		finalPath,
+		avatarID,
+		videoResp.Duration,
+	)
+
+	// Add to manifest
+	if err := manifestManager.AddItem(contentItem); err != nil {
+		log.Printf("⚠️  Warning: Failed to save to manifest: %v", err)
+	} else {
+		fmt.Printf("✅ Saved metadata to content_manifest.json (ID: %s)\n", contentID)
+	}
+
+	// Display platform metadata preview
+	fmt.Println("\n=== Platform Metadata Preview ===")
+	fmt.Printf("📺 YouTube Title: %s\n", contentItem.Platforms.YouTube.Title)
+	fmt.Printf("📱 TikTok Caption: %s\n", truncateString(contentItem.Platforms.TikTok.Caption, 60))
+	fmt.Printf("📷 Instagram: %d hashtags\n", len(contentItem.Platforms.Instagram.Hashtags))
+	fmt.Printf("🐦 Twitter: %s\n", truncateString(contentItem.Platforms.Twitter.Tweet, 60))
 
 	// Summary
 	fmt.Println("\n=== Workflow Complete ===")
-	fmt.Printf("📰 News summaries: %d\n", len(summaries))
-	fmt.Printf("🎬 Videos with audio: %d\n", successCount)
-	if failedCount > 0 {
-		fmt.Printf("❌ Failed: %d\n", failedCount)
-	}
-	fmt.Println("\n✅ Done!")
+	fmt.Printf("📰 Content ID: %s\n", contentID)
+	fmt.Printf("🎬 Video: %s\n", finalPath)
+	fmt.Printf("📋 Metadata: content_manifest.json\n")
+	fmt.Println("\n✅ Ready to post to all platforms!")
 }
 
 // truncateString truncates a string to maxLen characters

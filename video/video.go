@@ -11,10 +11,13 @@ import (
 
 // VideoRequest represents a request to generate an avatar video with HeyGen
 type VideoRequest struct {
-	AudioPath  string `json:"audio_path"`            // Path to audio file (required)
-	OutputPath string `json:"output_path"`           // Where to save the video
-	AvatarID   string `json:"avatar_id,omitempty"`   // HeyGen avatar ID
-	Background string `json:"background,omitempty"`  // Background color or image URL
+	Text            string `json:"text,omitempty"`             // Text for TTS (preferred method)
+	AudioPath       string `json:"audio_path,omitempty"`       // Path to audio file (legacy)
+	OutputPath      string `json:"output_path"`                // Where to save the video
+	AvatarID        string `json:"avatar_id,omitempty"`        // HeyGen avatar ID
+	VoiceID         string `json:"voice_id,omitempty"`         // HeyGen voice ID for TTS
+	Background      string `json:"background,omitempty"`       // Background type ("newsroom", "#hex", or "image")
+	BackgroundImage string `json:"background_image,omitempty"` // URL or asset ID for custom background
 }
 
 // VideoResponse represents the response from video generation
@@ -28,12 +31,66 @@ type VideoResponse struct {
 	Details   string  `json:"details,omitempty"`
 }
 
-// GenerateAvatarVideo creates an AI avatar video from an audio file
+// GenerateNewsVideoFromText creates an AI avatar news video using text-to-speech
+// This is the RECOMMENDED method - no separate audio generation needed!
+func GenerateNewsVideoFromText(text string, outputPath string) (*VideoResponse, error) {
+	return GenerateNewsVideoFromTextWithOptions(
+		text,
+		outputPath,
+		DefaultAvatarID,
+		DefaultVoiceID,
+		DefaultBackground,
+	)
+}
+
+// GenerateNewsVideoFromTextWithOptions creates a news video with custom avatar, voice, and background
+func GenerateNewsVideoFromTextWithOptions(text, outputPath, avatarID, voiceID, background string) (*VideoResponse, error) {
+	request := VideoRequest{
+		Text:       text,
+		OutputPath: outputPath,
+		AvatarID:   avatarID,
+		VoiceID:    voiceID,
+		Background: background,
+	}
+
+	return executeVideoGeneration(request)
+}
+
+// GenerateNewsVideoWithBackgroundImage creates a news video with a custom background image
+func GenerateNewsVideoWithBackgroundImage(text, outputPath, backgroundImagePath string) (*VideoResponse, error) {
+	request := VideoRequest{
+		Text:            text,
+		OutputPath:      outputPath,
+		AvatarID:        DefaultAvatarID,
+		VoiceID:         DefaultVoiceID,
+		Background:      "image",
+		BackgroundImage: backgroundImagePath,
+	}
+
+	return executeVideoGeneration(request)
+}
+
+// GenerateNewsVideoWithAllOptions creates a news video with full customization including background image
+func GenerateNewsVideoWithAllOptions(text, outputPath, avatarID, voiceID, backgroundImagePath string, generateCaptions, burnInCaptions bool) (*VideoResponse, error) {
+	request := VideoRequest{
+		Text:            text,
+		OutputPath:      outputPath,
+		AvatarID:        avatarID,
+		VoiceID:         voiceID,
+		Background:      "image",
+		BackgroundImage: backgroundImagePath,
+	}
+
+	return executeVideoGeneration(request)
+}
+
+// GenerateAvatarVideo creates an AI avatar video from an audio file (LEGACY)
+// Use GenerateNewsVideoFromText instead for simpler pipeline
 func GenerateAvatarVideo(audioPath string, outputPath string) (*VideoResponse, error) {
 	return GenerateAvatarVideoWithOptions(audioPath, outputPath, "Kristin_public_3_20240108", "#0e1118")
 }
 
-// GenerateAvatarVideoWithOptions creates an avatar video with custom settings
+// GenerateAvatarVideoWithOptions creates an avatar video with custom settings (LEGACY)
 func GenerateAvatarVideoWithOptions(audioPath, outputPath, avatarID, background string) (*VideoResponse, error) {
 	request := VideoRequest{
 		AudioPath:  audioPath,
@@ -45,19 +102,18 @@ func GenerateAvatarVideoWithOptions(audioPath, outputPath, avatarID, background 
 	return executeVideoGeneration(request)
 }
 
-// GenerateNewsVideo creates an AI avatar news video with audio narration
+// GenerateNewsVideo creates an AI avatar news video with audio narration (LEGACY)
+// Use GenerateNewsVideoFromText instead
 func GenerateNewsVideo(audioPath string, outputPath string) (*VideoResponse, error) {
 	// Use professional news anchor avatar
-	// Options:
-	// - Kristin_public_3_20240108 (Female, professional)
-	// - Wayne_20240711 (Male, professional)
-	// See: https://app.heygen.com/avatars for more
+	// See video/constants.go to change default avatar
+	// Or visit: https://app.heygen.com/avatars for more options
 
 	return GenerateAvatarVideoWithOptions(
 		audioPath,
 		outputPath,
-		"Kristin_public_3_20240108", // Professional female news anchor
-		"#0e1118",                     // Dark news studio background
+		DefaultAvatarID,
+		DefaultBackground,
 	)
 }
 

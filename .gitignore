@@ -1,4 +1,5 @@
 .env
+.cursor/*
 
 # Generated content
 *.mp4
@@ -6,6 +7,8 @@
 *.wav
 news_video_*.mp4
 output*.mp4
+backgrounds/*
+
 
 # Python
 .venv/
