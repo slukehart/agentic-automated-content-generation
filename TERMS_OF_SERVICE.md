@@ -277,7 +277,7 @@ We are not liable for failure to perform due to causes beyond our reasonable con
 These Terms do not create a partnership, agency, or employment relationship.
 
 ### 13.7 Contact for Legal Notices
-All legal notices should be sent to: [Your Email Address]
+All legal notices should be sent to: lukehartsc@gmail.com
 
 ## 14. API Usage and Rate Limits
 
@@ -307,11 +307,9 @@ We do not guarantee backward compatibility between versions.
 
 For questions about these Terms:
 
-**Email:** [Your Email Address]
+**Email:** lukehartsc@gmail.com
 
-**GitHub:** https://github.com/[YourUsername]/content-generation-automation
-
-**Address:** [Your Address, if applicable]
+**GitHub:** https://github.com/slukehart/agentic-automated-content-generation
 
 ---
 

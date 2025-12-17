@@ -204,8 +204,9 @@ We may update this Privacy Policy from time to time. Changes will be reflected b
 
 If you have questions, concerns, or requests regarding this Privacy Policy:
 
-**Email:**: lukehartsc@gmail.com
+**Email:** lukehartsc@gmail.com
 
+**GitHub:** https://github.com/slukehart/agentic-automated-content-generation
 
 **Response Time:** We aim to respond within 48 hours
 
