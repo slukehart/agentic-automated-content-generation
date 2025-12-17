@@ -8,6 +8,22 @@ Automatic Content Generation ("we," "our," or "us") operates an AI-powered news 
 
 By using our application, you agree to the collection and use of information in accordance with this policy.
 
+### 🔒 Our Core Privacy Promise
+
+**Your Data Is NOT Used for AI Content Generation**
+
+We want to make this absolutely clear from the start:
+
+- ✅ **AI content is generated from public news sources ONLY**
+- ✅ **Your personal data is NEVER used as input for AI models**
+- ✅ **We DO NOT train AI systems on your information**
+- ✅ **Your data is used ONLY for:**
+  - Understanding YOUR content preferences (which topics YOU like)
+  - Improving YOUR user experience
+  - Technical operations (authentication, uploads, errors)
+
+**Bottom Line:** Public news articles go into AI → Summarized videos come out. Your personal data stays completely separate and is never part of the AI content creation process.
+
 ## Information We Collect
 
 ### 1. Information You Provide
@@ -53,15 +69,35 @@ By using our application, you agree to the collection and use of information in 
 We use collected information for the following purposes:
 
 ### Primary Functions
-1. **Content Creation:** Generate AI-powered news video summaries
-2. **Platform Integration:** Upload videos to your TikTok, YouTube, and other social media accounts
-3. **Authentication:** Maintain secure OAuth connections to social media platforms
-4. **Quality Assurance:** Monitor content generation success and troubleshoot errors
+1. **Platform Integration:** Upload videos to your TikTok, YouTube, and other social media accounts
+2. **Authentication:** Maintain secure OAuth connections to social media platforms
+3. **Quality Assurance:** Monitor content generation success and troubleshoot errors
 
-### Secondary Functions
-1. **Improvement:** Analyze usage patterns to improve our service
-2. **Communication:** Send important updates about service changes
-3. **Compliance:** Ensure adherence to platform policies and legal requirements
+### Secondary Functions (Analytics Only)
+1. **Content Preferences:** Analyze which topics you view or interact with most to understand your interests
+2. **Usage Analytics:** Track which features you use to improve our service
+3. **Communication:** Send important updates about service changes
+4. **Compliance:** Ensure adherence to platform policies and legal requirements
+
+### What We DO NOT Do With Your Data
+
+**IMPORTANT:** We want to be crystal clear about what we DON'T do:
+
+❌ **We DO NOT use your personal data to generate AI content**
+- AI news summaries are generated from public news sources only
+- Your viewing habits, preferences, or personal information are NEVER fed into AI models
+- Content generation is completely independent of individual user data
+
+❌ **We DO NOT train AI models on your data**
+- Your information is not used to train or improve AI algorithms
+- AI summarization uses only public news articles as input
+- Your data remains yours and is not used for machine learning
+
+✅ **We ONLY use your data for:**
+- Understanding which topics YOU find interesting (for your own personalized recommendations)
+- Tracking YOUR content preferences and viewing patterns
+- Improving YOUR user experience
+- Technical operations (authentication, uploads, error logging)
 
 ## Data Storage and Security
 
@@ -81,6 +117,44 @@ We use collected information for the following purposes:
 - **Content Metadata:** Retained locally until you delete the files
 - **Logs:** Temporary logs automatically purged after 30 days
 - **No Server Data:** We do not maintain centralized databases of user data
+
+## AI Content Generation - Data Separation
+
+### How AI Content Is Created (Without Your Data)
+
+To be completely transparent about our AI processes:
+
+**Step 1: News Aggregation**
+- We fetch public news articles from NewsAPI and other public sources
+- These are published articles available to anyone on the internet
+- No user data is involved in this step
+
+**Step 2: AI Summarization**
+- Public news articles are sent to Grok AI for summarization
+- ONLY the article text is processed
+- NO user information, preferences, or personal data is included
+- The AI has no knowledge of who will view the summary
+
+**Step 3: Video Generation**
+- Summaries are converted to videos by HeyGen
+- ONLY the summary text is processed
+- NO user data is involved
+
+**Step 4: You Control Publishing**
+- You decide which videos to post to your accounts
+- We track YOUR choices to understand YOUR preferences
+- This analytics data is kept separate and never fed back into AI
+
+### Data Flow Diagram
+
+```
+PUBLIC NEWS → AI Summarization → Video Generation → You Choose to Post
+     ↓                                                        ↓
+   (No user data)                              (Your preferences tracked
+                                                for YOUR recommendations)
+```
+
+**Key Point:** The content creation pipeline and user analytics are completely separate systems. One does not feed into the other.
 
 ## Third-Party Services
 
@@ -238,12 +312,22 @@ By using Automatic Content Generation, you acknowledge that:
 
 ## Summary (TL;DR)
 
+### 🔒 Your Data Protection
+
+- ✅ **Your data is NOT used for AI content generation** (only public news is)
+- ✅ **Your data is ONLY used for** understanding YOUR preferences and interests
 - ✅ We store data **locally** on your device only
 - ✅ We use OAuth (you never give us your passwords)
 - ✅ We don't sell or share your personal data
 - ✅ You can delete everything at any time
-- ✅ Third-party AI services process content (not personal data)
+- ✅ Third-party AI services process PUBLIC news content ONLY (not your personal data)
 - ✅ You control what gets posted to your accounts
 - ✅ We're transparent and open-source
+
+### 🤖 How AI Works Here
+
+**AI Input:** Public news articles (from internet)  
+**AI Output:** Summarized videos  
+**Your Data:** Kept completely separate, used only for YOUR recommendations
 
 For detailed information, please read the full policy above.
