@@ -326,8 +326,8 @@ By using Automatic Content Generation, you acknowledge that:
 
 ### 🤖 How AI Works Here
 
-**AI Input:** Public news articles (from internet)  
-**AI Output:** Summarized videos  
+**AI Input:** Public news articles (from internet)
+**AI Output:** Summarized videos
 **Your Data:** Kept completely separate, used only for YOUR recommendations
 
 For detailed information, please read the full policy above.
