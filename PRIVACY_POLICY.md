@@ -247,4 +247,3 @@ By using Automatic Content Generation, you acknowledge that:
 - ✅ We're transparent and open-source
 
 For detailed information, please read the full policy above.
-

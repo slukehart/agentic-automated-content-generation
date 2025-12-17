@@ -36,9 +36,9 @@ Our Terms of Service cover:
 
 When submitting your app for review, use these URLs:
 
-### GitHub Pages URLs (ACTIVE):
-- **Privacy Policy URL:** `https://slukehart.github.io/agentic-automated-content-generation/PRIVACY_POLICY`
-- **Terms of Service URL:** `https://slukehart.github.io/agentic-automated-content-generation/TERMS_OF_SERVICE`
+### If hosting on GitHub Pages:
+- **Privacy Policy URL:** `https://[yourusername].github.io/content-generation-automation/PRIVACY_POLICY`
+- **Terms of Service URL:** `https://[yourusername].github.io/content-generation-automation/TERMS_OF_SERVICE`
 
 ### If hosting elsewhere:
 Upload these documents to your website and provide the URLs in your app submission.
@@ -129,4 +129,3 @@ For questions about these legal documents:
 
 For TikTok app review questions:
 - TikTok Developer Support: https://developers.tiktok.com/support
-
