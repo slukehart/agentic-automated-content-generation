@@ -1,6 +1,10 @@
 .env
 .cursor/*
 
+# OAuth credentials - NEVER commit these!
+client_secret.json
+client_secret*.json
+
 # Generated content
 *.mp4
 *.mp3
@@ -31,6 +35,7 @@ poetry.lock
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
 
 # Dependency directories (remove the comment below to include it)
 # vendor/

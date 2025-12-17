@@ -87,7 +87,7 @@ func GenerateNewsVideoWithAllOptions(text, outputPath, avatarID, voiceID, backgr
 // GenerateAvatarVideo creates an AI avatar video from an audio file (LEGACY)
 // Use GenerateNewsVideoFromText instead for simpler pipeline
 func GenerateAvatarVideo(audioPath string, outputPath string) (*VideoResponse, error) {
-	return GenerateAvatarVideoWithOptions(audioPath, outputPath, "Kristin_public_3_20240108", "#0e1118")
+	return GenerateAvatarVideoWithOptions(audioPath, outputPath, DefaultAvatarID, DefaultBackgroundColor)
 }
 
 // GenerateAvatarVideoWithOptions creates an avatar video with custom settings (LEGACY)

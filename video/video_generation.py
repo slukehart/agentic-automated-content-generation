@@ -15,8 +15,8 @@ import base64
 
 # Constants - SINGLE SOURCE OF TRUTH
 # Change these values to update defaults across the entire application
-DEFAULT_AVATAR_ID = "Annie_expressive10_public"
-DEFAULT_VOICE_ID = "1bd001e7e50f421d891986aad5158bc8"
+DEFAULT_AVATAR_ID = "Marcus_expressive_2024120201"
+DEFAULT_VOICE_ID = "581b6c108c494cc1abe823e7f72f3fae"
 DEFAULT_BACKGROUND = "newsroom"
 DEFAULT_BACKGROUND_COLOR = "#1a2332"  # Dark professional news studio color
 DEFAULT_SPEECH_SPEED = 1.25  # Speech speed: 0.5 (slow) to 1.5 (fast), 1.0 is normal
@@ -64,7 +64,7 @@ def generate_avatar_video_from_text(
 
     Popular Voice IDs:
         - "1bd001e7e50f421d891986aad5158bc8" - Professional female (US)
-        - "2d5b0e6cf36f4bf5b5cb0b4e5e6e9e3d" - Authoritative male (US)
+        - "581b6c108c494cc1abe823e7f72f3fae" - Authoritative male (US)
         - "40421c2ce32f48da9c1e821ac6d1b7f6" - British female
     """
     try:
@@ -164,7 +164,13 @@ def generate_avatar_video_from_text(
                     "type": "text",
                     "input_text": text,
                     "voice_id": voice_id,
-                    "speed": speech_speed
+                    "speed": speech_speed,
+                    "emotion": "Broadcaster",
+                    "elevanlabs_settings": {
+                        "model": "eleven_turbo_v2",
+                        "similarity_boost": 3.4,
+                        "stability": 3.4
+                    }
                 },
                 "background": bg_config
             }],
@@ -271,7 +277,7 @@ def generate_avatar_video_from_text(
 def generate_avatar_video(
     audio_path: str,
     output_path: str = "output.mp4",
-    avatar_id: str = "Annie_expressive10_public",
+    avatar_id: str = "Marcus_expressive_2024120201",
     background: str = "newsroom"
 ) -> Dict[str, Any]:
     """
@@ -461,13 +467,14 @@ def main():
             text = input_data.get("text", "")
             audio_path = input_data.get("audio_path", "")
             output_path = input_data.get("output_path", "output.mp4")
-            avatar_id = input_data.get("avatar_id", "Annie_expressive10_public")
+            avatar_id = input_data.get("avatar_id", DEFAULT_AVATAR_ID)
             background = input_data.get("background", "newsroom")
             background_image = input_data.get("background_image")
-            voice_id = input_data.get("voice_id", "1bd001e7e50f421d891986aad5158bc8")
+            voice_id = input_data.get("voice_id", DEFAULT_VOICE_ID)
 
             # Text-to-speech mode (preferred)
             if text:
+
                 result = generate_avatar_video_from_text(
                     text=text,
                     output_path=output_path,
@@ -512,8 +519,8 @@ def main():
             # Text-to-speech mode: python video_generation.py text "your script" output.mp4 [avatar_id] [voice_id]
             text = sys.argv[2]
             output_path = sys.argv[3]
-            avatar_id = sys.argv[4] if len(sys.argv) > 4 else "Annie_expressive10_public"
-            voice_id = sys.argv[5] if len(sys.argv) > 5 else "1bd001e7e50f421d891986aad5158bc8"
+            avatar_id = sys.argv[4] if len(sys.argv) > 4 else DEFAULT_AVATAR_ID
+            voice_id = sys.argv[5] if len(sys.argv) > 5 else DEFAULT_VOICE_ID
 
             result = generate_avatar_video_from_text(text, output_path, avatar_id, voice_id)
             print(json.dumps(result))
@@ -521,7 +528,7 @@ def main():
             # Audio mode (legacy): python video_generation.py audio.mp3 output.mp4 [avatar_id]
             audio_path = sys.argv[1]
             output_path = sys.argv[2] if len(sys.argv) > 2 else "output.mp4"
-            avatar_id = sys.argv[3] if len(sys.argv) > 3 else "Annie_expressive10_public"
+            avatar_id = sys.argv[3] if len(sys.argv) > 3 else DEFAULT_AVATAR_ID
 
             result = generate_avatar_video(audio_path, output_path, avatar_id)
             print(json.dumps(result))
@@ -538,8 +545,8 @@ def main():
         print("  Avatars: https://app.heygen.com/avatars")
         print("  Voices: https://app.heygen.com/voice-library")
         print("\n💡 Default Settings:")
-        print("  Avatar: Annie_expressive10_public (Professional female news anchor)")
-        print("  Voice: 1bd001e7e50f421d891986aad5158bc8 (Professional female US)")
+        print(f"  Avatar: {DEFAULT_AVATAR_ID} (Professional female news anchor)")
+        print(f"  Voice: {DEFAULT_VOICE_ID} (Professional female US)")
         print("  Background: newsroom (Professional news studio)")
 
 

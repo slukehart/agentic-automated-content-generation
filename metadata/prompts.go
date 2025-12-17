@@ -25,7 +25,7 @@ Return ONLY a valid JSON object in this exact structure (no markdown, no code bl
   "platforms": {
     "youtube": {
       "title": "Engaging title (max 100 chars)",
-      "description": "Detailed description with keywords and context (1000+ chars recommended for SEO)",
+      "description": "Detailed description with keywords and context (1000 max chars recommended for SEO. Youtube does not afford more than 1000 chars for the description)",
       "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
       "timestamps": [
         {"time": "0:00", "label": "Introduction"},

@@ -4,10 +4,10 @@ Change these values to update defaults across the entire application
 """
 
 # Default avatar ID for HeyGen
-DEFAULT_AVATAR_ID = "Annie_expressive10_public"
+DEFAULT_AVATAR_ID = "Marcus_expressive_2024120201"
 
 # Default voice ID for HeyGen TTS
-DEFAULT_VOICE_ID = "1bd001e7e50f421d891986aad5158bc8"
+DEFAULT_VOICE_ID = "581b6c108c494cc1abe823e7f72f3fae"
 
 # Default background type
 DEFAULT_BACKGROUND = "newsroom"

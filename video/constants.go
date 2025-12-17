@@ -3,10 +3,10 @@ package video
 // Default HeyGen avatar configuration
 const (
 	// DefaultAvatarID is the default avatar for video generation
-	DefaultAvatarID = "Annie_expressive10_public"
+	DefaultAvatarID = "Marcus_expressive_2024120201"
 
 	// DefaultVoiceID is the default voice for text-to-speech
-	DefaultVoiceID = "1bd001e7e50f421d891986aad5158bc8"
+	DefaultVoiceID = "581b6c108c494cc1abe823e7f72f3fae"
 
 	// DefaultBackground is the default background type
 	DefaultBackground = "newsroom"

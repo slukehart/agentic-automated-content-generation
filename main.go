@@ -1,11 +1,13 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
 	"time"
 
+	"content-generation-automation/media"
 	"content-generation-automation/metadata"
 	"content-generation-automation/news"
 	"content-generation-automation/video"
@@ -14,6 +16,10 @@ import (
 )
 
 func main() {
+	// Parse command-line flags
+	uploadToYouTube := flag.Bool("upload-youtube", false, "Upload generated video to YouTube after creation")
+	flag.Parse()
+
 	// Load .env file if it exists (for local development)
 	// In production (Google Cloud), use Secret Manager instead
 	if err := godotenv.Load(); err != nil {
@@ -131,11 +137,41 @@ func main() {
 	fmt.Printf("📷 Instagram: %d hashtags\n", len(contentItem.Platforms.Instagram.Hashtags))
 	fmt.Printf("🐦 Twitter: %s\n", truncateString(contentItem.Platforms.Twitter.Tweet, 60))
 
+	// Upload to YouTube if flag is set
+	if *uploadToYouTube {
+		fmt.Println("\n=== Uploading to YouTube ===")
+		result, err := media.UploadVideoToYouTube(&contentItem)
+		if err != nil {
+			log.Printf("❌ YouTube upload failed: %v", err)
+			// Update status with error
+			errMsg := err.Error()
+			contentItem.Status.YouTube.Error = &errMsg
+			contentItem.Status.YouTube.Posted = false
+		} else {
+			// Update status with success
+			contentItem.Status.YouTube.Posted = true
+			contentItem.Status.YouTube.URL = &result.VideoURL
+			contentItem.Status.YouTube.PostedAt = &result.UploadedAt
+			fmt.Printf("\n✅ Successfully uploaded to YouTube!\n")
+			fmt.Printf("   🔗 Watch at: %s\n", result.VideoURL)
+		}
+
+		// Save updated status to manifest
+		if err := manifestManager.UpdateItem(contentItem); err != nil {
+			log.Printf("⚠️  Warning: Failed to update manifest with upload status: %v", err)
+		} else {
+			fmt.Printf("   📋 Manifest updated with posting status\n")
+		}
+	}
+
 	// Summary
 	fmt.Println("\n=== Workflow Complete ===")
 	fmt.Printf("📰 Content ID: %s\n", contentID)
 	fmt.Printf("🎬 Video: %s\n", finalPath)
 	fmt.Printf("📋 Metadata: content_manifest.json\n")
+	if *uploadToYouTube && contentItem.Status.YouTube.Posted {
+		fmt.Printf("📺 YouTube: %s\n", *contentItem.Status.YouTube.URL)
+	}
 	fmt.Println("\n✅ Ready to post to all platforms!")
 }
 
