@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Automatic Content Generation</title>
+    <meta name="description" content="Privacy Policy for Automatic Content Generation. Learn how we protect your data and respect your privacy.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            line-height: 1.8;
+            color: #c8c8d0;
+            background: #0a0e27;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 50%, #1e1b4b 100%);
+            padding: 60px 20px 50px;
+            text-align: center;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.25);
+        }
+
+        header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            color: #8b9bff;
+            font-size: 16px;
+        }
+
+        nav {
+            background: rgba(15, 20, 40, 0.95);
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+        }
+
+        nav a {
+            color: #8b9bff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: #d4a5ff; }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 50px 30px 80px;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 55px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #b4b4ff;
+            margin-top: 35px;
+            margin-bottom: 14px;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #d4a5ff;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        strong { color: #e0e0e8; }
+
+        a { color: #8b9bff; transition: color 0.2s; }
+        a:hover { color: #d4a5ff; }
+
+        ul, ol {
+            margin: 12px 0 20px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .highlight-box {
+            background: rgba(102, 126, 234, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.25);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 25px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+
+        .promise-box {
+            background: rgba(72, 187, 120, 0.08);
+            border: 1px solid rgba(72, 187, 120, 0.25);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 25px 0;
+        }
+
+        .promise-box strong { color: #68d391; }
+
+        .warning-box {
+            background: rgba(245, 101, 101, 0.08);
+            border: 1px solid rgba(245, 101, 101, 0.25);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 25px 0;
+        }
+
+        .warning-box strong { color: #fc8181; }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 8px;
+            padding: 18px 22px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 14px;
+            color: #b4b4ff;
+            overflow-x: auto;
+            margin: 16px 0;
+            white-space: pre;
+        }
+
+        .tldr {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 40px 0;
+        }
+
+        .tldr h2 {
+            border-bottom: none;
+            margin-top: 0;
+            padding-bottom: 0;
+        }
+
+        .version-info {
+            text-align: center;
+            color: #5a6b9e;
+            font-size: 14px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(102, 126, 234, 0.15);
+        }
+
+        footer {
+            background: #050814;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        footer a {
+            color: #8b9bff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 15px;
+        }
+
+        footer a:hover { color: #d4a5ff; }
+
+        footer p { color: #5a6b9e; font-size: 14px; margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 32px; }
+            .container { padding: 30px 20px 60px; }
+            h2 { font-size: 26px; }
+            nav a { margin: 0 10px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Privacy Policy</h1>
+        <p>Last Updated: December 16, 2025</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html">Terms of Service</a>
+    </nav>
+
+    <div class="container">
+
+        <h2>Introduction</h2>
+        <p>Automatic Content Generation ("we," "our," or "us") operates an AI-powered news content automation platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application to create and distribute AI-generated news content on TikTok and other social media platforms.</p>
+        <p>By using our application, you agree to the collection and use of information in accordance with this policy.</p>
+
+        <div class="promise-box">
+            <h3>Our Core Privacy Promise</h3>
+            <p><strong>Your Data Is NOT Used for AI Content Generation</strong></p>
+            <p>We want to make this absolutely clear from the start:</p>
+            <ul>
+                <li><strong>AI content is generated from public news sources ONLY</strong></li>
+                <li><strong>Your personal data is NEVER used as input for AI models</strong></li>
+                <li><strong>We DO NOT train AI systems on your information</strong></li>
+                <li><strong>Your data is used ONLY for:</strong>
+                    <ul>
+                        <li>Understanding YOUR content preferences (which topics YOU like)</li>
+                        <li>Improving YOUR user experience</li>
+                        <li>Technical operations (authentication, uploads, errors)</li>
+                    </ul>
+                </li>
+            </ul>
+            <p><strong>Bottom Line:</strong> Public news articles go into AI &rarr; Summarized videos come out. Your personal data stays completely separate and is never part of the AI content creation process.</p>
+        </div>
+
+        <h2>Information We Collect</h2>
+
+        <h3>1. Information You Provide</h3>
+        <h4>Account Information</h4>
+        <ul>
+            <li>TikTok account credentials (via OAuth &mdash; we never see your password)</li>
+            <li>YouTube account credentials (via OAuth &mdash; we never see your password)</li>
+            <li>Email address (if provided for notifications)</li>
+        </ul>
+
+        <h4>Content Preferences</h4>
+        <ul>
+            <li>News topics of interest</li>
+            <li>Posting schedule preferences</li>
+            <li>Platform selection (TikTok, YouTube, etc.)</li>
+        </ul>
+
+        <h3>2. Automatically Collected Information</h3>
+        <h4>Usage Data</h4>
+        <ul>
+            <li>Video generation timestamps</li>
+            <li>Upload success/failure logs</li>
+            <li>API usage statistics</li>
+            <li>Error logs for troubleshooting</li>
+        </ul>
+
+        <h4>Technical Information</h4>
+        <ul>
+            <li>IP address</li>
+            <li>Browser type and version</li>
+            <li>Operating system</li>
+            <li>Device information</li>
+        </ul>
+
+        <h3>3. Third-Party Data</h3>
+        <h4>News Sources</h4>
+        <ul>
+            <li>We retrieve news articles from public news APIs (NewsAPI, etc.)</li>
+            <li>Article URLs, titles, and content are processed for summarization</li>
+            <li>Original source attribution is maintained</li>
+        </ul>
+
+        <h4>AI Services</h4>
+        <ul>
+            <li>Video content processed by HeyGen (AI avatar generation)</li>
+            <li>Text processed by Grok AI (summarization)</li>
+            <li>Background images generated by X.AI (Grok)</li>
+        </ul>
+
+        <h2>How We Use Your Information</h2>
+
+        <h3>Primary Functions</h3>
+        <ol>
+            <li><strong>Platform Integration:</strong> Upload videos to your TikTok, YouTube, and other social media accounts</li>
+            <li><strong>Authentication:</strong> Maintain secure OAuth connections to social media platforms</li>
+            <li><strong>Quality Assurance:</strong> Monitor content generation success and troubleshoot errors</li>
+        </ol>
+
+        <h3>Secondary Functions (Analytics Only)</h3>
+        <ol>
+            <li><strong>Content Preferences:</strong> Analyze which topics you view or interact with most to understand your interests</li>
+            <li><strong>Usage Analytics:</strong> Track which features you use to improve our service</li>
+            <li><strong>Communication:</strong> Send important updates about service changes</li>
+            <li><strong>Compliance:</strong> Ensure adherence to platform policies and legal requirements</li>
+        </ol>
+
+        <div class="warning-box">
+            <h3>What We DO NOT Do With Your Data</h3>
+            <ul>
+                <li><strong>We DO NOT use your personal data to generate AI content</strong> &mdash; AI news summaries are generated from public news sources only. Your viewing habits, preferences, or personal information are NEVER fed into AI models.</li>
+                <li><strong>We DO NOT train AI models on your data</strong> &mdash; Your information is not used to train or improve AI algorithms. AI summarization uses only public news articles as input.</li>
+            </ul>
+            <p>We ONLY use your data for understanding which topics you find interesting, tracking your content preferences, improving your user experience, and technical operations.</p>
+        </div>
+
+        <h2>Data Storage and Security</h2>
+
+        <h3>Storage Location</h3>
+        <ul>
+            <li>OAuth tokens: Stored locally on your device in <code>~/.credentials/</code> directory</li>
+            <li>Content metadata: Stored locally in <code>content_manifest.json</code></li>
+            <li>API keys: Stored in your local <code>.env</code> file (never transmitted)</li>
+        </ul>
+
+        <h3>Security Measures</h3>
+        <ul>
+            <li><strong>Encryption:</strong> OAuth tokens use industry-standard encryption</li>
+            <li><strong>Access Control:</strong> Only you have access to your local credential files</li>
+            <li><strong>No Cloud Storage:</strong> We do not store your credentials on any server</li>
+            <li><strong>Secure Transmission:</strong> All API calls use HTTPS/TLS encryption</li>
+        </ul>
+
+        <h3>Data Retention</h3>
+        <ul>
+            <li><strong>OAuth Tokens:</strong> Retained until you revoke access or delete the application</li>
+            <li><strong>Content Metadata:</strong> Retained locally until you delete the files</li>
+            <li><strong>Logs:</strong> Temporary logs automatically purged after 30 days</li>
+            <li><strong>No Server Data:</strong> We do not maintain centralized databases of user data</li>
+        </ul>
+
+        <h2>AI Content Generation &mdash; Data Separation</h2>
+
+        <h3>How AI Content Is Created (Without Your Data)</h3>
+        <p>To be completely transparent about our AI processes:</p>
+
+        <div class="highlight-box">
+            <h4>Step 1: News Aggregation</h4>
+            <p>We fetch public news articles from NewsAPI and other public sources. These are published articles available to anyone on the internet. No user data is involved.</p>
+
+            <h4>Step 2: AI Summarization</h4>
+            <p>Public news articles are sent to Grok AI for summarization. ONLY the article text is processed. NO user information, preferences, or personal data is included.</p>
+
+            <h4>Step 3: Video Generation</h4>
+            <p>Summaries are converted to videos by HeyGen. ONLY the summary text is processed. NO user data is involved.</p>
+
+            <h4>Step 4: You Control Publishing</h4>
+            <p>You decide which videos to post to your accounts. We track your choices to understand your preferences. This analytics data is kept separate and never fed back into AI.</p>
+        </div>
+
+        <div class="code-block">PUBLIC NEWS &rarr; AI Summarization &rarr; Video Generation &rarr; You Choose to Post
+     |                                                         |
+ (No user data)                                    (Your preferences tracked
+                                                    for YOUR recommendations)</div>
+
+        <p><strong>Key Point:</strong> The content creation pipeline and user analytics are completely separate systems. One does not feed into the other.</p>
+
+        <h2>Third-Party Services</h2>
+
+        <h3>Social Media Platforms</h3>
+        <p><strong>TikTok:</strong></p>
+        <ul>
+            <li>Privacy Policy: <a href="https://www.tiktok.com/legal/privacy-policy" target="_blank">tiktok.com/legal/privacy-policy</a></li>
+            <li>We use TikTok's Content Posting API to upload videos to your account</li>
+            <li>You control what gets posted through TikTok's inbox review process</li>
+        </ul>
+
+        <p><strong>YouTube:</strong></p>
+        <ul>
+            <li>Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+            <li>We use YouTube Data API v3 to upload videos to your channel</li>
+            <li>You maintain full control over uploaded content</li>
+        </ul>
+
+        <h3>AI Services</h3>
+        <ul>
+            <li><strong>HeyGen</strong> (AI Avatar Videos): <a href="https://www.heygen.com/privacy" target="_blank">heygen.com/privacy</a> &mdash; No personal information is sent to HeyGen</li>
+            <li><strong>Grok AI</strong> (Text Summarization): <a href="https://x.ai/legal/privacy-policy" target="_blank">x.ai/legal/privacy-policy</a> &mdash; No personal information is sent to Grok</li>
+            <li><strong>NewsAPI</strong> (News Aggregation): <a href="https://newsapi.org/privacy" target="_blank">newsapi.org/privacy</a> &mdash; Public news articles only</li>
+        </ul>
+
+        <h3>Data Sharing</h3>
+        <p>We do not sell, trade, or rent your personal information to third parties. Information is only shared with third-party services as necessary to provide our core functionality, and only as described above.</p>
+
+        <h2>Your Rights and Choices</h2>
+
+        <h3>Access and Control</h3>
+        <p>You have the right to:</p>
+        <ul>
+            <li><strong>Access:</strong> Review all data stored locally on your device</li>
+            <li><strong>Modify:</strong> Change your preferences and settings at any time</li>
+            <li><strong>Delete:</strong> Remove all local data by deleting the application files</li>
+            <li><strong>Export:</strong> Access your content metadata in JSON format</li>
+        </ul>
+
+        <h3>OAuth Token Management</h3>
+        <p>You can revoke our access to your social media accounts at any time:</p>
+        <ul>
+            <li><strong>TikTok:</strong> Visit <a href="https://www.tiktok.com/setting/privacy-and-security/personalization" target="_blank">TikTok Privacy Settings</a></li>
+            <li><strong>YouTube:</strong> Visit <a href="https://myaccount.google.com/permissions" target="_blank">Google Account Permissions</a></li>
+        </ul>
+        <p>Revoking access will immediately prevent our application from posting to your accounts.</p>
+
+        <h3>Opt-Out Options</h3>
+        <ul>
+            <li>Stop using the application at any time</li>
+            <li>Delete OAuth tokens: <code>rm ~/.credentials/*.json</code></li>
+            <li>Delete all generated content and metadata</li>
+            <li>Revoke API access through platform settings</li>
+        </ul>
+
+        <h2>Data Security</h2>
+
+        <h3>Security Measures</h3>
+        <ul>
+            <li>Local-only credential storage (no cloud transmission)</li>
+            <li>Encrypted OAuth token storage</li>
+            <li>Secure HTTPS connections for all API calls</li>
+            <li>No centralized user database</li>
+            <li>Open-source codebase for transparency</li>
+        </ul>
+
+        <h3>Data Breaches</h3>
+        <p>In the unlikely event of a security incident:</p>
+        <ul>
+            <li>We will notify affected users via email (if provided)</li>
+            <li>We will provide guidance on securing your accounts</li>
+            <li>We will investigate and patch any vulnerabilities</li>
+        </ul>
+
+        <h3>Your Responsibility</h3>
+        <ul>
+            <li>Keep your device secure with password/biometric protection</li>
+            <li>Do not share your <code>.env</code> file or OAuth tokens</li>
+            <li>Regularly review authorized applications on TikTok and YouTube</li>
+            <li>Keep the application updated to the latest version</li>
+        </ul>
+
+        <h2>Children's Privacy</h2>
+        <p>Our application is not intended for users under the age of 13 (or the applicable age of digital consent in your jurisdiction). We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, please contact us, and we will take steps to delete such information.</p>
+
+        <h2>International Data Transfers</h2>
+        <p>Our application operates locally on your device. However, third-party services (TikTok, YouTube, HeyGen, Grok) may transfer data internationally. Please review their respective privacy policies for details on international data handling.</p>
+        <p><strong>EU Users:</strong></p>
+        <ul>
+            <li>Data may be transferred outside the European Economic Area (EEA)</li>
+            <li>Third-party services use standard contractual clauses and comply with GDPR</li>
+            <li>You have rights under GDPR including access, rectification, and erasure</li>
+        </ul>
+
+        <h2>Cookies and Tracking</h2>
+        <p>Our desktop application does not use cookies or tracking technologies. However:</p>
+        <ul>
+            <li>OAuth flows may use session cookies (managed by TikTok/YouTube)</li>
+            <li>These cookies are temporary and expire after authentication</li>
+            <li>No advertising or analytics cookies are used</li>
+        </ul>
+
+        <h2>California Privacy Rights (CCPA)</h2>
+        <p>If you are a California resident, you have additional rights:</p>
+        <ul>
+            <li><strong>Right to Know:</strong> Request disclosure of data collected</li>
+            <li><strong>Right to Delete:</strong> Request deletion of personal information</li>
+            <li><strong>Right to Opt-Out:</strong> Opt-out of data "sales" (we don't sell data)</li>
+            <li><strong>Non-Discrimination:</strong> We won't discriminate for exercising rights</li>
+        </ul>
+        <p>To exercise these rights, contact us at the email below.</p>
+
+        <h2>Changes to This Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Changes will be reflected by updating the "Last Updated" date at the top of this policy.</p>
+        <ul>
+            <li>Major changes will be communicated via email (if provided)</li>
+            <li>Continued use after changes constitutes acceptance</li>
+            <li>Previous versions available in our GitHub repository</li>
+        </ul>
+
+        <h2>Contact Us</h2>
+        <p>If you have questions, concerns, or requests regarding this Privacy Policy:</p>
+        <p><strong>Email:</strong> <a href="mailto:lukehartsc@gmail.com">lukehartsc@gmail.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/slukehart/content-generation-automation" target="_blank">github.com/slukehart/content-generation-automation</a></p>
+        <p><strong>Response Time:</strong> We aim to respond within 48 hours</p>
+
+        <h2>Legal Compliance</h2>
+        <p>This Privacy Policy complies with:</p>
+        <ul>
+            <li>General Data Protection Regulation (GDPR)</li>
+            <li>California Consumer Privacy Act (CCPA)</li>
+            <li>TikTok Developer Terms</li>
+            <li>YouTube API Services Terms</li>
+            <li>Other applicable data protection laws</li>
+        </ul>
+
+        <h2>Acknowledgments</h2>
+        <p>By using Automatic Content Generation, you acknowledge that:</p>
+        <ol>
+            <li>You have read and understood this Privacy Policy</li>
+            <li>You consent to the collection and use of information as described</li>
+            <li>You are authorized to connect your social media accounts</li>
+            <li>You understand that AI-generated content may have limitations</li>
+            <li>You are responsible for content posted to your accounts</li>
+        </ol>
+
+        <div class="tldr">
+            <h2>Summary (TL;DR)</h2>
+            <h3>Your Data Protection</h3>
+            <ul>
+                <li><strong>Your data is NOT used for AI content generation</strong> (only public news is)</li>
+                <li><strong>Your data is ONLY used for</strong> understanding YOUR preferences and interests</li>
+                <li>We store data <strong>locally</strong> on your device only</li>
+                <li>We use OAuth (you never give us your passwords)</li>
+                <li>We don't sell or share your personal data</li>
+                <li>You can delete everything at any time</li>
+                <li>Third-party AI services process PUBLIC news content ONLY (not your personal data)</li>
+                <li>You control what gets posted to your accounts</li>
+                <li>We're transparent and open-source</li>
+            </ul>
+
+            <h3>How AI Works Here</h3>
+            <p><strong>AI Input:</strong> Public news articles (from internet)</p>
+            <p><strong>AI Output:</strong> Summarized videos</p>
+            <p><strong>Your Data:</strong> Kept completely separate, used only for YOUR recommendations</p>
+        </div>
+
+        <div class="version-info">
+            <p>Version 1.0 &middot; Effective Date: December 16, 2025 &middot; Last Review: December 16, 2025</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <a href="index.html">Home</a>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html">Terms of Service</a>
+        <p>&copy; 2026 Automatic Content Generation. Built with AI. Made for humans.</p>
+    </footer>
+</body>
+</html>

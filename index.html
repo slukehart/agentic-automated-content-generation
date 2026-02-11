@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay Informed in 60 Seconds - AI News Summaries for Busy People</title>
+    <meta name="description" content="Get daily news summaries delivered as engaging short videos on TikTok. No more endless scrolling through articles. AI-powered news in bite-sized videos.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #0a0e27;
+            position: relative;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgShift 15s ease-in-out infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Glowing gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 50%, #1e1b4b 100%);
+            color: white;
+            padding: 120px 20px 140px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+        }
+
+        /* Floating particles */
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.4), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(102, 126, 234, 0.4), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(168, 85, 247, 0.4), transparent),
+                radial-gradient(2px 2px at 80% 10%, rgba(255, 255, 255, 0.3), transparent),
+                radial-gradient(1px 1px at 90% 60%, rgba(102, 126, 234, 0.3), transparent);
+            background-size: 200% 200%;
+            animation: particles 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes particles {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: #b4b4ff;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 55px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow:
+                0 0 30px rgba(102, 126, 234, 0.6),
+                0 10px 40px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 0 50px rgba(102, 126, 234, 0.8),
+                0 15px 50px rgba(0,0,0,0.5);
+        }
+
+        .emoji-large {
+            font-size: 72px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.6));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 80px 20px;
+            background: #0f1428;
+            text-align: center;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: #b4b4ff;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .problem-card {
+            background: rgba(255, 69, 69, 0.05);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 69, 69, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 69, 69, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .problem-card:hover::before {
+            opacity: 1;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 69, 69, 0.6);
+            box-shadow: 0 10px 40px rgba(255, 69, 69, 0.2);
+        }
+
+        .problem-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(255, 69, 69, 0.5));
+        }
+
+        .problem-card h3 {
+            font-size: 24px;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .problem-card p {
+            color: #b0b0b0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0f1428 0%, #1a1f3a 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .solution-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .solution-card {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .solution-card:hover::before {
+            opacity: 1;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(102, 126, 234, 0.8);
+            box-shadow:
+                0 0 30px rgba(102, 126, 234, 0.4),
+                0 15px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .solution-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(102, 126, 234, 0.6));
+        }
+
+        .solution-card h3 {
+            font-size: 24px;
+            color: #8b9bff;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .solution-card p {
+            color: #b0b0b0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 20px;
+            background: #0a0e27;
+            position: relative;
+        }
+
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.5), transparent);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            font-weight: 800;
+            margin: 0 auto 25px;
+            box-shadow:
+                0 0 30px rgba(102, 126, 234, 0.6),
+                0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow:
+                0 0 50px rgba(102, 126, 234, 0.8),
+                0 12px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .step-number::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            filter: blur(15px);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .step h3 {
+            font-size: 26px;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: #b0b0b0;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1a1f3a 0%, #0f1428 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .benefit {
+            background: rgba(168, 85, 247, 0.05);
+            padding: 35px 25px;
+            border-radius: 15px;
+            border: 2px solid rgba(168, 85, 247, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .benefit:hover::before {
+            opacity: 1;
+        }
+
+        .benefit:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.6);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
+        }
+
+        .benefit-icon {
+            font-size: 52px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+        }
+
+        .benefit h4 {
+            font-size: 20px;
+            color: #d4a5ff;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .benefit p {
+            font-size: 15px;
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            padding: 80px 20px;
+            background: #0a0e27;
+            text-align: center;
+            position: relative;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat {
+            padding: 35px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 20px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+            border-color: rgba(102, 126, 234, 0.6);
+            box-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 60px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: #b4b4ff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Target Audience */
+        .audience-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1a1f3a 0%, #0f1428 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .audience-card {
+            background: rgba(168, 85, 247, 0.05);
+            padding: 40px 25px;
+            border-radius: 20px;
+            border: 2px solid rgba(168, 85, 247, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audience-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .audience-card:hover::after {
+            opacity: 1;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(168, 85, 247, 0.6);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.3);
+        }
+
+        .audience-emoji {
+            font-size: 64px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.5));
+            position: relative;
+            z-index: 1;
+        }
+
+        .audience-card h3 {
+            font-size: 22px;
+            color: #d4a5ff;
+            margin-bottom: 12px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .audience-card p {
+            font-size: 16px;
+            color: #b0b0b0;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CTA Section */
+        .cta-final {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 50%, #1e1b4b 100%);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-top: 2px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .cta-final h2 {
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-final p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            color: #b4b4ff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 20px 50px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-white {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow:
+                0 0 30px rgba(102, 126, 234, 0.6),
+                0 10px 40px rgba(0,0,0,0.4);
+            border: 2px solid rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-white:hover {
+            box-shadow:
+                0 0 50px rgba(102, 126, 234, 0.9),
+                0 15px 50px rgba(0,0,0,0.6);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 3px solid rgba(168, 85, 247, 0.6);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: rgba(168, 85, 247, 1);
+            box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: #050814;
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+            position: relative;
+        }
+
+        footer h3 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        footer > div > p:first-of-type {
+            color: #8b9bff;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .footer-links a {
+            color: #8b9bff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            position: relative;
+            padding-bottom: 3px;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-links a:hover {
+            color: #b4b4ff;
+        }
+
+        .footer-social {
+            margin: 35px 0;
+        }
+
+        .social-icon {
+            font-size: 36px;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+        }
+
+        .social-icon:hover {
+            transform: scale(1.3) rotate(10deg);
+            filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8));
+        }
+
+        footer > div > p:last-child {
+            margin-top: 35px;
+            color: #5a6b9e;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-subtitle {
+                font-size: 17px;
+            }
+
+            .cta-final h2 {
+                font-size: 34px;
+            }
+
+            .cta-final p {
+                font-size: 18px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="emoji-large">📱📰⚡</div>
+            <h1 class="gradient-text">Stop Scrolling. Start Knowing.</h1>
+            <p class="subtitle">Daily news summaries delivered as 60-second videos on TikTok.<br>Stay informed without the information overload.</p>
+            <a href="#learn-more" class="hero-cta">See How It Works</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section" id="learn-more">
+        <div class="container">
+            <h2 class="section-title">Let's Be Honest: Staying Informed Is Exhausting</h2>
+            <p class="section-subtitle">You want to know what's happening in the world, but who has time to read through endless news articles, newsletters, and websites?</p>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">😵‍💫</div>
+                    <h3>Information Overload</h3>
+                    <p>Dozens of news sites. Hundreds of articles. Thousands of words. It's overwhelming.</p>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">⏰</div>
+                    <h3>No Time to Read</h3>
+                    <p>Between work, family, and life, who has 30 minutes to scan through news every day?</p>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">🤯</div>
+                    <h3>Too Much Noise</h3>
+                    <p>Clickbait headlines, opinion pieces, ads... Where's the actual news?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">We Turn News Into 60-Second Videos</span></h2>
+            <p class="section-subtitle">AI-powered news summaries that get straight to the point. Watch while commuting, at lunch, or scrolling before bed.</p>
+
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🎯</div>
+                    <h3>Only What Matters</h3>
+                    <p>AI filters through thousands of articles to bring you the most important stories.</p>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">⚡</div>
+                    <h3>60 Seconds or Less</h3>
+                    <p>Get the full story in the time it takes to drink your coffee. No fluff, just facts.</p>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">🎬</div>
+                    <h3>Professional AI Anchor</h3>
+                    <p>Photorealistic news presenter delivers the news like a real broadcast—but personalized for you.</p>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">📱</div>
+                    <h3>On TikTok & YouTube</h3>
+                    <p>Watch where you already are. No new apps. No subscriptions. Just scroll and stay informed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Behind the scenes, AI does the heavy lifting so you don't have to.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>We Scan the News</h3>
+                    <p>Our AI monitors trusted news sources 24/7, tracking breaking stories as they happen.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>AI Summarizes</h3>
+                    <p>Advanced AI reads the full articles and creates broadcast-quality summaries in seconds.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Generate Video</h3>
+                    <p>A photorealistic AI news anchor delivers the summary with perfect narration and visuals.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Posted to TikTok</h3>
+                    <p>Videos appear on your feed, ready to watch. No effort required from you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Why People Love It</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <div class="benefit-icon">⏱️</div>
+                    <h4>Save Time</h4>
+                    <p>Stay informed in minutes, not hours</p>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">🧠</div>
+                    <h4>Less Mental Load</h4>
+                    <p>No decision fatigue. Just watch.</p>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">📊</div>
+                    <h4>Unbiased Facts</h4>
+                    <p>AI removes opinion, gives you news</p>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Relevant Topics</h4>
+                    <p>Follow what matters to you</p>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">🆓</div>
+                    <h4>Free to Watch</h4>
+                    <p>No paywalls or subscriptions</p>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">🌍</div>
+                    <h4>Global Coverage</h4>
+                    <p>Local and international news</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">News, Reimagined for the TikTok Generation</span></h2>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">60</div>
+                    <div class="stat-label">Seconds Per Story</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">AI-Powered</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">News Monitoring</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Clickbait Nonsense</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="audience-section">
+        <div class="container">
+            <h2 class="section-title">Perfect For...</h2>
+
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-emoji">👔</div>
+                    <h3>Busy Professionals</h3>
+                    <p>Stay informed without sacrificing productivity. Get your daily news brief during your morning commute.</p>
+                </div>
+
+                <div class="audience-card">
+                    <div class="audience-emoji">🎓</div>
+                    <h3>Students</h3>
+                    <p>Keep up with current events for class discussions without spending hours reading articles.</p>
+                </div>
+
+                <div class="audience-card">
+                    <div class="audience-emoji">👨‍👩‍👧</div>
+                    <h3>Parents</h3>
+                    <p>Know what's happening in the world while juggling kids, work, and life. News that fits your schedule.</p>
+                </div>
+
+                <div class="audience-card">
+                    <div class="audience-emoji">📱</div>
+                    <h3>Social Media Users</h3>
+                    <p>You're already on TikTok. Now you can stay informed while scrolling through your feed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-final">
+        <div class="container">
+            <h2 class="gradient-text">Ready to Stop Doomscrolling?</h2>
+            <p>Get bite-sized news summaries that actually inform you—not overwhelm you.</p>
+
+            <!-- <div class="cta-buttons">
+                <a href="https://www.tiktok.com/@[your-handle]" class="btn btn-white">Follow on TikTok</a>
+                <a href="https://youtube.com/@[your-channel]" class="btn btn-outline">Watch on YouTube</a>
+            </div> -->
+
+            <p style="margin-top: 40px; font-size: 18px; opacity: 0.9;">
+                🔒 <strong>Privacy First:</strong> We don't collect, sell, or share your data. Ever.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3 style="margin-bottom: 10px;">Automatic Content Generation</h3>
+            <p style="color: #b3b3b3; margin-bottom: 25px;">News made simple. AI made smart.</p>
+
+            <div class="footer-social">
+                <span class="social-icon">📱</span>
+                <span class="social-icon">📺</span>
+                <span class="social-icon">🌐</span>
+            </div>
+
+            <div class="footer-links">
+                <a href="privacy_policy.html">Privacy Policy</a>
+                <a href="terms_of_service.html">Terms of Service</a>
+            </div>
+
+            <p style="margin-top: 30px; color: #666; font-size: 14px;">
+                &copy; 2026 Automatic Content Generation. Built with AI. Made for humans.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

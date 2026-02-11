@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Automatic Content Generation</title>
+    <meta name="description" content="Terms of Service for Automatic Content Generation. Understand your rights and obligations when using our AI news automation platform.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            line-height: 1.8;
+            color: #c8c8d0;
+            background: #0a0e27;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 50%, #1e1b4b 100%);
+            padding: 60px 20px 50px;
+            text-align: center;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.25);
+        }
+
+        header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            color: #8b9bff;
+            font-size: 16px;
+        }
+
+        nav {
+            background: rgba(15, 20, 40, 0.95);
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+        }
+
+        nav a {
+            color: #8b9bff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: #d4a5ff; }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 50px 30px 80px;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 55px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #b4b4ff;
+            margin-top: 35px;
+            margin-bottom: 14px;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #d4a5ff;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        strong { color: #e0e0e8; }
+
+        a { color: #8b9bff; transition: color 0.2s; }
+        a:hover { color: #d4a5ff; }
+
+        ul, ol {
+            margin: 12px 0 20px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .highlight-box {
+            background: rgba(102, 126, 234, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.25);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 25px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+
+        .warning-box {
+            background: rgba(245, 101, 101, 0.08);
+            border: 1px solid rgba(245, 101, 101, 0.25);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 25px 0;
+        }
+
+        .warning-box p,
+        .warning-box li { color: #e0a0a0; }
+
+        .legal-caps {
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            line-height: 1.9;
+            color: #a0a0b0;
+        }
+
+        .tldr {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 40px 0;
+        }
+
+        .tldr h2 {
+            border-bottom: none;
+            margin-top: 0;
+            padding-bottom: 0;
+        }
+
+        .version-info {
+            text-align: center;
+            color: #5a6b9e;
+            font-size: 14px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(102, 126, 234, 0.15);
+        }
+
+        footer {
+            background: #050814;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        footer a {
+            color: #8b9bff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 15px;
+        }
+
+        footer a:hover { color: #d4a5ff; }
+
+        footer p { color: #5a6b9e; font-size: 14px; margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 32px; }
+            .container { padding: 30px 20px 60px; }
+            h2 { font-size: 26px; }
+            nav a { margin: 0 10px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Terms of Service</h1>
+        <p>Last Updated: December 16, 2025</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html">Terms of Service</a>
+    </nav>
+
+    <div class="container">
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>Welcome to Automatic Content Generation. By accessing or using our AI-powered news content automation platform ("Service," "Application," or "Software"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the Application.</p>
+
+        <h3>1.1 Agreement to Terms</h3>
+        <p>These Terms constitute a legally binding agreement between you ("User," "you," or "your") and Automatic Content Generation ("we," "us," or "our").</p>
+
+        <h3>1.2 Changes to Terms</h3>
+        <p>We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the Service after changes constitutes acceptance of the modified Terms.</p>
+
+        <h3>1.3 Eligibility</h3>
+        <p>You must be at least 13 years old (or the age of digital consent in your jurisdiction) to use this Service. By using the Service, you represent and warrant that you meet this age requirement.</p>
+
+        <h2>2. Description of Service</h2>
+
+        <h3>2.1 Core Functionality</h3>
+        <p>Automatic Content Generation is an AI-powered application that:</p>
+        <ul>
+            <li>Aggregates news content from verified public sources</li>
+            <li>Generates concise video summaries using AI technology</li>
+            <li>Creates professional video presentations with AI avatars</li>
+            <li>Facilitates distribution to social media platforms (TikTok, YouTube, etc.)</li>
+        </ul>
+
+        <h3>2.2 Technology Used</h3>
+        <div class="highlight-box">
+            <p>Our Service utilizes:</p>
+            <ul>
+                <li><strong>NewsAPI:</strong> For news article aggregation</li>
+                <li><strong>Grok AI:</strong> For intelligent text summarization</li>
+                <li><strong>HeyGen:</strong> For AI avatar video generation</li>
+                <li><strong>TikTok Content Posting API:</strong> For TikTok uploads</li>
+                <li><strong>YouTube Data API v3:</strong> For YouTube uploads</li>
+            </ul>
+        </div>
+
+        <h3>2.3 Service Availability</h3>
+        <p>We strive to maintain 24/7 availability but do not guarantee uninterrupted access. The Service may be temporarily unavailable due to maintenance, third-party API outages, technical difficulties, or force majeure events.</p>
+
+        <h2>3. User Obligations</h2>
+
+        <h3>3.1 Account Responsibility</h3>
+        <p>You are responsible for:</p>
+        <ul>
+            <li>Maintaining the security of your social media account credentials</li>
+            <li>All content posted through your accounts using our Service</li>
+            <li>Compliance with all applicable laws and platform policies</li>
+            <li>Any activity that occurs under your account</li>
+        </ul>
+
+        <h3>3.2 Acceptable Use</h3>
+        <p>You agree to use the Service only for lawful purposes. You will NOT:</p>
+        <ul>
+            <li>Post false, misleading, or deceptive content</li>
+            <li>Violate any third-party rights (copyright, trademark, privacy, etc.)</li>
+            <li>Use the Service for spam or manipulative behavior</li>
+            <li>Attempt to circumvent platform rate limits or policies</li>
+            <li>Reverse engineer or attempt to access source code (except as open-source)</li>
+            <li>Use the Service to harass, abuse, or harm others</li>
+            <li>Violate TikTok Community Guidelines or YouTube Terms of Service</li>
+            <li>Post content that violates any applicable laws</li>
+        </ul>
+
+        <h3>3.3 Content Responsibility</h3>
+        <p>You acknowledge that:</p>
+        <ul>
+            <li>You are solely responsible for content posted to your accounts</li>
+            <li>AI-generated summaries may contain errors or inaccuracies</li>
+            <li>You should review all content before publishing</li>
+            <li>Original news sources should be verified for credibility</li>
+            <li>You must comply with copyright and fair use laws</li>
+            <li>Proper attribution must be maintained</li>
+        </ul>
+
+        <h3>3.4 Platform Compliance</h3>
+        <p>You agree to comply with all terms and policies of TikTok, YouTube, and any other platforms you integrate with our Service, as well as all applicable content and copyright laws.</p>
+
+        <h2>4. Intellectual Property</h2>
+
+        <h3>4.1 Service Ownership</h3>
+        <p>The Application, including its code, design, and functionality, is owned by Automatic Content Generation and protected by copyright and other intellectual property laws.</p>
+
+        <h3>4.2 Open Source Components</h3>
+        <p>Parts of our Service may be open-source and subject to applicable open-source licenses. See our GitHub repository for details.</p>
+
+        <h3>4.3 User Content</h3>
+        <p>You retain all rights to content you create using our Service. However:</p>
+        <ul>
+            <li>AI-generated summaries are derived from public news sources</li>
+            <li>Original news articles are owned by their respective publishers</li>
+            <li>You are responsible for proper attribution and fair use</li>
+            <li>We claim no ownership over your generated videos</li>
+        </ul>
+
+        <h3>4.4 Source Attribution</h3>
+        <p>All generated content must maintain proper attribution to original news sources. Removing or obscuring source attribution violates these Terms.</p>
+
+        <h3>4.5 Trademarks</h3>
+        <p>"Automatic Content Generation" and associated branding are our trademarks. You may not use them without prior written permission.</p>
+
+        <h2>5. AI-Generated Content Disclaimer</h2>
+
+        <div class="warning-box">
+            <h3>5.1 AI Limitations</h3>
+            <p>You acknowledge that:</p>
+            <ul>
+                <li>AI-generated content may contain errors or inaccuracies</li>
+                <li>Summaries may miss important context or nuance</li>
+                <li>AI technology has inherent limitations</li>
+                <li>Content should be reviewed before publication</li>
+                <li>We do not guarantee factual accuracy of AI summaries</li>
+            </ul>
+        </div>
+
+        <h3>5.2 No Editorial Responsibility</h3>
+        <p>We are a technology platform and do not review or approve content before generation, act as publisher or editor of your content, verify accuracy of news sources, guarantee quality of AI-generated summaries, or take responsibility for content you post.</p>
+
+        <h3>5.3 User Verification</h3>
+        <p>You are responsible for verifying accuracy of AI-generated summaries, reviewing content before posting, ensuring compliance with journalistic standards (if applicable), fact-checking when necessary, and correcting or removing inaccurate content.</p>
+
+        <h2>6. Third-Party Services</h2>
+
+        <h3>6.1 Integration with Platforms</h3>
+        <p>Our Service integrates with third-party platforms (TikTok, YouTube, etc.). You must maintain accounts in good standing on those platforms, comply with their respective terms of service, understand that we are not affiliated with these platforms, and accept that platform policy changes may affect our Service.</p>
+
+        <h3>6.2 Third-Party Terms</h3>
+        <p>Your use of third-party services through our Application is subject to:</p>
+        <ul>
+            <li>TikTok Terms of Service: <a href="https://www.tiktok.com/legal/terms-of-service" target="_blank">tiktok.com/legal/terms-of-service</a></li>
+            <li>YouTube Terms of Service: <a href="https://www.youtube.com/t/terms" target="_blank">youtube.com/t/terms</a></li>
+            <li>NewsAPI Terms: <a href="https://newsapi.org/terms" target="_blank">newsapi.org/terms</a></li>
+            <li>HeyGen Terms: <a href="https://www.heygen.com/terms" target="_blank">heygen.com/terms</a></li>
+            <li>Grok/X.AI Terms: <a href="https://x.ai/legal/terms-of-service" target="_blank">x.ai/legal/terms-of-service</a></li>
+        </ul>
+
+        <h3>6.3 No Liability for Third Parties</h3>
+        <p>We are not responsible for third-party service availability or performance, changes to third-party APIs or pricing, account suspensions or bans on third-party platforms, data handling by third-party services, or third-party service violations or breaches.</p>
+
+        <h2>7. Disclaimers and Limitations of Liability</h2>
+
+        <h3>7.1 Service Provided "As Is"</h3>
+        <p class="legal-caps">The service is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy or reliability, and uninterrupted or error-free operation.</p>
+
+        <h3>7.2 Limitation of Liability</h3>
+        <p class="legal-caps">To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages; loss of profits, revenue, data, or use; content posted using our service; third-party actions or service interruptions; AI-generated content errors or inaccuracies; account suspensions or terminations on third-party platforms; or any damages exceeding $100 USD.</p>
+
+        <h3>7.3 User Assumption of Risk</h3>
+        <p>You expressly understand and agree that use of the Service is at your sole risk, you are responsible for all content posted through your accounts, platform policies may change and affect your ability to post, AI technology has inherent limitations, and no content moderation is performed by us.</p>
+
+        <h2>8. Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless Automatic Content Generation, its developers, and affiliates from any claims, damages, losses, liabilities, and expenses (including attorney fees) arising from your use of the Service, content you post, your violation of these Terms, your violation of third-party rights or platform policies, or any misrepresentation made by you.</p>
+
+        <h2>9. Privacy and Data</h2>
+
+        <h3>9.1 Privacy Policy</h3>
+        <p>Your use of the Service is also governed by our <a href="privacy_policy.html">Privacy Policy</a>, which is incorporated into these Terms by reference.</p>
+
+        <h3>9.2 Data Collection</h3>
+        <p>We collect and process data as described in our Privacy Policy. By using the Service, you consent to such collection and processing.</p>
+
+        <h3>9.3 Local Data Storage</h3>
+        <ul>
+            <li>OAuth credentials are stored locally on your device</li>
+            <li>Content metadata is stored in local files</li>
+            <li>We do not maintain centralized user databases</li>
+            <li>You are responsible for securing your local data</li>
+        </ul>
+
+        <h2>10. Termination</h2>
+
+        <h3>10.1 Termination by You</h3>
+        <p>You may stop using the Service at any time by deleting the Application, revoking OAuth access to your social media accounts, and removing locally stored credentials.</p>
+
+        <h3>10.2 Termination by Us</h3>
+        <p>We reserve the right to discontinue the Service at any time, modify or limit Service features, and terminate access for violations of these Terms.</p>
+
+        <h3>10.3 Effect of Termination</h3>
+        <p>Upon termination, your right to use the Service immediately ceases, local data remains on your device (your responsibility to delete), and these Terms survive termination where applicable.</p>
+
+        <h2>11. Dispute Resolution</h2>
+
+        <h3>11.1 Governing Law</h3>
+        <p>These Terms are governed by applicable law, without regard to conflict of law principles.</p>
+
+        <h3>11.2 Informal Resolution</h3>
+        <p>Before filing any formal dispute, you agree to contact us to attempt informal resolution.</p>
+
+        <h3>11.3 Arbitration</h3>
+        <p>Any disputes arising from these Terms or the Service shall be resolved through binding arbitration, except where prohibited by law.</p>
+
+        <h3>11.4 Class Action Waiver</h3>
+        <p>You agree to resolve disputes on an individual basis and waive the right to participate in class action lawsuits.</p>
+
+        <h2>12. Compliance and Legal</h2>
+
+        <h3>12.1 Platform Policies</h3>
+        <p>You must comply with:</p>
+        <ul>
+            <li>TikTok Developer Terms: <a href="https://developers.tiktok.com/terms-and-conditions" target="_blank">developers.tiktok.com/terms-and-conditions</a></li>
+            <li>YouTube API Terms: <a href="https://developers.google.com/youtube/terms/api-services-terms-of-service" target="_blank">developers.google.com/youtube/terms</a></li>
+            <li>All applicable content and copyright laws</li>
+        </ul>
+
+        <h3>12.2 Export Compliance</h3>
+        <p>You agree not to export or re-export the Application in violation of any applicable export control laws.</p>
+
+        <h3>12.3 DMCA Compliance</h3>
+        <p>We respect intellectual property rights. If you believe content generated through our Service infringes your copyright, contact us with a description of the copyrighted work, location of infringing content, your contact information, a statement of good faith belief, a statement under penalty of perjury, and your physical or electronic signature.</p>
+
+        <h3>12.4 Government Use</h3>
+        <p>If you are a government entity, the Application is "commercial computer software" and subject to restricted rights.</p>
+
+        <h2>13. Miscellaneous</h2>
+
+        <h3>13.1 Entire Agreement</h3>
+        <p>These Terms, together with the Privacy Policy, constitute the entire agreement between you and Automatic Content Generation.</p>
+
+        <h3>13.2 Severability</h3>
+        <p>If any provision of these Terms is found unenforceable, the remaining provisions will remain in full effect.</p>
+
+        <h3>13.3 Waiver</h3>
+        <p>Our failure to enforce any right or provision is not a waiver of such right or provision.</p>
+
+        <h3>13.4 Assignment</h3>
+        <p>You may not assign these Terms without our written consent. We may assign these Terms without restriction.</p>
+
+        <h3>13.5 Force Majeure</h3>
+        <p>We are not liable for failure to perform due to causes beyond our reasonable control.</p>
+
+        <h3>13.6 No Partnership</h3>
+        <p>These Terms do not create a partnership, agency, or employment relationship.</p>
+
+        <h3>13.7 Contact for Legal Notices</h3>
+        <p>All legal notices should be sent to: <a href="mailto:lukehartsc@gmail.com">lukehartsc@gmail.com</a></p>
+
+        <h2>14. API Usage and Rate Limits</h2>
+
+        <h3>14.1 Platform Rate Limits</h3>
+        <p>You agree to respect rate limits imposed by third-party platforms:</p>
+        <ul>
+            <li>TikTok: 6 requests per minute per user</li>
+            <li>YouTube: 10,000 quota units per day (default)</li>
+            <li>Other platforms: As specified by their respective APIs</li>
+        </ul>
+
+        <h3>14.2 Quota Management</h3>
+        <p>You are responsible for managing your API quotas. We are not liable for quota exhaustion or overage charges. Third-party API changes may affect Service functionality.</p>
+
+        <h2>15. Updates and Modifications</h2>
+
+        <h3>15.1 Software Updates</h3>
+        <p>We may release updates to the Application. You are responsible for keeping the Application updated, understanding that updates may change functionality, and reviewing release notes for important changes.</p>
+
+        <h3>15.2 Backward Compatibility</h3>
+        <p>We do not guarantee backward compatibility between versions.</p>
+
+        <h2>16. Contact Information</h2>
+        <p>For questions about these Terms:</p>
+        <p><strong>Email:</strong> <a href="mailto:lukehartsc@gmail.com">lukehartsc@gmail.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/slukehart/content-generation-automation" target="_blank">github.com/slukehart/content-generation-automation</a></p>
+
+        <div class="highlight-box" style="margin-top: 50px;">
+            <h3>Acknowledgment</h3>
+            <p><strong>BY USING AUTOMATIC CONTENT GENERATION, YOU ACKNOWLEDGE THAT:</strong></p>
+            <ol>
+                <li>You have read and understood these Terms of Service</li>
+                <li>You agree to be bound by these Terms</li>
+                <li>You are authorized to connect your social media accounts</li>
+                <li>You accept responsibility for content posted through your accounts</li>
+                <li>You understand AI-generated content may have limitations</li>
+                <li>You will comply with all applicable platform policies and laws</li>
+                <li>You will properly attribute original news sources</li>
+                <li>You will review content before publishing</li>
+            </ol>
+        </div>
+
+        <div class="tldr">
+            <h2>Summary (TL;DR)</h2>
+            <ul>
+                <li>You're responsible for content posted to your accounts</li>
+                <li>Review AI-generated content before publishing</li>
+                <li>Comply with TikTok, YouTube, and other platform policies</li>
+                <li>Proper source attribution is required</li>
+                <li>Service provided "as is" &mdash; no guarantees</li>
+                <li>We're not liable for AI errors or platform issues</li>
+                <li>You must be 13+ years old</li>
+                <li>Local data storage &mdash; you control your credentials</li>
+            </ul>
+            <p>For detailed information, please read the full Terms above.</p>
+        </div>
+
+        <div class="version-info">
+            <p>Version 1.0 &middot; Effective Date: December 16, 2025 &middot; Last Review: December 16, 2025</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <a href="index.html">Home</a>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html">Terms of Service</a>
+        <p>&copy; 2026 Automatic Content Generation. Built with AI. Made for humans.</p>
+    </footer>
+</body>
+</html>
