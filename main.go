@@ -18,6 +18,8 @@ import (
 func main() {
 	// Parse command-line flags
 	uploadToYouTube := flag.Bool("upload-youtube", false, "Upload generated video to YouTube after creation")
+	uploadToTikTok := flag.Bool("upload-tiktok", false, "Upload generated video to TikTok after creation")
+	useSandbox := flag.Bool("sandbox", false, "Use TikTok sandbox environment (for demo/testing)")
 	flag.Parse()
 
 	// Load .env file if it exists (for local development)
@@ -154,6 +156,41 @@ func main() {
 			contentItem.Status.YouTube.PostedAt = &result.UploadedAt
 			fmt.Printf("\n✅ Successfully uploaded to YouTube!\n")
 			fmt.Printf("   🔗 Watch at: %s\n", result.VideoURL)
+		}
+
+		// Save updated status to manifest
+		if err := manifestManager.UpdateItem(contentItem); err != nil {
+			log.Printf("⚠️  Warning: Failed to update manifest with upload status: %v", err)
+		} else {
+			fmt.Printf("   📋 Manifest updated with posting status\n")
+		}
+	}
+
+	// Upload to TikTok if flag is set
+	if *uploadToTikTok {
+		fmt.Println("\n=== Uploading to TikTok ===")
+		if *useSandbox {
+			fmt.Println("🧪 Using SANDBOX environment (for demo/testing)")
+		}
+
+		result, err := media.UploadVideoToTikTok(&contentItem, *useSandbox)
+		if err != nil {
+			log.Printf("❌ TikTok upload failed: %v", err)
+			// Update status with error
+			errMsg := err.Error()
+			contentItem.Status.TikTok.Error = &errMsg
+			contentItem.Status.TikTok.Posted = false
+		} else {
+			// Update status with "inbox_uploaded" (user must complete in app)
+			contentItem.Status.TikTok.Posted = false // Not posted to feed yet
+			contentItem.Status.TikTok.PostedAt = &result.UploadedAt
+
+			// Store publish_id in URL field for tracking
+			publishInfo := fmt.Sprintf("inbox_uploaded (publish_id: %s)", result.PublishID)
+			contentItem.Status.TikTok.URL = &publishInfo
+
+			fmt.Printf("\n✅ Successfully uploaded to TikTok inbox!\n")
+			fmt.Printf("   📱 Check your TikTok app to complete posting\n")
 		}
 
 		// Save updated status to manifest

@@ -103,11 +103,13 @@ func GetTikTokAccessToken(ctx context.Context, sandbox bool) (string, error) {
 
 	// Build OAuth config
 	// Note: TikTok uses "client_key" instead of standard "client_id"
+	// Note: TikTok requires comma-separated scopes, NOT space-separated (OAuth2 default).
+	// We pass scopes manually via SetAuthURLParam in getTikTokTokenFromWeb instead.
 	oauthConfig := &oauth2.Config{
 		ClientID:     config.ClientKey,
 		ClientSecret: config.ClientSecret,
 		RedirectURL:  tiktokRedirectURI,
-		Scopes:       []string{"user.info.basic", "video.upload", "video.publish"},
+		Scopes:       []string{}, // Scopes set explicitly in auth URL (comma-separated for TikTok)
 		Endpoint: oauth2.Endpoint{
 			AuthURL:  tiktokAuthURL,
 			TokenURL: tiktokTokenURL,
@@ -138,10 +140,12 @@ func getTikTokTokenFromWeb(config *oauth2.Config) (*oauth2.Token, error) {
 
 	// Generate authorization URL with PKCE parameters
 	// Note: TikTok uses "client_key" instead of standard "client_id"
+	// Note: TikTok requires comma-separated scopes, not space-separated
 	authURL := config.AuthCodeURL(
 		"state-token",
 		oauth2.AccessTypeOffline,
-		oauth2.SetAuthURLParam("client_key", config.ClientID), // Explicitly set client_key
+		oauth2.SetAuthURLParam("client_key", config.ClientID),
+		oauth2.SetAuthURLParam("scope", "user.info.basic,video.upload,video.publish"),
 		oauth2.SetAuthURLParam("code_challenge", codeChallenge),
 		oauth2.SetAuthURLParam("code_challenge_method", "S256"),
 	)
@@ -268,7 +272,10 @@ func RefreshTikTokToken(ctx context.Context, refreshToken string, sandbox bool) 
 	}
 
 	// Save refreshed token
-	cacheFile, _ := tiktokTokenCacheFile()
+	cacheFile, err := tiktokTokenCacheFile()
+	if err != nil {
+		return nil, fmt.Errorf("failed to resolve token cache path: %w", err)
+	}
 	saveTikTokToken(cacheFile, newToken)
 
 	return newToken, nil

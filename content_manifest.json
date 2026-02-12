@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2025-12-16T23:10:22.476258-05:00",
+  "generated_at": "2026-02-11T07:00:03.931615-05:00",
   "items": [
     {
       "id": "news_20251216_141916",
@@ -276,6 +276,1163 @@
         },
         "tiktok": {
           "posted": false
+        },
+        "instagram": {
+          "posted": false
+        },
+        "twitter": {
+          "posted": false
+        },
+        "facebook": {
+          "posted": false
+        },
+        "linkedin": {
+          "posted": false
+        }
+      },
+      "analytics": {}
+    },
+    {
+      "id": "news_20260121_211644",
+      "created_at": "2026-01-21T21:32:39.127687-05:00",
+      "source": {
+        "url": "https://www.bloomberg.com/sessions/2026-01-20/live-q-amp-a-what-s-next-for-global-markets-after-japan-s-bond-shock-and-trump-s-greenland-move",
+        "title": "Live Q\u0026A: What’s Next for Global Markets After Japan’s Bond Shock and Trump’s Greenland Move - Bloomberg",
+        "published_at": "2026-01-21T21:32:39.127687-05:00",
+        "source_name": "bloomberg.com"
+      },
+      "content": {
+        "summary": "Global markets are reeling from two major developments: Japan's unexpected bond market shock and President Trump's renewed interest in acquiring Greenland. Japan's central bank recently adjusted its yield curve control, causing a sharp rise in bond yields that sent ripples through international markets. This move has raised concerns about rising borrowing costs and potential impacts on global economic stability. Meanwhile, Trump's reiterated proposal to purchase Greenland from Denmark has sparked geopolitical debates, with implications for Arctic resources and U.S. strategic interests. Analysts warn that both events could introduce volatility, as investors grapple with uncertainty over monetary policy and geopolitical risks. During a live Q\u0026A session hosted by Bloomberg, experts discussed the potential for tighter financial conditions and the strategic motivations behind Trump's Greenland ambitions. Key takeaways include the need for investors to monitor central bank actions closely and assess the broader implications of territorial negotiations in resource-rich regions. As reported by Bloomberg, these developments signal a complex landscape ahead for global markets, with both economic and political factors at play. The situation remains fluid, and stakeholders are urged to stay informed on evolving policies and responses.",
+        "word_count": 186,
+        "estimated_duration_seconds": 74
+      },
+      "media": {
+        "audio_path": "",
+        "video_path": "news_20260121_211644_final.mp4",
+        "duration_seconds": 61.01,
+        "resolution": "1280x720",
+        "avatar_id": "Marcus_expressive_2024120201"
+      },
+      "seo": {
+        "primary_keywords": [
+          "Japan bond shock",
+          "Trump Greenland",
+          "global markets"
+        ],
+        "secondary_keywords": [
+          "yield curve control",
+          "bond yields",
+          "Arctic resources",
+          "geopolitical risks",
+          "monetary policy"
+        ],
+        "topics": [
+          "Finance",
+          "Geopolitics"
+        ],
+        "sentiment": "neutral",
+        "target_audience": [
+          "investors",
+          "policy analysts"
+        ]
+      },
+      "platforms": {
+        "youtube": {
+          "title": "Japan Bond Shock \u0026 Trump's Greenland Move: What's Next for Markets?",
+          "description": "Global markets face uncertainty after Japan's bond yield shock and Trump's Greenland proposal. What does this mean for investors? In this video, we break down the key impacts of Japan's yield curve control changes and the geopolitical stakes of U.S. interest in Greenland. Hosted by Bloomberg experts, this live Q\u0026A offers critical insights into economic volatility and strategic Arctic interests. Watch now for detailed analysis and stay ahead of market trends. Timestamps below!\n\n#JapanBondShock #TrumpGreenland #GlobalMarkets #FinanceNews #Geopolitics",
+          "tags": [
+            "Japan Bond Shock",
+            "Trump Greenland",
+            "Global Markets",
+            "Finance News",
+            "Geopolitics"
+          ],
+          "category_id": "25",
+          "default_language": "en",
+          "privacy_status": "public",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introduction"
+            },
+            {
+              "time": "0:15",
+              "label": "Japan Bond Market Shock"
+            },
+            {
+              "time": "0:30",
+              "label": "Trump's Greenland Proposal"
+            },
+            {
+              "time": "0:45",
+              "label": "Market Implications"
+            }
+          ]
+        },
+        "tiktok": {
+          "caption": "Japan’s bond shock \u0026 Trump’s Greenland move are shaking markets! What’s next? Follow for updates! #Finance #Markets",
+          "hashtags": [
+            "#Finance",
+            "#Markets",
+            "#JapanBondShock",
+            "#TrumpGreenland",
+            "#GlobalEconomy"
+          ],
+          "privacy_level": "public",
+          "duet_enabled": true,
+          "stitch_enabled": true
+        },
+        "instagram": {
+          "caption": "🌍 Global markets in flux! Japan’s bond yield shock and Trump’s Greenland proposal are creating waves. Investors are on edge as borrowing costs rise and geopolitical tensions heat up. What does this mean for the future? Let’s discuss! \n\n#GlobalMarkets #JapanBondShock #TrumpGreenland #FinanceNews #Geopolitics",
+          "hashtags": [
+            "#GlobalMarkets",
+            "#JapanBondShock",
+            "#TrumpGreenland",
+            "#FinanceNews",
+            "#Geopolitics"
+          ],
+          "location": null
+        },
+        "twitter": {
+          "tweet": "Japan’s bond shock \u0026 Trump’s Greenland move are shaking global markets. How will this impact investors? 🧵 Let’s unpack the risks. #Finance #Markets",
+          "hashtags": [
+            "#Finance",
+            "#Markets"
+          ],
+          "reply_settings": "everyone"
+        },
+        "facebook": {
+          "message": "Global markets are facing unprecedented uncertainty. Japan’s recent bond yield shock, triggered by changes in yield curve control, is raising fears of higher borrowing costs worldwide. At the same time, President Trump’s renewed push to acquire Greenland from Denmark is stirring geopolitical debates over Arctic resources and U.S. strategic interests. Hosted by Bloomberg, a recent live Q\u0026A with experts highlighted the potential for market volatility and the need to closely monitor central bank policies and territorial negotiations. What are your thoughts on how these events could shape the economic landscape? Have you adjusted your investment strategy in response to these developments? Share your insights below—we’d love to hear from you!",
+          "link_description": "Japan’s bond market shock and Trump’s Greenland proposal are creating waves in global markets. Click to learn more about the risks and implications."
+        },
+        "linkedin": {
+          "post_text": "Global markets are at a critical juncture. Japan’s unexpected bond yield shock, driven by adjustments to yield curve control, signals potential challenges for borrowing costs and economic stability worldwide. Simultaneously, President Trump’s renewed interest in acquiring Greenland raises significant geopolitical questions, particularly around Arctic resources and strategic positioning. Insights from a recent Bloomberg live Q\u0026A underscore the dual risks of monetary policy shifts and territorial ambitions. For investors and industry leaders, the key takeaway is clear: vigilance is essential as these events unfold. How are you navigating this complex landscape? Are central bank actions or geopolitical moves influencing your strategic decisions? Let’s discuss. #Finance #GlobalMarkets #Geopolitics",
+          "hashtags": [
+            "#Finance",
+            "#GlobalMarkets",
+            "#Geopolitics"
+          ]
+        }
+      },
+      "posting_status": {
+        "youtube": {
+          "posted": false
+        },
+        "tiktok": {
+          "posted": false
+        },
+        "instagram": {
+          "posted": false
+        },
+        "twitter": {
+          "posted": false
+        },
+        "facebook": {
+          "posted": false
+        },
+        "linkedin": {
+          "posted": false
+        }
+      },
+      "analytics": {}
+    },
+    {
+      "id": "news_20260121_213711",
+      "created_at": "2026-01-21T21:45:25.114159-05:00",
+      "source": {
+        "url": "https://www.bloomberg.com/sessions/2026-01-20/live-q-amp-a-what-s-next-for-global-markets-after-japan-s-bond-shock-and-trump-s-greenland-move",
+        "title": "Live Q\u0026A: What’s Next for Global Markets After Japan’s Bond Shock and Trump’s Greenland Move - Bloomberg",
+        "published_at": "2026-01-21T21:45:25.114159-05:00",
+        "source_name": "bloomberg.com"
+      },
+      "content": {
+        "summary": "Global markets are reeling from recent shocks, including Japan's unexpected bond yield surge and President Trump's controversial proposal to purchase Greenland. In a live Q\u0026A session hosted by Bloomberg, financial experts dissected these events and their potential impact on international economies. Japan’s bond market turmoil, driven by a sudden spike in yields, has raised concerns about tighter monetary policy and its ripple effects on global borrowing costs. Meanwhile, Trump’s renewed interest in acquiring Greenland for strategic and resource purposes has sparked diplomatic tensions with Denmark and Greenland’s government, while also unsettling investors wary of geopolitical instability. Analysts highlighted the risk of market volatility as central banks navigate inflation pressures and political uncertainties mount. Key takeaways include the need for investors to brace for higher interest rates and monitor U.S. foreign policy moves closely. The discussion also touched on potential safe havens like gold amid these disruptions. As reported by Bloomberg, these twin shocks underscore the fragile state of global markets, urging caution and strategic planning among stakeholders in the months ahead.",
+        "word_count": 171,
+        "estimated_duration_seconds": 68
+      },
+      "media": {
+        "audio_path": "",
+        "video_path": "news_20260121_213711_final.mp4",
+        "duration_seconds": 53.654,
+        "resolution": "1280x720",
+        "avatar_id": "Marcus_expressive_2024120201"
+      },
+      "seo": {
+        "primary_keywords": [
+          "Japan bond shock",
+          "Trump Greenland",
+          "global markets"
+        ],
+        "secondary_keywords": [
+          "bond yields",
+          "monetary policy",
+          "geopolitical risk",
+          "market volatility",
+          "interest rates"
+        ],
+        "topics": [
+          "Finance",
+          "Geopolitics"
+        ],
+        "sentiment": "negative",
+        "target_audience": [
+          "investors",
+          "financial analysts"
+        ]
+      },
+      "platforms": {
+        "youtube": {
+          "title": "Japan Bond Shock \u0026 Trump’s Greenland Move: Market Impact Explained",
+          "description": "What’s next for global markets after Japan’s bond yield surge and Trump’s Greenland proposal? In this live Q\u0026A breakdown from Bloomberg, experts analyze the financial fallout and geopolitical risks. Watch for insights on rising interest rates, market volatility, and safe havens like gold. Timestamps below for key points.\n\nStay informed—subscribe for daily market updates!\n\n#JapanBondShock #TrumpGreenland #GlobalMarkets #FinanceNews #MarketVolatility",
+          "tags": [
+            "Japan Bond Shock",
+            "Trump Greenland",
+            "Global Markets",
+            "Market Volatility",
+            "Finance News"
+          ],
+          "category_id": "25",
+          "default_language": "en",
+          "privacy_status": "public",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introduction"
+            },
+            {
+              "time": "0:15",
+              "label": "Japan Bond Yield Surge"
+            },
+            {
+              "time": "0:30",
+              "label": "Trump’s Greenland Proposal"
+            },
+            {
+              "time": "0:45",
+              "label": "Market Impact \u0026 Outlook"
+            }
+          ]
+        },
+        "tiktok": {
+          "caption": "Japan’s bond shock + Trump’s Greenland move = market chaos! What’s next? Follow for updates! #FinanceNews",
+          "hashtags": [
+            "#JapanBondShock",
+            "#TrumpGreenland",
+            "#GlobalMarkets",
+            "#FinanceNews",
+            "#MarketUpdate"
+          ],
+          "privacy_level": "public",
+          "duet_enabled": true,
+          "stitch_enabled": true
+        },
+        "instagram": {
+          "caption": "📉 Global markets shaken by Japan’s bond shock and Trump’s Greenland bid!\n\nExperts warn of rising rates and geopolitical risks. What does this mean for investors? Let’s discuss below! 👇\n\n#JapanBondShock #TrumpGreenland #GlobalMarkets #FinanceNews #MarketVolatility",
+          "hashtags": [
+            "#JapanBondShock",
+            "#TrumpGreenland",
+            "#GlobalMarkets",
+            "#FinanceNews",
+            "#MarketVolatility"
+          ],
+          "location": null
+        },
+        "twitter": {
+          "tweet": "Japan’s bond shock and Trump’s Greenland move are rocking global markets. How will this impact your investments? 🧵 #JapanBondShock #GlobalMarkets",
+          "hashtags": [
+            "#JapanBondShock",
+            "#GlobalMarkets"
+          ],
+          "reply_settings": "everyone"
+        },
+        "facebook": {
+          "message": "Global markets are facing unprecedented challenges. Japan’s sudden bond yield surge is raising fears of tighter monetary policies worldwide, while President Trump’s proposal to buy Greenland has ignited diplomatic tensions and investor uncertainty. According to Bloomberg’s live Q\u0026A, experts are warning of increased volatility and potential interest rate hikes. What does this mean for the future of your investments or the broader economy? \n\nHave you felt the impact of these events? Share your thoughts in the comments—we’d love to hear your perspective on how these twin shocks could reshape global finance.",
+          "link_description": "Experts analyze Japan’s bond shock and Trump’s Greenland move in a live Q\u0026A from Bloomberg. Discover the potential fallout for global markets."
+        },
+        "linkedin": {
+          "post_text": "Hot take: Japan’s bond yield surge and Trump’s Greenland proposal are twin shocks exposing the fragility of global markets. In Bloomberg’s recent live Q\u0026A, financial experts unpacked the implications—rising interest rates, heightened geopolitical risks, and increased market volatility. For industry leaders and investors, this signals a critical need to reassess risk exposure and explore safe havens like gold. How are you navigating these uncertainties in your portfolio or business strategy? Let’s discuss. #GlobalMarkets #FinanceInsights #GeopoliticalRisk",
+          "hashtags": [
+            "#GlobalMarkets",
+            "#FinanceInsights",
+            "#GeopoliticalRisk"
+          ]
+        }
+      },
+      "posting_status": {
+        "youtube": {
+          "posted": false,
+          "error": "failed to upload video: Post \"https://youtube.googleapis.com/upload/youtube/v3/videos?alt=json\u0026part=snippet\u0026part=status\u0026prettyPrint=false\u0026uploadType=multipart\": oauth2: \"invalid_grant\" \"Bad Request\""
+        },
+        "tiktok": {
+          "posted": false
+        },
+        "instagram": {
+          "posted": false
+        },
+        "twitter": {
+          "posted": false
+        },
+        "facebook": {
+          "posted": false
+        },
+        "linkedin": {
+          "posted": false
+        }
+      },
+      "analytics": {}
+    },
+    {
+      "id": "news_20260121_220829",
+      "created_at": "2026-01-21T22:23:19.501834-05:00",
+      "source": {
+        "url": "https://www.washingtonpost.com/dc-md-va/2026/01/20/halligan-judges-standoff-virginia-prosecutor/",
+        "title": "Lindsey Halligan out as U.S. attorney following pressure from judges - The Washington Post",
+        "published_at": "2026-01-21T22:23:19.501834-05:00",
+        "source_name": "washingtonpost.com"
+      },
+      "content": {
+        "summary": "In a significant development, Lindsey Halligan has stepped down as U.S. Attorney for the Eastern District of Virginia following intense pressure from federal judges. Halligan, who was appointed by President Donald Trump in 2025, faced criticism for her handling of high-profile cases and perceived lack of prosecutorial experience. Judges in the district publicly expressed concerns about her leadership, citing delays in case processing and questionable legal strategies. This unprecedented standoff culminated in Halligan's resignation on January 20, 2026, after just months in the role. The controversy has raised questions about the vetting process for such critical positions and the balance of power between the judiciary and executive appointees. The Department of Justice has yet to name a successor, but sources indicate an interim appointment is imminent to restore stability in one of the nation’s busiest federal courts. This situation underscores broader tensions within the justice system under the current administration. As reported by The Washington Post, Halligan’s exit marks a rare instance of judicial intervention influencing a prosecutor's tenure, setting a potential precedent for future appointments.",
+        "word_count": 176,
+        "estimated_duration_seconds": 70
+      },
+      "media": {
+        "audio_path": "",
+        "video_path": "news_20260121_220829_final.mp4",
+        "duration_seconds": 56.441,
+        "resolution": "1280x720",
+        "avatar_id": "Marcus_expressive_2024120201"
+      },
+      "seo": {
+        "primary_keywords": [
+          "Lindsey Halligan",
+          "U.S. Attorney",
+          "Eastern District Virginia"
+        ],
+        "secondary_keywords": [
+          "federal judges",
+          "resignation",
+          "Trump appointee",
+          "Department of Justice",
+          "judicial pressure"
+        ],
+        "topics": [
+          "Politics",
+          "Law"
+        ],
+        "sentiment": "neutral",
+        "target_audience": [
+          "legal professionals",
+          "political analysts"
+        ]
+      },
+      "platforms": {
+        "youtube": {
+          "title": "Lindsey Halligan Resigns as U.S. Attorney Amid Judge Pressure",
+          "description": "Lindsey Halligan has resigned as U.S. Attorney for the Eastern District of Virginia after facing criticism from federal judges over her leadership and case handling. Appointed by President Trump in 2025, her exit on January 20, 2026, marks a rare judicial intervention. What does this mean for the justice system? Watch now for the full story on her resignation, the judges’ concerns, and the potential impact on future appointments. \n\nTimestamps:\n0:00 - Introduction\n0:15 - Halligan’s Resignation\n0:30 - Judges’ Criticism\n0:45 - What’s Next for the DOJ\n\nSubscribe for more updates on politics and law!",
+          "tags": [
+            "Lindsey Halligan",
+            "US Attorney Resignation",
+            "Eastern District Virginia",
+            "Federal Judges",
+            "Trump Appointee"
+          ],
+          "category_id": "25",
+          "default_language": "en",
+          "privacy_status": "public",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introduction"
+            },
+            {
+              "time": "0:15",
+              "label": "Halligan’s Resignation"
+            },
+            {
+              "time": "0:30",
+              "label": "Judges’ Criticism"
+            },
+            {
+              "time": "0:45",
+              "label": "What’s Next for the DOJ"
+            }
+          ]
+        },
+        "tiktok": {
+          "caption": "U.S. Attorney Lindsey Halligan out after judges’ pressure! Shocking exit—follow for more! #Politics #Law",
+          "hashtags": [
+            "Politics",
+            "Law",
+            "USAttorney",
+            "BreakingNews",
+            "TrumpAppointee"
+          ],
+          "privacy_level": "public",
+          "duet_enabled": true,
+          "stitch_enabled": true
+        },
+        "instagram": {
+          "caption": "🚨 Breaking News: Lindsey Halligan resigns as U.S. Attorney for Eastern Virginia after judges criticize her leadership. \n\nAppointed by Trump in 2025, her exit on Jan 20, 2026, is a rare move. What’s next for the DOJ? Drop your thoughts below! 👇\n\n#LindseyHalligan #USAttorney #Politics #Law #BreakingNews",
+          "hashtags": [
+            "LindseyHalligan",
+            "USAttorney",
+            "Politics",
+            "Law",
+            "BreakingNews"
+          ],
+          "location": null
+        },
+        "twitter": {
+          "tweet": "🧵 Lindsey Halligan resigns as U.S. Attorney after judges’ pressure in Eastern Virginia. Rare move—what does this mean for the DOJ? #Politics #Law",
+          "hashtags": [
+            "Politics",
+            "Law"
+          ],
+          "reply_settings": "everyone"
+        },
+        "facebook": {
+          "message": "🚨 A rare standoff in the justice system: Lindsey Halligan has resigned as U.S. Attorney for the Eastern District of Virginia after federal judges publicly criticized her leadership. Appointed by President Trump in 2025, Halligan faced scrutiny for case delays and questionable strategies, leading to her exit on January 20, 2026. \n\nThis unprecedented situation raises questions about the vetting of high-level appointees and the balance of power between judges and prosecutors. With the Department of Justice yet to name a successor, stability in one of the busiest federal courts hangs in the balance. \n\nWhat are your thoughts on this resignation? Should judges have this level of influence over U.S. Attorneys? Let us know in the comments, and share this post to keep the conversation going.",
+          "link_description": "Lindsey Halligan steps down as U.S. Attorney after judges’ criticism in a rare judicial intervention."
+        },
+        "linkedin": {
+          "post_text": "A significant development in the legal sphere: Lindsey Halligan has resigned as U.S. Attorney for the Eastern District of Virginia following unprecedented pressure from federal judges. Appointed by President Trump in 2025, her tenure was marked by criticism over case handling and leadership, culminating in her exit on January 20, 2026. \n\nThis situation highlights critical tensions between judicial oversight and executive appointments. It also raises important questions about the qualifications and vetting process for such pivotal roles within the Department of Justice. As we await an interim appointment, this case could set a precedent for how judicial concerns influence prosecutorial leadership. \n\nWhat are your thoughts on this balance of power? How can the DOJ ensure stability in high-profile districts like Eastern Virginia? Let’s discuss. \n\n#LegalNews #JusticeSystem #USAttorney",
+          "hashtags": [
+            "LegalNews",
+            "JusticeSystem",
+            "USAttorney"
+          ]
+        }
+      },
+      "posting_status": {
+        "youtube": {
+          "posted": false
+        },
+        "tiktok": {
+          "posted": false
+        },
+        "instagram": {
+          "posted": false
+        },
+        "twitter": {
+          "posted": false
+        },
+        "facebook": {
+          "posted": false
+        },
+        "linkedin": {
+          "posted": false
+        }
+      },
+      "analytics": {}
+    },
+    {
+      "id": "news_20260210_221136",
+      "created_at": "2026-02-10T22:19:36.439983-05:00",
+      "source": {
+        "url": "https://www.politico.com/news/2026/02/09/un-is-waiting-to-see-how-much-the-us-intends-to-pay-of-the-nearly-4-billion-it-owes-00772893",
+        "title": "UN is waiting to see how much the US intends to pay of the nearly $4 billion it owes - Politico",
+        "published_at": "2026-02-10T22:19:36.439983-05:00",
+        "source_name": "politico.com"
+      },
+      "content": {
+        "summary": "The United Nations is closely monitoring the United States' plans to address nearly $4 billion in unpaid dues, a significant financial obligation that has raised concerns about the U.S. commitment to the international body. According to Politico, the debt includes regular budget contributions and peacekeeping assessments, accumulated over years due to domestic political disputes and budgetary constraints in Washington. The U.S. remains the largest contributor to the UN, funding about 22% of its regular budget and over 25% of peacekeeping operations, but chronic underpayment has strained UN operations. UN officials are awaiting clarity on whether the incoming administration will prioritize settling these arrears, especially as global crises demand robust multilateral cooperation. The shortfall has already forced the UN to cut programs and delay payments to staff and vendors. A spokesperson for the UN Secretary-General emphasized the importance of member states meeting their financial obligations to ensure the organization’s effectiveness. As reported by Politico on February 9, 2026, the resolution of this debt could shape the future of U.S.-UN relations and the organization’s ability to address pressing global challenges.",
+        "word_count": 178,
+        "estimated_duration_seconds": 71
+      },
+      "media": {
+        "audio_path": "",
+        "video_path": "news_20260210_221136_final.mp4",
+        "duration_seconds": 53.1069,
+        "resolution": "1280x720",
+        "avatar_id": "Marcus_expressive_2024120201"
+      },
+      "seo": {
+        "primary_keywords": [
+          "UN dues",
+          "US debt",
+          "United Nations"
+        ],
+        "secondary_keywords": [
+          "US funding",
+          "peacekeeping budget",
+          "UN budget",
+          "global cooperation",
+          "multilateral relations"
+        ],
+        "topics": [
+          "International Relations",
+          "Politics"
+        ],
+        "sentiment": "neutral",
+        "target_audience": [
+          "policy makers",
+          "international news followers"
+        ]
+      },
+      "platforms": {
+        "youtube": {
+          "title": "US Owes UN $4 Billion: Will They Pay Up?",
+          "description": "The United Nations is waiting to see if the US will pay nearly $4 billion in unpaid dues. This massive debt, covering regular budget and peacekeeping contributions, has strained UN operations amid global crises. Reported by Politico on Feb 9, 2026, the outcome could impact US-UN relations. Watch to learn more about the implications.\n\nTimestamps:\n0:00 - Introduction\n0:15 - US Debt to UN Explained\n0:30 - Impact on UN Operations\n0:45 - What’s Next for US-UN Ties?\n\nSubscribe for updates on international politics and global news!\n#UNDebt #USFunding #UnitedNations #GlobalPolitics #InternationalNews",
+          "tags": [
+            "UN Debt",
+            "US Funding",
+            "United Nations",
+            "Global Politics",
+            "International Relations"
+          ],
+          "category_id": "25",
+          "default_language": "en",
+          "privacy_status": "public",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introduction"
+            },
+            {
+              "time": "0:15",
+              "label": "US Debt to UN Explained"
+            },
+            {
+              "time": "0:30",
+              "label": "Impact on UN Operations"
+            },
+            {
+              "time": "0:45",
+              "label": "What’s Next for US-UN Ties?"
+            }
+          ]
+        },
+        "tiktok": {
+          "caption": "US owes the UN $4 BILLION! Will they pay? Global crises at stake! Follow for more! #UNDebt #USPolitics",
+          "hashtags": [
+            "UNDebt",
+            "USPolitics",
+            "UnitedNations",
+            "GlobalCrisis",
+            "InternationalNews"
+          ],
+          "privacy_level": "public",
+          "duet_enabled": true,
+          "stitch_enabled": true
+        },
+        "instagram": {
+          "caption": "🌍 Breaking: The US owes the UN nearly $4 BILLION in unpaid dues!\n\nThis debt is straining UN operations during critical global crises. Will the US step up? Reported by Politico, the outcome could reshape international relations.\n\nWhat do you think—should the US pay? Drop a comment! 👇\n#UNDebt #UnitedNations #USPolitics #GlobalPolitics #InternationalNews",
+          "hashtags": [
+            "UNDebt",
+            "UnitedNations",
+            "USPolitics",
+            "GlobalPolitics",
+            "InternationalNews"
+          ],
+          "location": null
+        },
+        "twitter": {
+          "tweet": "🧵 The US owes the UN nearly $4B in unpaid dues. Will they pay up amid global crises? Here’s what you need to know. #UNDebt #USPolitics",
+          "hashtags": [
+            "UNDebt",
+            "USPolitics"
+          ],
+          "reply_settings": "everyone"
+        },
+        "facebook": {
+          "message": "Did you know the United States owes the United Nations nearly $4 billion in unpaid dues? This staggering debt, as reported by Politico on February 9, 2026, includes contributions to the regular budget and peacekeeping operations. The shortfall is already impacting the UN’s ability to function—cutting programs and delaying payments to staff and vendors. With global crises mounting, the world is watching to see if the U.S. will settle this debt and reaffirm its commitment to multilateral cooperation.\n\nThe U.S. is the largest contributor to the UN, funding over 22% of its budget. But years of political disputes in Washington have led to chronic underpayment. What could this mean for international relations and the UN’s future?\n\nWe want to hear from you: Should the U.S. prioritize paying these dues? How important is the UN in addressing today’s global challenges? Share your thoughts below.",
+          "link_description": "UN awaits US decision on $4 billion debt, impacting global operations."
+        },
+        "linkedin": {
+          "post_text": "The United States owes the United Nations nearly $4 billion in unpaid dues—a figure that raises critical questions about the future of multilateral cooperation. As reported by Politico on February 9, 2026, this debt, spanning regular budget and peacekeeping contributions, has led to program cuts and delayed payments within the UN. With the U.S. as the largest contributor (over 22% of the UN budget), the resolution of this issue could redefine international partnerships during a time of escalating global crises.\n\nFrom a policy perspective, this situation highlights the tension between domestic political priorities and international obligations. Will the incoming administration view this as a strategic opportunity to strengthen U.S. influence within the UN, or will the debt remain a point of contention?\n\nI’m curious to hear from my network: How should global leaders balance national interests with the need for a robust multilateral framework? Let’s discuss. #InternationalRelations #GlobalPolitics #UNFunding",
+          "hashtags": [
+            "InternationalRelations",
+            "GlobalPolitics",
+            "UNFunding"
+          ]
+        }
+      },
+      "posting_status": {
+        "youtube": {
+          "posted": false
+        },
+        "tiktok": {
+          "posted": false
+        },
+        "instagram": {
+          "posted": false
+        },
+        "twitter": {
+          "posted": false
+        },
+        "facebook": {
+          "posted": false
+        },
+        "linkedin": {
+          "posted": false
+        }
+      },
+      "analytics": {}
+    },
+    {
+      "id": "news_20260210_223033",
+      "created_at": "2026-02-10T22:38:12.382382-05:00",
+      "source": {
+        "url": "https://www.politico.com/news/2026/02/09/un-is-waiting-to-see-how-much-the-us-intends-to-pay-of-the-nearly-4-billion-it-owes-00772893",
+        "title": "UN is waiting to see how much the US intends to pay of the nearly $4 billion it owes - Politico",
+        "published_at": "2026-02-10T22:38:12.382382-05:00",
+        "source_name": "politico.com"
+      },
+      "content": {
+        "summary": "The United Nations is closely monitoring the United States' plans to address nearly $4 billion in unpaid dues, a significant financial obligation that has raised concerns about the UN's operational stability. According to Politico, the US, as the largest contributor to the UN's budget, owes approximately $2.6 billion in regular budget assessments and over $1.3 billion for peacekeeping operations as of late 2025. This debt has accumulated over years, partly due to domestic political constraints and disagreements over UN policies. UN officials are awaiting clarity on whether the incoming US administration will prioritize settling these arrears in 2026, especially as the organization faces budget shortfalls that could impact critical global programs. A UN spokesperson emphasized the importance of member states meeting their financial commitments to ensure the body's ability to address crises like conflict resolution and humanitarian aid. The situation remains fluid, with no firm commitment yet from Washington. As reported by Politico, resolving this issue is crucial for maintaining the UN's effectiveness on the world stage, highlighting the broader implications of delayed payments for international cooperation.",
+        "word_count": 177,
+        "estimated_duration_seconds": 70
+      },
+      "media": {
+        "audio_path": "",
+        "video_path": "news_20260210_223033_final.mp4",
+        "duration_seconds": 53.2114,
+        "resolution": "1280x720",
+        "avatar_id": "Marcus_expressive_2024120201"
+      },
+      "seo": {
+        "primary_keywords": [
+          "UN dues",
+          "US debt",
+          "United Nations funding"
+        ],
+        "secondary_keywords": [
+          "US UN payment",
+          "UN budget shortfall",
+          "peacekeeping funds",
+          "international cooperation",
+          "global programs"
+        ],
+        "topics": [
+          "International Politics",
+          "Global Finance"
+        ],
+        "sentiment": "neutral",
+        "target_audience": [
+          "policy makers",
+          "international news readers"
+        ]
+      },
+      "platforms": {
+        "youtube": {
+          "title": "US Owes UN $4 Billion: Will They Pay in 2026?",
+          "description": "The United Nations is waiting to see if the US will pay nearly $4 billion in unpaid dues. This includes $2.6 billion for the regular budget and $1.3 billion for peacekeeping. With budget shortfalls threatening global programs, UN officials are seeking clarity from the incoming US administration. Watch to learn how this could impact international cooperation. \n\nTimestamps:\n0:00 - Introduction\n0:15 - US Debt to UN Explained\n0:30 - Impact on Global Programs\n0:45 - What's Next for UN Funding?\n\nSubscribe for more updates on global politics and finance!",
+          "tags": [
+            "UN dues",
+            "US UN debt",
+            "United Nations funding",
+            "global politics",
+            "international finance"
+          ],
+          "category_id": "25",
+          "default_language": "en",
+          "privacy_status": "public",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introduction"
+            },
+            {
+              "time": "0:15",
+              "label": "US Debt to UN Explained"
+            },
+            {
+              "time": "0:30",
+              "label": "Impact on Global Programs"
+            },
+            {
+              "time": "0:45",
+              "label": "What's Next for UN Funding?"
+            }
+          ]
+        },
+        "tiktok": {
+          "caption": "US owes UN $4B! Will they pay in 2026? Global programs at risk! Follow for updates! #UNFunding",
+          "hashtags": [
+            "UNFunding",
+            "USDebt",
+            "GlobalPolitics",
+            "UnitedNations",
+            "InternationalNews"
+          ],
+          "privacy_level": "public",
+          "duet_enabled": true,
+          "stitch_enabled": true
+        },
+        "instagram": {
+          "caption": "🌍 Breaking: The US owes the UN nearly $4 BILLION! \n\nThis massive debt could jeopardize critical global programs like peacekeeping and humanitarian aid. UN officials are waiting for answers from Washington in 2026. \n\nWhat do you think—should the US settle this debt? Drop your thoughts below! 👇 \n\n#UNFunding #USDebt #UnitedNations #GlobalPolitics #InternationalNews",
+          "hashtags": [
+            "UNFunding",
+            "USDebt",
+            "UnitedNations",
+            "GlobalPolitics",
+            "InternationalNews"
+          ],
+          "location": null
+        },
+        "twitter": {
+          "tweet": "🧵 US owes UN nearly $4B! Will the new administration pay in 2026? Global programs hang in balance. What’s your take? #UNFunding #USDebt",
+          "hashtags": [
+            "UNFunding",
+            "USDebt"
+          ],
+          "reply_settings": "everyone"
+        },
+        "facebook": {
+          "message": "Did you know the United States owes the United Nations nearly $4 billion? This staggering amount, including $2.6 billion for the regular budget and $1.3 billion for peacekeeping, has UN officials on edge. With critical programs like humanitarian aid and conflict resolution at risk, the world is watching to see if the incoming US administration will prioritize settling these dues in 2026. \n\nThe UN plays a vital role in global stability, but budget shortfalls could hinder its mission. What are the implications of this delay for international cooperation? We want to hear your thoughts—comment below with your perspective on this pressing issue. \n\nShare this post to spread awareness about the importance of funding global initiatives!",
+          "link_description": "UN awaits US decision on $4 billion in unpaid dues, critical for global programs."
+        },
+        "linkedin": {
+          "post_text": "The United States owes the United Nations nearly $4 billion—a debt that could undermine critical global initiatives if left unresolved. As reported by Politico, this includes $2.6 billion for the regular budget and $1.3 billion for peacekeeping operations. With the UN facing budget shortfalls, the question remains: will the incoming US administration prioritize settling these arrears in 2026? \n\nThis situation highlights a broader challenge in international cooperation—ensuring financial commitments are met to support peacekeeping, humanitarian aid, and conflict resolution. For policymakers and global leaders, this is a reminder of the interconnected nature of funding and impact in multilateral organizations. What steps can be taken to ensure the UN remains effective amidst such financial uncertainty? I’d welcome insights from my network on this pressing issue. \n\n#InternationalRelations #GlobalFinance #UnitedNations",
+          "hashtags": [
+            "InternationalRelations",
+            "GlobalFinance",
+            "UnitedNations"
+          ]
+        }
+      },
+      "posting_status": {
+        "youtube": {
+          "posted": false
+        },
+        "tiktok": {
+          "posted": false
+        },
+        "instagram": {
+          "posted": false
+        },
+        "twitter": {
+          "posted": false
+        },
+        "facebook": {
+          "posted": false
+        },
+        "linkedin": {
+          "posted": false
+        }
+      },
+      "analytics": {}
+    },
+    {
+      "id": "news_20260210_224520",
+      "created_at": "2026-02-10T22:58:05.782249-05:00",
+      "source": {
+        "url": "https://www.politico.com/news/2026/02/09/un-is-waiting-to-see-how-much-the-us-intends-to-pay-of-the-nearly-4-billion-it-owes-00772893",
+        "title": "UN is waiting to see how much the US intends to pay of the nearly $4 billion it owes - Politico",
+        "published_at": "2026-02-10T22:58:05.782249-05:00",
+        "source_name": "politico.com"
+      },
+      "content": {
+        "summary": "The United Nations is closely monitoring the United States' intentions regarding nearly $4 billion in unpaid dues, as reported by Politico. The U.S., a key financial contributor to the UN, has accumulated this significant debt over years, raising concerns about the organization's ability to fund critical peacekeeping missions, humanitarian aid, and other global initiatives. UN officials are awaiting clarity on whether the incoming U.S. administration will prioritize settling these arrears or propose a payment plan. The debt, which includes regular budget contributions and peacekeeping assessments, has been a point of contention, with some U.S. lawmakers historically questioning the value of UN funding. The shortfall impacts the UN's operational capacity at a time of escalating global crises, including conflicts and climate challenges. A UN spokesperson emphasized the importance of member states meeting their financial obligations to ensure stability. As the largest single contributor, the U.S. plays a pivotal role in the UN's budget. Politico notes that resolution of this issue could shape future U.S.-UN relations and the organization's effectiveness in addressing worldwide issues.",
+        "word_count": 172,
+        "estimated_duration_seconds": 68
+      },
+      "media": {
+        "audio_path": "",
+        "video_path": "news_20260210_224520_final.mp4",
+        "duration_seconds": 51.4351,
+        "resolution": "1280x720",
+        "avatar_id": "Marcus_expressive_2024120201"
+      },
+      "seo": {
+        "primary_keywords": [
+          "UN funding",
+          "US debt",
+          "United Nations"
+        ],
+        "secondary_keywords": [
+          "US dues",
+          "peacekeeping budget",
+          "global crises",
+          "UN budget",
+          "US administration"
+        ],
+        "topics": [
+          "International Relations",
+          "Politics"
+        ],
+        "sentiment": "neutral",
+        "target_audience": [
+          "policy makers",
+          "global news followers"
+        ]
+      },
+      "platforms": {
+        "youtube": {
+          "title": "US Owes UN $4 Billion: Will They Pay? Shocking Update!",
+          "description": "The United Nations is waiting to see if the US will pay nearly $4 billion in unpaid dues. This massive debt impacts peacekeeping missions and global aid efforts. What does this mean for US-UN relations and international stability? Watch to learn more about the UN funding crisis, US debt to the UN, and the potential consequences. \n\nTimestamps:\n0:00 - Introduction\n0:15 - US Debt to UN Explained\n0:30 - Impact on Global Missions\n0:45 - What's Next for UN Funding?\n\nSubscribe for updates on international politics and breaking news!",
+          "tags": [
+            "UN funding",
+            "US debt UN",
+            "United Nations crisis",
+            "global politics",
+            "peacekeeping budget"
+          ],
+          "category_id": "25",
+          "default_language": "en",
+          "privacy_status": "public",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introduction"
+            },
+            {
+              "time": "0:15",
+              "label": "US Debt to UN Explained"
+            },
+            {
+              "time": "0:30",
+              "label": "Impact on Global Missions"
+            },
+            {
+              "time": "0:45",
+              "label": "What's Next for UN Funding?"
+            }
+          ]
+        },
+        "tiktok": {
+          "caption": "US owes UN $4 BILLION! Will they pay? Global crisis looms! Follow for more! #UNFunding #USDebt",
+          "hashtags": [
+            "UNFunding",
+            "USDebt",
+            "GlobalCrisis",
+            "UnitedNations",
+            "PoliticsNews"
+          ],
+          "privacy_level": "public",
+          "duet_enabled": true,
+          "stitch_enabled": true
+        },
+        "instagram": {
+          "caption": "🌍 Shocking news: The US owes the UN nearly $4 BILLION in unpaid dues! \n\nThis debt could jeopardize peacekeeping missions and global aid at a critical time. Will the US step up? Let us know your thoughts in the comments! \n\n#UNFunding #USDebt #UnitedNations #GlobalPolitics #WorldNews",
+          "hashtags": [
+            "UNFunding",
+            "USDebt",
+            "UnitedNations",
+            "GlobalPolitics",
+            "WorldNews"
+          ],
+          "location": null
+        },
+        "twitter": {
+          "tweet": "🧵 The US owes the UN nearly $4B! Will they pay up? This debt threatens global peacekeeping and aid. What’s your take? #UNFunding #USDebt",
+          "hashtags": [
+            "UNFunding",
+            "USDebt"
+          ],
+          "reply_settings": "everyone"
+        },
+        "facebook": {
+          "message": "Did you know the United States owes the United Nations nearly $4 billion in unpaid dues? This staggering debt, as reported by Politico, could have serious consequences for global peacekeeping missions, humanitarian aid, and other critical initiatives at a time when the world faces escalating crises. UN officials are waiting to see if the new U.S. administration will address this shortfall or propose a plan. \n\nThe U.S. is the largest contributor to the UN budget, so their financial commitment is vital for the organization’s stability. How do you think this will impact international relations and the UN’s ability to tackle global challenges? Share your thoughts below, and let’s discuss the future of global cooperation.",
+          "link_description": "The UN awaits clarity on whether the US will pay nearly $4 billion in dues, impacting global missions."
+        },
+        "linkedin": {
+          "post_text": "The United States owes the United Nations nearly $4 billion in unpaid dues, raising critical questions about the future of international cooperation. As reported by Politico, this debt—accumulated over years—threatens the UN’s capacity to fund peacekeeping missions and humanitarian efforts amidst growing global crises. With the U.S. as the largest contributor to the UN budget, the resolution of this issue could redefine diplomatic and financial commitments on the world stage. \n\nWhat does this mean for multilateral organizations and global stability? Will the incoming U.S. administration prioritize settling these arrears? I’d be interested to hear perspectives from policy experts and international relations professionals. Let’s discuss the implications. #InternationalRelations #UNFunding #GlobalPolitics",
+          "hashtags": [
+            "InternationalRelations",
+            "UNFunding",
+            "GlobalPolitics"
+          ]
+        }
+      },
+      "posting_status": {
+        "youtube": {
+          "posted": false
+        },
+        "tiktok": {
+          "posted": false
+        },
+        "instagram": {
+          "posted": false
+        },
+        "twitter": {
+          "posted": false
+        },
+        "facebook": {
+          "posted": false
+        },
+        "linkedin": {
+          "posted": false
+        }
+      },
+      "analytics": {}
+    },
+    {
+      "id": "news_20260211_062414",
+      "created_at": "2026-02-11T06:38:54.527621-05:00",
+      "source": {
+        "url": "https://www.cnbc.com/2026/02/10/coca-cola-ko-q4-2025-earnings.html",
+        "title": "Coca-Cola is about to report earnings. Here's what to expect - CNBC",
+        "published_at": "2026-02-11T06:38:54.527621-05:00",
+        "source_name": "cnbc.com"
+      },
+      "content": {
+        "summary": "Coca-Cola is set to release its fourth-quarter 2025 earnings, with Wall Street anticipating key insights into the beverage giant's performance amid shifting consumer trends. Analysts expect the company to report adjusted earnings per share of $0.49, alongside revenue of approximately $10.6 billion, reflecting modest growth compared to the previous year. This comes as Coca-Cola navigates challenges like inflation and changing preferences for healthier drink options, while capitalizing on strong demand in emerging markets. Investors are particularly focused on volume growth, pricing strategies, and updates on the company’s portfolio, including non-carbonated beverages like sports drinks and teas. The earnings report will also shed light on Coca-Cola’s ability to maintain margins in a competitive landscape. Additionally, guidance for 2026 will be critical as the company addresses global economic uncertainties. The report is expected to influence market sentiment toward consumer staples stocks broadly. This information is based on projections and analysis reported by CNBC ahead of the official earnings release.",
+        "word_count": 157,
+        "estimated_duration_seconds": 62
+      },
+      "media": {
+        "audio_path": "",
+        "video_path": "news_20260211_062414_final.mp4",
+        "duration_seconds": 48.3788,
+        "resolution": "1280x720",
+        "avatar_id": "Marcus_expressive_2024120201"
+      },
+      "seo": {
+        "primary_keywords": [
+          "Coca-Cola",
+          "earnings",
+          "Q4 2025"
+        ],
+        "secondary_keywords": [
+          "beverage industry",
+          "consumer trends",
+          "stock market",
+          "revenue growth",
+          "inflation"
+        ],
+        "topics": [
+          "Business",
+          "Finance"
+        ],
+        "sentiment": "neutral",
+        "target_audience": [
+          "investors",
+          "business professionals"
+        ]
+      },
+      "platforms": {
+        "youtube": {
+          "title": "Coca-Cola Q4 2025 Earnings: What to Expect from the Beverage Giant",
+          "description": "Coca-Cola is set to report its Q4 2025 earnings, with Wall Street expecting $0.49 EPS and $10.6B in revenue. What does this mean for investors? In this video, we break down the key factors, including volume growth, pricing strategies, and the shift toward healthier drinks. Stay tuned for insights on Coca-Cola's performance in emerging markets and its 2026 outlook. Don’t forget to like, subscribe, and hit the bell for more financial updates!\n\nTimestamps:\n0:00 - Introduction\n0:15 - Earnings Expectations\n0:30 - Key Challenges \u0026 Opportunities\n0:45 - Market Impact \u0026 Conclusion\n\n#CocaCola #Earnings2025 #StockMarket #BeverageIndustry #Investing",
+          "tags": [
+            "Coca-Cola Earnings",
+            "Q4 2025",
+            "Stock Market",
+            "Beverage Industry",
+            "Investing"
+          ],
+          "category_id": "25",
+          "default_language": "en",
+          "privacy_status": "public",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introduction"
+            },
+            {
+              "time": "0:15",
+              "label": "Earnings Expectations"
+            },
+            {
+              "time": "0:30",
+              "label": "Key Challenges \u0026 Opportunities"
+            },
+            {
+              "time": "0:45",
+              "label": "Market Impact \u0026 Conclusion"
+            }
+          ]
+        },
+        "tiktok": {
+          "caption": "Coca-Cola’s Q4 earnings are coming! Will they hit $10.6B? Follow for updates! #CocaCola #Earnings #Investing",
+          "hashtags": [
+            "CocaCola",
+            "Earnings",
+            "Investing",
+            "StockMarket",
+            "BusinessNews"
+          ],
+          "privacy_level": "public",
+          "duet_enabled": true,
+          "stitch_enabled": true
+        },
+        "instagram": {
+          "caption": "📈 Coca-Cola’s Q4 2025 earnings are almost here! Analysts predict $0.49 EPS and $10.6B in revenue. \n\nHow will consumer trends and inflation impact the beverage giant? Let’s discuss!\n\n#CocaCola #EarningsReport #StockMarket #BeverageIndustry #BusinessNews #Investing #Finance #MarketUpdate #ConsumerTrends #MoneyMatters",
+          "hashtags": [
+            "CocaCola",
+            "EarningsReport",
+            "StockMarket",
+            "BeverageIndustry",
+            "BusinessNews"
+          ],
+          "location": null
+        },
+        "twitter": {
+          "tweet": "Coca-Cola’s Q4 2025 earnings are coming. Analysts expect $0.49 EPS and $10.6B revenue. Will they beat expectations? #CocaCola #Earnings",
+          "hashtags": [
+            "CocaCola",
+            "Earnings"
+          ],
+          "reply_settings": "everyone"
+        },
+        "facebook": {
+          "message": "Big news for investors: Coca-Cola is about to report its Q4 2025 earnings. Wall Street is projecting earnings per share of $0.49 and revenue of $10.6 billion, signaling modest growth. But with inflation, shifting consumer preferences toward healthier drinks, and intense competition, all eyes are on how the beverage giant will perform. Key areas to watch include volume growth, pricing strategies, and expansion in emerging markets. Plus, Coca-Cola’s guidance for 2026 could provide critical clues about the future of consumer staples. \n\nWhat do you think—will Coca-Cola exceed expectations? Drop your thoughts in the comments and share this post with fellow investors!",
+          "link_description": "Coca-Cola’s Q4 2025 earnings report is on the horizon. Here’s what analysts expect from the beverage leader."
+        },
+        "linkedin": {
+          "post_text": "Coca-Cola is gearing up to release its Q4 2025 earnings, with analysts forecasting $0.49 EPS and $10.6 billion in revenue. As consumer preferences shift toward healthier options and inflation pressures persist, the beverage giant’s strategies around pricing, portfolio diversification, and growth in emerging markets will be under scrutiny. This report could signal broader trends for the consumer staples sector, especially as we look toward 2026 guidance. \n\nWhat’s your take on Coca-Cola’s positioning in today’s market? Let’s discuss how macroeconomic factors are shaping the industry. #BusinessInsights #BeverageIndustry #EarningsSeason",
+          "hashtags": [
+            "BusinessInsights",
+            "BeverageIndustry",
+            "EarningsSeason"
+          ]
+        }
+      },
+      "posting_status": {
+        "youtube": {
+          "posted": false
+        },
+        "tiktok": {
+          "posted": false,
+          "error": "failed to initialize upload: TikTok API error (status 400): {\"error\":{\"code\":\"invalid_params\",\"message\":\"The request parameter type is incorrect. request.VideoPostPublishSourceInfo.(1)Source expected string, actual value: map[source:FILE_UPLOAD] (map[string]interface {})\",\"log_id\":\"20260211113922D3B5E9014CCB1702D659\",\"http_status_code\":400}}"
+        },
+        "instagram": {
+          "posted": false
+        },
+        "twitter": {
+          "posted": false
+        },
+        "facebook": {
+          "posted": false
+        },
+        "linkedin": {
+          "posted": false
+        }
+      },
+      "analytics": {}
+    },
+    {
+      "id": "news_20260211_064325",
+      "created_at": "2026-02-11T06:54:24.99942-05:00",
+      "source": {
+        "url": "https://www.cnbc.com/2026/02/10/coca-cola-ko-q4-2025-earnings.html",
+        "title": "Coca-Cola is about to report earnings. Here's what to expect - CNBC",
+        "published_at": "2026-02-11T06:54:24.99942-05:00",
+        "source_name": "cnbc.com"
+      },
+      "content": {
+        "summary": "Coca-Cola is set to release its fourth-quarter 2025 earnings, with analysts anticipating key insights into the beverage giant's performance amid evolving consumer trends. According to Wall Street estimates reported by CNBC, the company is expected to post earnings per share of $0.49, a slight increase from the previous year, with revenue projected at $10.9 billion, reflecting modest growth. Investors are particularly focused on Coca-Cola's ability to navigate inflationary pressures, supply chain challenges, and shifting demand for non-alcoholic beverages, including healthier options like sparkling water and energy drinks. The company has been investing in product innovation and sustainability initiatives, which could influence long-term growth. Additionally, global market dynamics, including currency fluctuations, may impact results. Analysts also note that Coca-Cola's pricing strategies and marketing campaigns will be critical in maintaining its competitive edge against rivals like PepsiCo. The earnings report, due before the market opens, is expected to provide a broader outlook on the beverage industry. As reported by CNBC, this data will be pivotal for stakeholders assessing Coca-Cola's position in a rapidly changing market. The results could signal broader economic trends affecting consumer spending.",
+        "word_count": 183,
+        "estimated_duration_seconds": 73
+      },
+      "media": {
+        "audio_path": "",
+        "video_path": "news_20260211_064325_final.mp4",
+        "duration_seconds": 55.3012,
+        "resolution": "1280x720",
+        "avatar_id": "Marcus_expressive_2024120201"
+      },
+      "seo": {
+        "primary_keywords": [
+          "Coca-Cola",
+          "earnings",
+          "Q4 2025"
+        ],
+        "secondary_keywords": [
+          "beverage industry",
+          "earnings report",
+          "consumer trends",
+          "stock market",
+          "PepsiCo"
+        ],
+        "topics": [
+          "Business",
+          "Finance"
+        ],
+        "sentiment": "neutral",
+        "target_audience": [
+          "investors",
+          "business professionals"
+        ]
+      },
+      "platforms": {
+        "youtube": {
+          "title": "Coca-Cola Q4 2025 Earnings: What to Expect from the Beverage Giant",
+          "description": "Coca-Cola is set to report its Q4 2025 earnings, with Wall Street expecting $0.49 per share and $10.9 billion in revenue. What does this mean for the beverage industry and investors? In this video, we break down the key factors, including inflation, consumer trends, and competition with PepsiCo. Stay tuned for insights into Coca-Cola's future. \n\nTimestamps:\n0:00 - Introduction\n0:15 - Earnings Expectations\n0:30 - Market Challenges\n0:45 - Conclusion\n\nSubscribe for more financial news and analysis on companies like Coca-Cola!",
+          "tags": [
+            "CocaColaEarnings",
+            "Q42025",
+            "BeverageIndustry",
+            "StockMarket",
+            "Investing"
+          ],
+          "category_id": "25",
+          "default_language": "en",
+          "privacy_status": "public",
+          "timestamps": [
+            {
+              "time": "0:00",
+              "label": "Introduction"
+            },
+            {
+              "time": "0:15",
+              "label": "Earnings Expectations"
+            },
+            {
+              "time": "0:30",
+              "label": "Market Challenges"
+            },
+            {
+              "time": "0:45",
+              "label": "Conclusion"
+            }
+          ]
+        },
+        "tiktok": {
+          "caption": "Coca-Cola Q4 earnings are coming! Will they hit $10.9B? Follow for updates! #CocaCola #Earnings",
+          "hashtags": [
+            "CocaCola",
+            "Earnings",
+            "StockMarket",
+            "Investing",
+            "BusinessNews"
+          ],
+          "privacy_level": "public",
+          "duet_enabled": true,
+          "stitch_enabled": true
+        },
+        "instagram": {
+          "caption": "📈 Coca-Cola’s Q4 2025 earnings are almost here!\n\nWall Street predicts $0.49 per share and $10.9B in revenue. Will they meet expectations amid inflation and consumer shifts?\n\nStay tuned for updates on the beverage giant’s performance. What do you think—bullish or bearish? Drop your thoughts below! 👇\n\n#CocaCola #EarningsReport #StockMarket #Investing #BusinessNews",
+          "hashtags": [
+            "CocaCola",
+            "EarningsReport",
+            "StockMarket",
+            "Investing",
+            "BusinessNews"
+          ],
+          "location": null
+        },
+        "twitter": {
+          "tweet": "Coca-Cola’s Q4 2025 earnings are coming. Analysts expect $0.49/share and $10.9B revenue. Will they deliver? What’s your take? #CocaCola #Earnings",
+          "hashtags": [
+            "CocaCola",
+            "Earnings"
+          ],
+          "reply_settings": "everyone"
+        },
+        "facebook": {
+          "message": "Coca-Cola is gearing up to release its Q4 2025 earnings report, and the stakes are high. Analysts, as reported by CNBC, are forecasting earnings of $0.49 per share and revenue of $10.9 billion. With inflation, supply chain issues, and changing consumer preferences for healthier beverages, all eyes are on how the company has performed. Will their investments in innovation and sustainability pay off? How will they stack up against competitors like PepsiCo? This report could offer a glimpse into broader economic trends impacting consumer spending. What are your predictions for Coca-Cola’s results? Let us know in the comments below, and share this post with fellow investors!",
+          "link_description": "Coca-Cola’s Q4 2025 earnings are set to drop. Analysts expect $0.49/share and $10.9B revenue. Read more on CNBC."
+        },
+        "linkedin": {
+          "post_text": "Coca-Cola’s upcoming Q4 2025 earnings report is a critical moment for the beverage industry. Analysts anticipate earnings of $0.49 per share and revenue of $10.9 billion, as reported by CNBC. Key areas to watch include the company’s response to inflationary pressures, supply chain disruptions, and evolving consumer demand for healthier drink options. Coca-Cola’s focus on innovation and sustainability could be a game-changer in maintaining its market position against competitors like PepsiCo. For investors and industry professionals, this report may also reflect broader economic trends influencing consumer behavior. What are your thoughts on Coca-Cola’s strategic direction? Let’s discuss in the comments. #BusinessInsights #EarningsSeason #BeverageIndustry",
+          "hashtags": [
+            "BusinessInsights",
+            "EarningsSeason",
+            "BeverageIndustry"
+          ]
+        }
+      },
+      "posting_status": {
+        "youtube": {
+          "posted": false
+        },
+        "tiktok": {
+          "posted": false,
+          "url": "inbox_uploaded (publish_id: v_inbox_file~v2.7605575439343618061)",
+          "posted_at": "2026-02-11T07:00:03.930043-05:00",
+          "error": "failed to initialize upload: TikTok API error: ok - "
         },
         "instagram": {
           "posted": false
