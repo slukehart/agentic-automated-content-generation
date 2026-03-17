@@ -42,4 +42,13 @@ poetry.lock
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Go
 
-docs/**
+# Obsidian vault internals
+vault/.obsidian/
+vault/.drafts/
+vault/.smart-connections/
+
+# Superpowers brainstorm sessions
+.superpowers/
+
+# Output
+output/
