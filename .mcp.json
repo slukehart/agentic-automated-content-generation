@@ -3,6 +3,13 @@
     "qmd": {
       "command": "qmd",
       "args": ["mcp"]
+    },
+    "smart-connections": {
+      "command": "node",
+      "args": ["/Users/slukehart/Documents/Github/smart-connections-mcp/dist/index.js"],
+      "env": {
+        "VAULT_PATH": "/Users/slukehart/Documents/Github/content-generation-automation/vault"
+      }
     }
   }
 }
