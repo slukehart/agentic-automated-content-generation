@@ -1,0 +1,65 @@
+<h2>Vault Structure</h2>
+<p class="subtitle">Folder layout and ownership boundaries</p>
+
+<div class="section">
+  <div class="mockup">
+    <div class="mockup-header">vault/ — Project Root</div>
+    <div class="mockup-body" style="font-family: monospace; font-size: 14px; line-height: 2; padding: 20px;">
+      <div style="color: #7eb8da;">📁 <strong>vision/</strong> <span style="color: #888; font-style: italic;">— You write</span></div>
+      <div style="padding-left: 24px; color: #aaa;">goals.md <span style="color: #666;">· what you're building toward</span></div>
+      <div style="padding-left: 24px; color: #aaa;">roadmap.md <span style="color: #666;">· phased feature plans</span></div>
+      <div style="padding-left: 24px; color: #aaa;">feature-ideas/ <span style="color: #666;">· one note per idea</span></div>
+
+      <br/>
+      <div style="color: #a8d8a8;">📁 <strong>system/</strong> <span style="color: #888; font-style: italic;">— Agents write (you approve)</span></div>
+      <div style="padding-left: 24px;">
+        <div style="color: #aaa;">📁 architecture/ <span style="color: #666;">· how components work & connect</span></div>
+        <div style="padding-left: 24px; color: #777; font-size: 12px;">pipeline-overview.md · heygen-integration.md · tiktok-upload-flow.md</div>
+      </div>
+      <div style="padding-left: 24px;">
+        <div style="color: #aaa;">📁 decisions/ <span style="color: #666;">· why things were built this way</span></div>
+        <div style="padding-left: 24px; color: #777; font-size: 12px;">2026-03-16-single-llm-call-metadata.md · 2026-03-16-manifest-over-db.md</div>
+      </div>
+      <div style="padding-left: 24px;">
+        <div style="color: #aaa;">📁 lessons/ <span style="color: #666;">· gotchas, failures, tips</span></div>
+        <div style="padding-left: 24px; color: #777; font-size: 12px;">tiktok-api-quirks.md · heygen-avatar-sizing.md</div>
+      </div>
+
+      <br/>
+      <div style="color: #d8c8a8;">📁 <strong>prompts/</strong> <span style="color: #888; font-style: italic;">— Both write</span></div>
+      <div style="padding-left: 24px; color: #aaa;">metadata-generation.md <span style="color: #666;">· prompt engineering notes</span></div>
+      <div style="padding-left: 24px; color: #aaa;">summary-tuning.md <span style="color: #666;">· what produces good summaries</span></div>
+
+      <br/>
+      <div style="color: #d8a8d8;">📁 <strong>templates/</strong> <span style="color: #888; font-style: italic;">— Shared</span></div>
+      <div style="padding-left: 24px; color: #aaa;">architecture-note.md <span style="color: #666;">· frontmatter template for system/architecture/</span></div>
+      <div style="padding-left: 24px; color: #aaa;">decision-note.md <span style="color: #666;">· frontmatter template for system/decisions/</span></div>
+      <div style="padding-left: 24px; color: #aaa;">lesson-note.md <span style="color: #666;">· frontmatter template for system/lessons/</span></div>
+    </div>
+  </div>
+</div>
+
+<h3>Ownership Rules</h3>
+<div class="options">
+  <div class="option" style="cursor: default; border-color: #7eb8da;">
+    <div class="letter" style="background: #7eb8da;">You</div>
+    <div class="content">
+      <h3>vision/</h3>
+      <p>Goals, roadmap, feature ideas. Your intent — agents read but never modify.</p>
+    </div>
+  </div>
+  <div class="option" style="cursor: default; border-color: #a8d8a8;">
+    <div class="letter" style="background: #a8d8a8; color: #222;">AI</div>
+    <div class="content">
+      <h3>system/</h3>
+      <p>Architecture docs, decisions, lessons learned. Agents draft, you approve before save.</p>
+    </div>
+  </div>
+  <div class="option" style="cursor: default; border-color: #d8c8a8;">
+    <div class="letter" style="background: #d8c8a8; color: #222;">Both</div>
+    <div class="content">
+      <h3>prompts/ &amp; templates/</h3>
+      <p>Shared space. You tune prompts, agents document what works. Templates keep notes consistent.</p>
+    </div>
+  </div>
+</div>

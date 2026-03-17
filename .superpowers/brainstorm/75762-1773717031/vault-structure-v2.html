@@ -1,0 +1,150 @@
+<h2>Updated Vault Structure</h2>
+<p class="subtitle">Agent-readable knowledge base with integration docs and frontmatter schema</p>
+
+<div class="section" style="background: #1a1a2e; border-radius: 8px; padding: 20px; font-family: monospace; font-size: 13px; line-height: 2;">
+  <div style="color: #fff; font-size: 15px;"><strong>vault/</strong></div>
+
+  <br/>
+  <div style="color: #7eb8da; padding-left: 12px;">📁 <strong>vision/</strong> <span style="color: #888; font-style: italic;">— You write, agents read-only</span></div>
+  <div style="padding-left: 36px; color: #aaa;">goals.md <span style="color: #666;">— what you're building toward</span></div>
+  <div style="padding-left: 36px; color: #aaa;">roadmap.md <span style="color: #666;">— phased feature plans</span></div>
+  <div style="padding-left: 36px; color: #aaa;">feature-ideas/ <span style="color: #666;">— one note per idea</span></div>
+
+  <br/>
+  <div style="color: #a8d8a8; padding-left: 12px;">📁 <strong>system/</strong> <span style="color: #888; font-style: italic;">— Agents draft, you approve</span></div>
+  <div style="padding-left: 36px; color: #a8d8a8;">📁 architecture/</div>
+  <div style="padding-left: 60px; color: #777;">pipeline-overview.md <span style="color: #555;">— end-to-end content generation flow</span></div>
+  <div style="padding-left: 60px; color: #777;">news-fetching.md <span style="color: #555;">— NewsAPI integration &amp; article selection</span></div>
+  <div style="padding-left: 60px; color: #777;">metadata-generation.md <span style="color: #555;">— single LLM call for all platform metadata</span></div>
+  <div style="padding-left: 60px; color: #777;">video-generation.md <span style="color: #555;">— custom model on AWS GPU (replacing HeyGen)</span></div>
+  <div style="padding-left: 60px; color: #777;">upload-system.md <span style="color: #555;">— multi-platform upload orchestration</span></div>
+  <div style="padding-left: 60px; color: #777;">manifest-system.md <span style="color: #555;">— content_manifest.json CRUD &amp; schema</span></div>
+
+  <div style="padding-left: 36px; color: #a8d8a8;">📁 decisions/</div>
+  <div style="padding-left: 60px; color: #777; font-size: 12px;">Date-prefixed: 2026-03-16-why-custom-model-over-heygen.md</div>
+
+  <div style="padding-left: 36px; color: #a8d8a8;">📁 lessons/</div>
+  <div style="padding-left: 60px; color: #777; font-size: 12px;">Component-named: tiktok-api-quirks.md, oauth-token-refresh.md</div>
+
+  <br/>
+  <div style="color: #d8c8a8; padding-left: 12px;">📁 <strong>integrations/</strong> <span style="color: #888; font-style: italic;">— External service knowledge (both write)</span></div>
+
+  <div style="padding-left: 36px; color: #d8c8a8;">📁 social-platforms/</div>
+  <div style="padding-left: 60px; color: #4a9;">youtube-api.md <span style="color: #666;">✓ implemented</span></div>
+  <div style="padding-left: 60px; color: #4a9;">tiktok-api.md <span style="color: #666;">✓ implemented</span></div>
+  <div style="padding-left: 60px; color: #ffa94d;">instagram-api.md <span style="color: #666;">○ planned</span></div>
+  <div style="padding-left: 60px; color: #ffa94d;">twitter-api.md <span style="color: #666;">○ planned</span></div>
+  <div style="padding-left: 60px; color: #ffa94d;">facebook-api.md <span style="color: #666;">○ planned</span></div>
+  <div style="padding-left: 60px; color: #ffa94d;">linkedin-api.md <span style="color: #666;">○ planned</span></div>
+
+  <div style="padding-left: 36px; color: #d8c8a8;">📁 infrastructure/</div>
+  <div style="padding-left: 60px; color: #ffa94d;">aws-gpu.md <span style="color: #666;">○ planned — custom video model training &amp; inference</span></div>
+  <div style="padding-left: 60px; color: #4a9;">newsapi.md <span style="color: #666;">✓ implemented</span></div>
+  <div style="padding-left: 60px; color: #4a9;">grok-xai.md <span style="color: #666;">✓ implemented — summarization, metadata, image gen</span></div>
+
+  <br/>
+  <div style="color: #d8a8d8; padding-left: 12px;">📁 <strong>prompts/</strong> <span style="color: #888; font-style: italic;">— Both write</span></div>
+  <div style="padding-left: 36px; color: #aaa;">metadata-generation.md <span style="color: #666;">— prompt that generates all platform metadata</span></div>
+  <div style="padding-left: 36px; color: #aaa;">summary-tuning.md <span style="color: #666;">— what produces good 150-200 word summaries</span></div>
+
+  <br/>
+  <div style="color: #c8a8d8; padding-left: 12px;">📁 <strong>templates/</strong> <span style="color: #888; font-style: italic;">— Shared note templates</span></div>
+  <div style="padding-left: 36px; color: #aaa;">architecture-note.md</div>
+  <div style="padding-left: 36px; color: #aaa;">decision-note.md</div>
+  <div style="padding-left: 36px; color: #aaa;">lesson-note.md</div>
+  <div style="padding-left: 36px; color: #aaa;">integration-note.md</div>
+</div>
+
+<br/>
+
+<h3>Frontmatter Schema by Note Type</h3>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">system/architecture/*.md</div>
+    <div class="mockup-body" style="font-family: monospace; font-size: 12px; line-height: 1.8; padding: 16px;">
+      <div style="color: #888;">---</div>
+      <div><span style="color: #7eb8da;">type:</span> architecture</div>
+      <div><span style="color: #7eb8da;">component:</span> pipeline | metadata | video | upload | manifest</div>
+      <div><span style="color: #7eb8da;">status:</span> current | outdated | proposed</div>
+      <div><span style="color: #7eb8da;">created:</span> 2026-03-16</div>
+      <div><span style="color: #7eb8da;">updated:</span> 2026-03-16</div>
+      <div><span style="color: #7eb8da;">tags:</span> [pipeline, newsapi]</div>
+      <div style="color: #888;">---</div>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">system/decisions/*.md</div>
+    <div class="mockup-body" style="font-family: monospace; font-size: 12px; line-height: 1.8; padding: 16px;">
+      <div style="color: #888;">---</div>
+      <div><span style="color: #a8d8a8;">type:</span> decision</div>
+      <div><span style="color: #a8d8a8;">component:</span> video | metadata | ...</div>
+      <div><span style="color: #a8d8a8;">status:</span> accepted | superseded | proposed</div>
+      <div><span style="color: #a8d8a8;">created:</span> 2026-03-16</div>
+      <div><span style="color: #a8d8a8;">context:</span> "short description of why"</div>
+      <div><span style="color: #a8d8a8;">tags:</span> [cost, heygen, aws]</div>
+      <div style="color: #888;">---</div>
+    </div>
+  </div>
+</div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">system/lessons/*.md</div>
+    <div class="mockup-body" style="font-family: monospace; font-size: 12px; line-height: 1.8; padding: 16px;">
+      <div style="color: #888;">---</div>
+      <div><span style="color: #d8c8a8;">type:</span> lesson</div>
+      <div><span style="color: #d8c8a8;">component:</span> tiktok | youtube | ...</div>
+      <div><span style="color: #d8c8a8;">severity:</span> high | medium | low</div>
+      <div><span style="color: #d8c8a8;">created:</span> 2026-03-16</div>
+      <div><span style="color: #d8c8a8;">tags:</span> [api, upload, auth]</div>
+      <div style="color: #888;">---</div>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">integrations/**/*.md</div>
+    <div class="mockup-body" style="font-family: monospace; font-size: 12px; line-height: 1.8; padding: 16px;">
+      <div style="color: #888;">---</div>
+      <div><span style="color: #d8a8d8;">type:</span> integration</div>
+      <div><span style="color: #d8a8d8;">service:</span> youtube | tiktok | aws-gpu | ...</div>
+      <div><span style="color: #d8a8d8;">category:</span> social-platform | infrastructure</div>
+      <div><span style="color: #d8a8d8;">status:</span> implemented | in-progress | planned</div>
+      <div><span style="color: #d8a8d8;">auth_method:</span> oauth2 | api-key | iam</div>
+      <div><span style="color: #d8a8d8;">created:</span> 2026-03-16</div>
+      <div><span style="color: #d8a8d8;">updated:</span> 2026-03-16</div>
+      <div><span style="color: #d8a8d8;">tags:</span> [social, video, upload]</div>
+      <div style="color: #888;">---</div>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<h3>Integration Note Contents</h3>
+<p class="subtitle">What each integration note should cover</p>
+
+<div class="mockup">
+  <div class="mockup-header">Example: integrations/social-platforms/instagram-api.md</div>
+  <div class="mockup-body" style="font-family: monospace; font-size: 12px; line-height: 1.8; padding: 16px;">
+    <div style="color: #888;">## Overview</div>
+    <div style="color: #aaa;">What this service does in our pipeline</div>
+    <br/>
+    <div style="color: #888;">## Authentication</div>
+    <div style="color: #aaa;">OAuth flow, token management, scopes needed</div>
+    <br/>
+    <div style="color: #888;">## API Endpoints</div>
+    <div style="color: #aaa;">Key endpoints, request/response formats</div>
+    <br/>
+    <div style="color: #888;">## Content Requirements</div>
+    <div style="color: #aaa;">Video specs, caption limits, hashtag rules, aspect ratios</div>
+    <br/>
+    <div style="color: #888;">## Rate Limits &amp; Quotas</div>
+    <div style="color: #aaa;">API limits, daily quotas, retry strategies</div>
+    <br/>
+    <div style="color: #888;">## Gotchas</div>
+    <div style="color: #aaa;">Platform-specific quirks agents should know</div>
+    <br/>
+    <div style="color: #888;">## Implementation Status</div>
+    <div style="color: #aaa;">What's built, what's pending, what's blocked</div>
+  </div>
+</div>

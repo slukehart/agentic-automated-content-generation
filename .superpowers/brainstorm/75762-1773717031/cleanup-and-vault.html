@@ -1,0 +1,101 @@
+<h2>Project Cleanup + Updated Vault Structure</h2>
+<p class="subtitle">Reorganize for the HeyGen→custom model transition and multi-platform expansion</p>
+
+<h3>Files &amp; Folders to Remove</h3>
+<p class="subtitle">Legacy/dead weight that no longer serves the project</p>
+
+<div class="section" style="background: #1a1a2e; border-radius: 8px; padding: 20px; font-family: monospace; font-size: 13px; line-height: 2;">
+  <div style="color: #ff6b6b;">🗑 <strong>audio/</strong> <span style="color: #888;">— Legacy TTS, replaced by HeyGen (which is itself being replaced)</span></div>
+  <div style="color: #ff6b6b;">🗑 <strong>video/</strong> <span style="color: #888;">— HeyGen integration code, being replaced by custom model</span></div>
+  <div style="color: #ff6b6b;">🗑 <strong>WEBAPP_VERIFICATION/</strong> <span style="color: #888;">— Empty directory</span></div>
+  <div style="color: #ff6b6b;">🗑 <strong>content-gen</strong> <span style="color: #888;">— 21MB compiled binary, should not be in repo</span></div>
+  <div style="color: #ff6b6b;">🗑 <strong>poetry.lock</strong> <span style="color: #888;">— Already in .gitignore, Python deps will change</span></div>
+  <div style="color: #ff6b6b;">🗑 <strong>test_video.sh</strong> <span style="color: #888;">— HeyGen test script, no longer relevant</span></div>
+  <br/>
+  <div style="color: #ffa94d;">📄 <strong>Markdown docs to consolidate or remove:</strong></div>
+  <div style="color: #ff6b6b; padding-left: 24px;">AUDIO_SETUP.md <span style="color: #888;">— Legacy TTS setup</span></div>
+  <div style="color: #ff6b6b; padding-left: 24px;">AUDIO_VIDEO_SETUP.md <span style="color: #888;">— Legacy combined setup</span></div>
+  <div style="color: #ff6b6b; padding-left: 24px;">VIDEO_SETUP.md <span style="color: #888;">— HeyGen setup instructions</span></div>
+  <div style="color: #ff6b6b; padding-left: 24px;">TTS_VIDEO_GUIDE.md <span style="color: #888;">— Legacy TTS guide</span></div>
+  <div style="color: #ff6b6b; padding-left: 24px;">QUICKSTART.md <span style="color: #888;">— References HeyGen workflow, needs full rewrite</span></div>
+  <div style="color: #ffa94d; padding-left: 24px;">TIKTOK_WORKFLOW_DIAGRAM.md <span style="color: #888;">— Keep but move to docs/</span></div>
+  <div style="color: #ffa94d; padding-left: 24px;">TIKTOK_USAGE_GUIDE.md <span style="color: #888;">— Keep but move to docs/</span></div>
+  <div style="color: #ffa94d; padding-left: 24px;">METADATA_GUIDE.md <span style="color: #888;">— Keep but move to docs/</span></div>
+  <div style="color: #ffa94d; padding-left: 24px;">GITHUB_PAGES_SETUP.md <span style="color: #888;">— Keep but move to docs/</span></div>
+  <div style="color: #ffa94d; padding-left: 24px;">WORKFLOW.md <span style="color: #888;">— Keep but move to docs/</span></div>
+  <br/>
+  <div style="color: #ffa94d;">📄 <strong>Legal docs — keep but reorganize:</strong></div>
+  <div style="color: #ffa94d; padding-left: 24px;">LEGAL_README.md → docs/legal/</div>
+  <div style="color: #ffa94d; padding-left: 24px;">PRIVACY_POLICY.md + PRIVACY_POLICY/ → docs/legal/</div>
+  <div style="color: #ffa94d; padding-left: 24px;">TERMS_OF_SERVICE.md + TERMS_OF_SERVICE/ → docs/legal/</div>
+  <div style="color: #ffa94d; padding-left: 24px;">privacy_policy.html + terms_of_service.html → docs/legal/</div>
+  <br/>
+  <div style="color: #ffa94d;">📄 <strong>MP4 files (12 videos, ~100MB total):</strong></div>
+  <div style="color: #ffa94d; padding-left: 24px;">Move to output/videos/ or add to .gitignore</div>
+</div>
+
+<br/>
+
+<h3>Updated Project Structure</h3>
+<p class="subtitle">Clean layout reflecting where the project is heading</p>
+
+<div class="section" style="background: #1a1a2e; border-radius: 8px; padding: 20px; font-family: monospace; font-size: 13px; line-height: 2;">
+  <div style="color: #fff;"><strong>content-generation-automation/</strong></div>
+  <br/>
+  <div style="color: #a8d8a8; padding-left: 12px;">📁 <strong>vault/</strong> <span style="color: #888;">— Obsidian knowledge base (NEW)</span></div>
+  <div style="padding-left: 36px; color: #7eb8da;">vision/ <span style="color: #666;">— your goals &amp; roadmap</span></div>
+  <div style="padding-left: 36px; color: #a8d8a8;">system/architecture/ <span style="color: #666;">— how components work</span></div>
+  <div style="padding-left: 36px; color: #a8d8a8;">system/decisions/ <span style="color: #666;">— why things were built this way</span></div>
+  <div style="padding-left: 36px; color: #a8d8a8;">system/lessons/ <span style="color: #666;">— gotchas &amp; tips</span></div>
+  <div style="padding-left: 36px; color: #d8c8a8;">integrations/ <span style="color: #666;">— external service knowledge (NEW)</span></div>
+  <div style="padding-left: 60px; color: #777;">youtube-api.md · tiktok-api.md · instagram-api.md</div>
+  <div style="padding-left: 60px; color: #777;">twitter-api.md · facebook-api.md · linkedin-api.md</div>
+  <div style="padding-left: 60px; color: #777;">aws-gpu.md · newsapi.md · grok-xai.md</div>
+  <div style="padding-left: 36px; color: #d8c8a8;">prompts/ <span style="color: #666;">— prompt engineering notes</span></div>
+  <div style="padding-left: 36px; color: #d8a8d8;">templates/ <span style="color: #666;">— note templates</span></div>
+  <br/>
+  <div style="color: #fff; padding-left: 12px;">📁 <strong>news/</strong> <span style="color: #888;">— article fetching (existing)</span></div>
+  <div style="color: #fff; padding-left: 12px;">📁 <strong>metadata/</strong> <span style="color: #888;">— manifest &amp; types (existing)</span></div>
+  <div style="color: #fff; padding-left: 12px;">📁 <strong>media/</strong> <span style="color: #888;">— upload controllers (existing, expand for new platforms)</span></div>
+  <div style="color: #fff; padding-left: 12px;">📁 <strong>tools/</strong> <span style="color: #888;">— CLI utilities (existing)</span></div>
+  <div style="color: #fff; padding-left: 12px;">📁 <strong>backgrounds/</strong> <span style="color: #888;">— AI-generated images (existing)</span></div>
+  <div style="color: #fff; padding-left: 12px;">📁 <strong>callback/</strong> <span style="color: #888;">— OAuth callback page (existing)</span></div>
+  <br/>
+  <div style="color: #ffa94d; padding-left: 12px;">📁 <strong>docs/</strong> <span style="color: #888;">— all documentation consolidated (NEW)</span></div>
+  <div style="padding-left: 36px; color: #aaa;">guides/ <span style="color: #666;">— TIKTOK_USAGE_GUIDE, METADATA_GUIDE, etc.</span></div>
+  <div style="padding-left: 36px; color: #aaa;">legal/ <span style="color: #666;">— privacy policy, terms, legal readme</span></div>
+  <div style="padding-left: 36px; color: #aaa;">setup/ <span style="color: #666;">— GITHUB_PAGES_SETUP, etc.</span></div>
+  <br/>
+  <div style="color: #fff; padding-left: 12px;">📁 <strong>output/</strong> <span style="color: #888;">— generated content (NEW)</span></div>
+  <div style="padding-left: 36px; color: #aaa;">videos/ <span style="color: #666;">— MP4 files (moved from root)</span></div>
+  <br/>
+  <div style="color: #fff; padding-left: 12px;">main.go · go.mod · go.sum · .env · README.md</div>
+  <div style="color: #fff; padding-left: 12px;">content_manifest.json</div>
+</div>
+
+<br/>
+
+<h3>New: vault/integrations/</h3>
+<p class="subtitle">Knowledge base for every external service you interface with</p>
+
+<div class="section" style="background: #1a1a2e; border-radius: 8px; padding: 20px; font-family: monospace; font-size: 13px; line-height: 1.8;">
+  <div style="color: #d8c8a8;"><strong>Each integration note contains:</strong></div>
+  <div style="padding-left: 12px; color: #aaa;">• API endpoints, auth methods, rate limits</div>
+  <div style="padding-left: 12px; color: #aaa;">• Platform-specific quirks and gotchas</div>
+  <div style="padding-left: 12px; color: #aaa;">• Content format requirements (video specs, caption limits)</div>
+  <div style="padding-left: 12px; color: #aaa;">• OAuth flow details</div>
+  <div style="padding-left: 12px; color: #aaa;">• Status: implemented / in-progress / planned</div>
+  <br/>
+  <div style="color: #a8d8a8;"><strong>Social Platforms:</strong></div>
+  <div style="padding-left: 12px; color: #aaa;">youtube-api.md <span style="color: #4a9;">✓ implemented</span></div>
+  <div style="padding-left: 12px; color: #aaa;">tiktok-api.md <span style="color: #4a9;">✓ implemented</span></div>
+  <div style="padding-left: 12px; color: #aaa;">instagram-api.md <span style="color: #ffa94d;">○ planned</span></div>
+  <div style="padding-left: 12px; color: #aaa;">twitter-api.md <span style="color: #ffa94d;">○ planned</span></div>
+  <div style="padding-left: 12px; color: #aaa;">facebook-api.md <span style="color: #ffa94d;">○ planned</span></div>
+  <div style="padding-left: 12px; color: #aaa;">linkedin-api.md <span style="color: #ffa94d;">○ planned</span></div>
+  <br/>
+  <div style="color: #a8d8a8;"><strong>Infrastructure:</strong></div>
+  <div style="padding-left: 12px; color: #aaa;">aws-gpu.md <span style="color: #ffa94d;">○ planned — custom video model training</span></div>
+  <div style="padding-left: 12px; color: #aaa;">newsapi.md <span style="color: #4a9;">✓ implemented</span></div>
+  <div style="padding-left: 12px; color: #aaa;">grok-xai.md <span style="color: #4a9;">✓ implemented</span></div>
+</div>

@@ -41,3 +41,5 @@ poetry.lock
 # vendor/
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Go
+
+docs/**

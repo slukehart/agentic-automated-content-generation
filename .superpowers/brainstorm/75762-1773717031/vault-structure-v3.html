@@ -1,0 +1,56 @@
+<h2>Updated Vault Structure (v3)</h2>
+<p class="subtitle">HeyGen removed — clean slate for custom model + multi-platform expansion</p>
+
+<div class="section" style="background: #1a1a2e; border-radius: 8px; padding: 20px; font-family: monospace; font-size: 13px; line-height: 2;">
+  <div style="color: #fff; font-size: 15px;"><strong>vault/</strong></div>
+
+  <br/>
+  <div style="color: #7eb8da; padding-left: 12px;">📁 <strong>vision/</strong> <span style="color: #888; font-style: italic;">— You write, agents read-only</span></div>
+  <div style="padding-left: 36px; color: #aaa;">goals.md <span style="color: #666;">— what you're building toward</span></div>
+  <div style="padding-left: 36px; color: #aaa;">roadmap.md <span style="color: #666;">— phased feature plans</span></div>
+  <div style="padding-left: 36px; color: #aaa;">feature-ideas/ <span style="color: #666;">— one note per idea</span></div>
+
+  <br/>
+  <div style="color: #a8d8a8; padding-left: 12px;">📁 <strong>system/</strong> <span style="color: #888; font-style: italic;">— Agents draft, you approve</span></div>
+  <div style="padding-left: 36px; color: #a8d8a8;">📁 architecture/</div>
+  <div style="padding-left: 60px; color: #777;">pipeline-overview.md <span style="color: #555;">— end-to-end content generation flow</span></div>
+  <div style="padding-left: 60px; color: #777;">news-fetching.md <span style="color: #555;">— NewsAPI integration &amp; article selection</span></div>
+  <div style="padding-left: 60px; color: #777;">metadata-generation.md <span style="color: #555;">— single LLM call for all platform metadata</span></div>
+  <div style="padding-left: 60px; color: #777;">video-generation.md <span style="color: #555;">— custom model on AWS GPU</span></div>
+  <div style="padding-left: 60px; color: #777;">upload-system.md <span style="color: #555;">— multi-platform upload orchestration</span></div>
+  <div style="padding-left: 60px; color: #777;">manifest-system.md <span style="color: #555;">— content_manifest.json CRUD &amp; schema</span></div>
+
+  <div style="padding-left: 36px; color: #a8d8a8;">📁 decisions/</div>
+  <div style="padding-left: 60px; color: #777;">2026-03-16-custom-model-over-heygen.md <span style="color: #555;">— cost rationale for the switch</span></div>
+
+  <div style="padding-left: 36px; color: #a8d8a8;">📁 lessons/</div>
+  <div style="padding-left: 60px; color: #777; font-size: 12px;">Component-named: tiktok-api-quirks.md, oauth-token-refresh.md</div>
+
+  <br/>
+  <div style="color: #d8c8a8; padding-left: 12px;">📁 <strong>integrations/</strong> <span style="color: #888; font-style: italic;">— External service knowledge (both write)</span></div>
+
+  <div style="padding-left: 36px; color: #d8c8a8;">📁 social-platforms/</div>
+  <div style="padding-left: 60px; color: #4a9;">youtube-api.md <span style="color: #666;">✓ implemented</span></div>
+  <div style="padding-left: 60px; color: #4a9;">tiktok-api.md <span style="color: #666;">✓ implemented</span></div>
+  <div style="padding-left: 60px; color: #ffa94d;">instagram-api.md <span style="color: #666;">○ planned</span></div>
+  <div style="padding-left: 60px; color: #ffa94d;">twitter-api.md <span style="color: #666;">○ planned</span></div>
+  <div style="padding-left: 60px; color: #ffa94d;">facebook-api.md <span style="color: #666;">○ planned</span></div>
+  <div style="padding-left: 60px; color: #ffa94d;">linkedin-api.md <span style="color: #666;">○ planned</span></div>
+
+  <div style="padding-left: 36px; color: #d8c8a8;">📁 infrastructure/</div>
+  <div style="padding-left: 60px; color: #ffa94d;">aws-gpu.md <span style="color: #666;">○ planned — custom video model training &amp; inference</span></div>
+  <div style="padding-left: 60px; color: #4a9;">newsapi.md <span style="color: #666;">✓ implemented</span></div>
+  <div style="padding-left: 60px; color: #4a9;">grok-xai.md <span style="color: #666;">✓ implemented — summarization, metadata, image gen</span></div>
+
+  <br/>
+  <div style="color: #d8a8d8; padding-left: 12px;">📁 <strong>prompts/</strong> <span style="color: #888; font-style: italic;">— Both write</span></div>
+  <div style="padding-left: 36px; color: #aaa;">metadata-generation.md <span style="color: #666;">— prompt that generates all platform metadata</span></div>
+  <div style="padding-left: 36px; color: #aaa;">summary-tuning.md <span style="color: #666;">— what produces good 150-200 word summaries</span></div>
+
+  <br/>
+  <div style="color: #c8a8d8; padding-left: 12px;">📁 <strong>templates/</strong> <span style="color: #888; font-style: italic;">— Shared note templates</span></div>
+  <div style="padding-left: 36px; color: #aaa;">architecture-note.md</div>
+  <div style="padding-left: 36px; color: #aaa;">decision-note.md</div>
+  <div style="padding-left: 36px; color: #aaa;">lesson-note.md</div>
+  <div style="padding-left: 36px; color: #aaa;">integration-note.md</div>
+</div>
