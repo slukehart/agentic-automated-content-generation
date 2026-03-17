@@ -46,6 +46,7 @@ poetry.lock
 vault/.obsidian/
 vault/.drafts/
 vault/.smart-connections/
+vault/.smart-env/
 
 # Superpowers brainstorm sessions
 .superpowers/
