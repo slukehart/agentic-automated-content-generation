@@ -2,12 +2,10 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:www.whytryai.com)",
-      "Bash(echo \"EXIT: $?\")",
       "Bash(git add:*)",
-      "Bash(git mv:*)",
-      "Bash(chmod:*)",
       "Bash(bash .claude/hooks/session-start-vault-check.sh)",
-      "Bash(echo \"Exit code: $?\")"
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(python3 -m json.tool /Users/slukehart/Documents/Github/content-generation-automation/.claude/settings.local.json)"
     ]
   },
   "enabledMcpjsonServers": [
