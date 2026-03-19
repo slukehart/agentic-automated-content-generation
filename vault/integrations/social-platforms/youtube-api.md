@@ -79,3 +79,7 @@ Shorts URL: `https://youtube.com/shorts/{id}`
 
 - Video processing takes 1–5 minutes after upload before it is fully available.
 - Shorts appear in the Shorts feed within a few hours of processing.
+
+## Related
+
+- [[upload-system]] — How the pipeline uses this API

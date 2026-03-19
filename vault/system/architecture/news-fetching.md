@@ -63,3 +63,9 @@ Note: `Article` has more fields than `AiArticleParameters`. Only `Url` and `Titl
 **Endpoint:** `GET https://newsapi.org/v2/top-headlines?country=us&sortBy=popularity`
 
 **Article selection:** first element of the returned articles array (index 0). No randomization or history-based deduplication.
+
+## Related
+
+- [[pipeline-overview]] — Where this fits in the pipeline
+- [[newsapi]] — API integration details
+- [[metadata-generation]] — Next stage: processes the fetched article

@@ -32,3 +32,7 @@ TODO: Research and document when implementation begins.
 ## Notes
 
 TODO: Research and document when implementation begins.
+
+## Related
+
+- [[upload-system]] — Will be integrated into the upload pipeline

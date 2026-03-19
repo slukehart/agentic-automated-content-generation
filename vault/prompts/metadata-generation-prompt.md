@@ -150,3 +150,9 @@ This means callers should validate that `summary` is non-empty before proceeding
 - **The YouTube description cap** is documented as 1000 chars in the prompt, but the `YouTubeMetadata` type comment says "Max 5000 chars." These are inconsistent; the actual YouTube API allows up to 5000 characters.
 - **No output length hint per-platform.** For Facebook, the prompt says "300–500 words perform well" but the JSON field has no enforced length signal. In practice Grok sometimes under-generates for Facebook.
 - **SEO `sentiment` field** is a free-form string. Constraining it to an enum (positive/negative/neutral) in the prompt is good, but the type is `string` — invalid values won't be caught at parse time.
+
+## Related
+
+- [[metadata-generation]] — Architecture of the metadata generation system
+- [[grok-xai]] — API integration details
+- [[summary-tuning]] — Related tuning notes for summary quality

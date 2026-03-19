@@ -59,3 +59,7 @@ type AiArticleParameters struct {
 - Only the first article is used per pipeline run. The full list is built but discarded after index 0.
 - `log.Fatal` is called on any error (network, JSON parse, .env load). No graceful error handling.
 - `NewsAPI` free tier limits requests and does not return full article body — only `description` and a truncated `content` field. The downstream Grok call uses the URL for full context.
+
+## Related
+
+- [[news-fetching]] — How the pipeline uses this API

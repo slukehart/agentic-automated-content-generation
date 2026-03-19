@@ -79,3 +79,8 @@ Source: `news/metadata_generation.go` — `GenerateNewsroomBackground()`.
 - The chat completions call is the most latency-sensitive step — budget 1–2 minutes per run.
 - If the LLM wraps its JSON in markdown code blocks, the stripping logic in `GenerateEnrichedNewsContent()` handles it.
 - Image generation is a separate, optional step from metadata generation and can be called independently.
+
+## Related
+
+- [[metadata-generation]] — How the pipeline uses Grok-3 for metadata
+- [[summary-tuning]] — Quality tuning for Grok summary output

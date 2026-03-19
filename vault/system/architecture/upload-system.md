@@ -108,3 +108,10 @@ Metadata is generated for all 6 platforms on every run but upload code exists fo
 | `client_secret.json` | YouTube OAuth2 client credentials (from Google Cloud Console) |
 | `~/.credentials/youtube-oauth.json` | Cached YouTube OAuth token |
 | `~/.credentials/tiktok-oauth.json` | Cached TikTok OAuth token |
+
+## Related
+
+- [[pipeline-overview]] — Where this fits in the pipeline
+- [[manifest-system]] — Source of content metadata and posting status tracking
+- [[youtube-api]] — YouTube upload API details
+- [[tiktok-api]] — TikTok upload API details

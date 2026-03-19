@@ -31,3 +31,8 @@ Volume target requires cost-per-video to be near zero after infrastructure costs
 - `audio/` directory (legacy TTS) was already removed — HeyGen handled TTS internally
 - New video generation architecture needs to be built from scratch
 - Output format must remain: portrait 720x1280, 50-70 seconds, AI avatar with TTS
+
+## Related
+
+- [[video-generation]] — Architecture of the replacement system
+- [[aws-gpu]] — Infrastructure for the custom model

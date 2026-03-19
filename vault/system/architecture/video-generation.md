@@ -67,3 +67,10 @@ Once AWS migration is complete, expected configuration:
 | Avatar model config | TBD based on chosen model |
 
 The `HEYGEN_API_KEY` check in `main.go` will be removed as part of the migration.
+
+## Related
+
+- [[pipeline-overview]] — Where this fits in the pipeline
+- [[2026-03-16-custom-model-over-heygen]] — Decision to build custom model
+- [[aws-gpu]] — Infrastructure for custom model
+- [[manifest-system]] — Stores video metadata after generation

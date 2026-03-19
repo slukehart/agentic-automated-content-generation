@@ -95,3 +95,7 @@ Returns `TikTokUploadResult` with:
 
 - Caption and hashtags from `ContentItem.Platforms.TikTok` are printed to stdout as instructions for the creator; they are not set via API (inbox flow limitation).
 - The `video.publish` scope is listed in the OAuth request but the actual upload uses the inbox endpoint, not the direct publish endpoint (`/v2/post/publish/video/init/`).
+
+## Related
+
+- [[upload-system]] — How the pipeline uses this API

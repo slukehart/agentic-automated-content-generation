@@ -68,3 +68,8 @@ From the system prompt:
 - Add explicit instruction: "Use 3–5 short sentences. Each sentence should be under 25 words."
 - Add source citation format: "According to [outlet name], ..." as required first-sentence attribution format
 - Consider a separate summary call with a tighter prompt and lower max_tokens (500–800) to reduce risk of JSON truncation on the metadata side
+
+## Related
+
+- [[metadata-generation]] — Architecture of the system these notes apply to
+- [[grok-xai]] — API powering the summary generation

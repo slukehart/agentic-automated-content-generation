@@ -40,3 +40,8 @@ TODO: Research and document when implementation begins.
 ## Notes
 
 TODO: Research and document when implementation begins.
+
+## Related
+
+- [[video-generation]] — Architecture of the custom video system
+- [[2026-03-16-custom-model-over-heygen]] — Decision that led to AWS GPU approach

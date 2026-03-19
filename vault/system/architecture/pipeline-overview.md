@@ -68,3 +68,11 @@ main.go
 
 Content ID format: `news_YYYYMMDD_HHMMSS` (e.g., `news_20260317_143022`)
 Output video path: `{contentID}_final.mp4`
+
+## Related
+
+- [[news-fetching]] — Stage 1: article retrieval
+- [[metadata-generation]] — Stage 2: summary + platform metadata
+- [[video-generation]] — Stage 3: AI avatar video
+- [[manifest-system]] — Stage 4: content manifest storage
+- [[upload-system]] — Stage 5: platform uploads

@@ -101,3 +101,8 @@ For TikTok inbox uploads, `Posted` remains `false` (not yet live on feed) and `U
 | `ManifestVersion` | `"1.0"` | Manifest format version |
 
 The manifest file is created automatically on first `AddItem` call if it does not exist. It is stored in the project root alongside the binary.
+
+## Related
+
+- [[pipeline-overview]] — Where this fits in the pipeline
+- [[upload-system]] — Reads manifest for upload metadata and updates posting status

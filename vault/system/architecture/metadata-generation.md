@@ -86,3 +86,11 @@ type LLMMetadataResponse struct {
 | Text max tokens | 4000 |
 | Timeout | 5 minutes (both calls) |
 | Image output dir | `backgrounds/` |
+
+## Related
+
+- [[pipeline-overview]] — Where this fits in the pipeline
+- [[grok-xai]] — API integration details for Grok-3 and Grok-2-image
+- [[summary-tuning]] — Quality tuning notes for the summary output
+- [[metadata-generation-prompt]] — Prompt engineering details
+- [[video-generation]] — Next stage: uses the summary for narration
