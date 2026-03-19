@@ -47,9 +47,13 @@ vault/.obsidian/
 vault/.drafts/
 vault/.smart-connections/
 vault/.smart-env/
+vault/inbox/*
+!vault/inbox/.gitkeep
+!vault/inbox/index.md
 
 # Superpowers brainstorm sessions
 .superpowers/
+.superpowers/**
 
 # Output
 output/

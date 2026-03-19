@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.whytryai.com)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(git add:*)",
+      "Bash(git mv:*)",
+      "Bash(chmod:*)",
+      "Bash(bash .claude/hooks/session-start-vault-check.sh)",
+      "Bash(echo \"Exit code: $?\")"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "qmd",
+    "smart-connections"
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "bash .claude/hooks/session-start-vault-check.sh"
+      }
+    ]
+  }
+}
