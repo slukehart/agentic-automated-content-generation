@@ -5,7 +5,6 @@
       "Bash(git add:*)",
       "Bash(bash .claude/hooks/session-start-vault-check.sh)",
       "Bash(echo \"EXIT: $?\")",
-      "Bash(python3 -m json.tool /Users/slukehart/Documents/Github/content-generation-automation/.claude/settings.local.json)",
       "Bash(git push:*)",
       "Bash(go build *)",
       "Bash(echo \"exit: $?\")",
@@ -30,7 +29,6 @@
     "qmd",
     "smart-connections"
   ],
-
   "hooks": {
     "SessionStart": [
       {
