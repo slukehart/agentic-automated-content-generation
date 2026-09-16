@@ -5,18 +5,41 @@
       "Bash(git add:*)",
       "Bash(bash .claude/hooks/session-start-vault-check.sh)",
       "Bash(echo \"EXIT: $?\")",
-      "Bash(python3 -m json.tool /Users/slukehart/Documents/Github/content-generation-automation/.claude/settings.local.json)"
-    ]
+      "Bash(python3 -m json.tool /Users/slukehart/Documents/Github/content-generation-automation/.claude/settings.local.json)",
+      "Bash(git push:*)",
+      "Bash(go build *)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(go test *)",
+      "Bash(go vet *)",
+      "Bash(go run *)",
+      "Bash(go mod *)",
+      "Bash(go fmt *)",
+      "Bash(git status)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)"
+    ],
+    "defaultMode": "acceptEdits"
   },
   "enabledMcpjsonServers": [
     "qmd",
     "smart-connections"
   ],
+
   "hooks": {
     "SessionStart": [
       {
-        "type": "command",
-        "command": "bash .claude/hooks/session-start-vault-check.sh"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/session-start-vault-check.sh"
+          }
+        ]
       }
     ]
   }
