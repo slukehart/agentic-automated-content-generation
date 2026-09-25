@@ -1,0 +1,58 @@
+# Merged from meituan-longcat/LongCat-Video's requirements.txt AND
+# requirements_avatar.txt (a second, avatar-specific file we initially missed --
+# only pulling requirements.txt caused the pyloudnorm/scipy/audio-separator
+# ModuleNotFoundError). Verified against every actual `import` in the repo
+# reachable from run_demo_avatar_single_audio_to_video.py's import chain.
+#
+# requirements.txt (base)
+torch==2.6.0
+numpy==1.26.4
+transformers==4.41.0
+loguru==0.7.2
+diffusers==0.35.1
+einops==0.8.0
+ftfy==6.2.0
+psutil==6.0.0
+av==12.0.0
+opencv-python==4.9.0.80
+flash-attn==2.7.4.post1
+streamlit==1.50.0
+pyarrow==20.0.0
+imageio==2.37.0
+imageio-ffmpeg==0.6.0
+
+# requirements_avatar.txt (avatar-specific -- openai excluded: only used by
+# prompt_enhancer.py, which run_demo_avatar_single_audio_to_video.py never imports)
+scikit-learn==1.6.1
+scikit-image==0.25.2
+scipy==1.15.3
+soundfile==0.13.1
+soxr==0.5.0.post1
+librosa==0.11.0
+sympy==1.13.1
+audio-separator==0.30.2
+pyloudnorm==0.1.1
+nvidia-ml-py==13.580.65
+tzdata==2025.2
+onnx==1.18.0
+onnxruntime==1.16.3
+numpy==1.26.4
+cffi==2.0.0
+chardet==5.2.0
+
+# Imported directly but absent from BOTH upstream requirements files
+# (confirmed via full repo import audit, not upstream-listed)
+regex
+torchvision==0.21.0
+Pillow
+
+# Added for the RunPod handler itself (not an upstream dependency)
+runpod
+huggingface_hub
+
+# For run_demo_avatar_single_lowmem.py's --use_torchao path (community PR #115
+# on meituan-longcat/LongCat-Video, not yet merged -- reviewed before adopting,
+# see vault decision note). Pin matches the PR author's validated known-good
+# combo for torch==2.6.0 (torchao==0.17.0 breaks on 2.6.0 per PR discussion).
+torchao==0.10.0
+accelerate

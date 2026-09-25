@@ -1,5 +1,6 @@
 .env
 .cursor/*
+.DS_Store
 
 # OAuth credentials - NEVER commit these!
 client_secret.json

@@ -21,7 +21,14 @@
       "Bash(git branch:*)",
       "Bash(ls:*)",
       "Bash(find:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "mcp__qmd__search",
+      "mcp__qmd__multi_get",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:huggingface.co)",
+      "WebFetch(domain:meigen-ai.github.io)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ],
     "defaultMode": "acceptEdits"
   },

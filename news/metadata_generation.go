@@ -133,7 +133,16 @@ func GenerateNewsroomBackground(prompt string) (*BackgroundImageResult, error) {
 
 	// Use default prompt if none provided
 	if prompt == "" {
-		prompt = "A professional modern newsroom background with dark blue tones, large screens displaying news graphics, sleek furniture, and ambient lighting. Cinematic, high quality, photorealistic."
+		prompt = "A good-looking female news broadcaster with straight blonde hair and blue eyes, sitting " +
+			"upright at a modern news desk, facing the camera directly with a warm confident expression, " +
+			"hands resting naturally on the desk. Shot on an 85mm portrait lens with shallow depth of " +
+			"field: the broadcaster is in sharp focus in the foreground, while the background sits " +
+			"clearly further back in space and is slightly softer/out of focus, creating visible spatial " +
+			"separation between subject and backdrop rather than looking flat or pasted on. Background: " +
+			"a modern newsroom with dark blue tones, large screens showing blurred abstract news graphics " +
+			"(no legible text), sleek furniture, and ambient studio lighting that rims the subject to " +
+			"further separate her from the backdrop. Portrait orientation, cinematic, high quality, " +
+			"photorealistic."
 	}
 
 	fmt.Printf("Generating newsroom background image...\n")
@@ -145,13 +154,15 @@ func GenerateNewsroomBackground(prompt string) (*BackgroundImageResult, error) {
 		Prompt         string `json:"prompt"`
 		N              int    `json:"n"`
 		ResponseFormat string `json:"response_format"`
+		AspectRatio    string `json:"aspect_ratio"`
 	}
 
 	reqBody := imageGenRequest{
-		Model:          "grok-2-image",
+		Model:          "grok-imagine-image-2.0",
 		Prompt:         prompt,
-		N: 				1,
+		N:              1,
 		ResponseFormat: "b64_json",
+		AspectRatio:    "9:16",
 	}
 
 	requestData, err := json.Marshal(reqBody)
