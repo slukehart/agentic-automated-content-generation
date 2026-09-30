@@ -167,7 +167,7 @@ func showUnposted(manager *metadata.ManifestManager) {
 		log.Fatalf("Error: %v", err)
 	}
 
-	fmt.Println("Items not posted to any platform:\n")
+	fmt.Print("Items not posted to any platform:\n\n")
 	count := 0
 	for _, item := range items {
 		if !item.Status.YouTube.Posted &&
