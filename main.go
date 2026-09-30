@@ -34,8 +34,8 @@ func main() {
 	}
 
 	// Verify critical API keys are set
-	if os.Getenv("HEYGEN_API_KEY") == "" {
-		log.Fatal("❌ HEYGEN_API_KEY environment variable is not set. Please add it to your .env file or export it.")
+	if os.Getenv("RUNPOD_API_KEY") == "" || os.Getenv("RUNPOD_ENDPOINT_ID") == "" {
+		log.Fatal("❌ RUNPOD_API_KEY and RUNPOD_ENDPOINT_ID must be set. Please add them to your .env file or export them.")
 	}
 
 	// Initialize manifest manager
@@ -59,15 +59,13 @@ func main() {
 	fmt.Println("\n🎨 Generating custom newsroom background with Grok AI...")
 	backgroundResult, err := news.GenerateNewsroomBackground("")
 	if err != nil {
-		log.Printf("⚠️  Warning: Failed to generate background image: %v", err)
-		log.Printf("    Falling back to default newsroom background")
-		backgroundResult = nil
-	} else {
-		fmt.Printf("✅ Background image saved: %s\n", backgroundResult.ImagePath)
+		// LongCat animates whatever is in cond_image, so there is no fallback without it
+		log.Fatalf("❌ Error generating avatar image: %v", err)
 	}
+	fmt.Printf("✅ Avatar image saved: %s\n", backgroundResult.ImagePath)
 
-	// Generate video with HeyGen's built-in text-to-speech
-	fmt.Println("\n=== Generating AI Avatar Video with Text-to-Speech ===")
+	// Generate narration (Kokoro) then animate the avatar image with it (LongCat on RunPod)
+	fmt.Println("\n=== Generating AI Avatar Video ===")
 
 	// Generate unique content ID
 	contentID := fmt.Sprintf("news_%s", time.Now().Format("20060102_150405"))
@@ -76,24 +74,15 @@ func main() {
 	fmt.Printf("\n📝 Processing: %s\n", contentID)
 	fmt.Printf("    Summary: %s...\n", truncateString(enrichedContent.Summary, 60))
 
-	// Generate AI avatar video directly from text (no separate audio step!)
-	fmt.Printf("    🎬 Generating AI avatar video with TTS (this may take 5-10 minutes)...\n")
-	fmt.Printf("    📺 Avatar: Professional female news anchor\n")
-	fmt.Printf("    🎙️ Voice: HeyGen professional female (US)\n")
-	if backgroundResult != nil {
-		fmt.Printf("    🏢 Background: Custom AI-generated newsroom (%s)\n", backgroundResult.ImagePath)
-	} else {
-		fmt.Printf("    🏢 Background: Default professional newsroom\n")
+	audioPath := fmt.Sprintf("audio/%s.wav", contentID)
+	fmt.Printf("    🎙️ Generating narration with Kokoro...\n")
+	if err := video.GenerateNarration(enrichedContent.Summary, audioPath); err != nil {
+		log.Fatalf("    ❌ Narration failed: %v", err)
 	}
 
-	var videoResp *video.VideoResponse
-	if backgroundResult != nil {
-		// Use custom background image
-		videoResp, err = video.GenerateNewsVideoWithBackgroundImage(enrichedContent.Summary, finalPath, backgroundResult.ImagePath)
-	} else {
-		// Fall back to default background
-		videoResp, err = video.GenerateNewsVideoFromText(enrichedContent.Summary, finalPath)
-	}
+	// A ~60s video takes ~40 minutes of A100 time plus queue wait
+	fmt.Printf("    🎬 Generating avatar video on RunPod (this can take 30+ minutes)...\n")
+	videoResp, err := video.GenerateAvatarVideo(backgroundResult.ImagePath, audioPath, "", finalPath)
 	if err != nil {
 		log.Printf("    ❌ Video failed: %v", err)
 		if videoResp != nil && videoResp.Message != "" {
@@ -101,16 +90,8 @@ func main() {
 		}
 		log.Fatalf("Cannot continue without video")
 	}
-	if videoResp.Status != "success" {
-		log.Fatalf("    ❌ Video error: %s", videoResp.Message)
-	}
 
-	fmt.Printf("    ✅ Final narrated video: %s\n", finalPath)
-	if videoResp.VideoURL != "" {
-		fmt.Printf("    🔗 HeyGen URL: %s\n", videoResp.VideoURL)
-	}
-
-	fmt.Printf("    💡 Note: Video generated with HeyGen's TTS (no Google Cloud TTS needed!)\n")
+	fmt.Printf("    ✅ Final narrated video: %s (%.1fs)\n", finalPath, videoResp.Duration)
 
 	// Step 3: Create content item with all metadata
 	fmt.Println("\n💾 Saving content metadata to manifest...")
@@ -119,7 +100,7 @@ func main() {
 		article,
 		enrichedContent,
 		contentID,
-		"", // Audio was deleted (already in video)
+		audioPath,
 		finalPath,
 		avatarID,
 		videoResp.Duration,
