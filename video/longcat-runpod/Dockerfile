@@ -28,6 +28,17 @@ RUN wget -q -P /tmp/ \
     && pip install --no-cache-dir /tmp/flash_attn-2.7.4.post1+cu124torch2.6-cp311-cp311-linux_x86_64.whl \
     && rm /tmp/flash_attn-2.7.4.post1+cu124torch2.6-cp311-cp311-linux_x86_64.whl
 
+# Pin LongCat-Video to the commit v11 was built from (2026-05-27). The clone
+# above takes upstream HEAD, so a clean build elsewhere would otherwise drift
+# from the vendored script below. This step sits after the pip layers on
+# purpose: editing the clone line itself would invalidate them and force a
+# slow emulated reinstall. To upgrade, change the SHA and re-test.
+ARG LONGCAT_VIDEO_SHA=6b3f4b8582a8bc3f20f795735f5383716c4ba794
+RUN cd /app/LongCat-Video \
+    && git fetch --depth 1 origin ${LONGCAT_VIDEO_SHA} \
+    && git checkout --detach FETCH_HEAD \
+    && test "$(git rev-parse HEAD)" = "${LONGCAT_VIDEO_SHA}"
+
 COPY handler.py /app/LongCat-Video/handler.py
 
 # Vendored from meituan-longcat/LongCat-Video PR #115 (open, unmerged as of

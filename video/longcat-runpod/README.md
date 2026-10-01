@@ -45,8 +45,17 @@ RunPod dashboard, or every cold start re-downloads the weights.
 
 ## Manual deploy steps (not automated — needs your RunPod account)
 
-1. `docker buildx build --platform linux/amd64 -t <your-registry>/longcat-avatar-runpod:latest --push .`
-   (must target linux/amd64 explicitly when building from this Mac)
+1. ```
+   docker buildx build --platform linux/amd64 \
+     --cache-from type=registry,ref=<your-registry>/longcat-avatar-runpod:buildcache \
+     --cache-to type=registry,ref=<your-registry>/longcat-avatar-runpod:buildcache,mode=max \
+     -t <your-registry>/longcat-avatar-runpod:<tag> --push .
+   ```
+   (must target linux/amd64 explicitly when building from this Mac). The
+   `buildcache` tag stores the build layers in the registry so a clean machine
+   reuses the slow pip layers; it is not a runnable image and RunPod never
+   pulls it. The first build with `--cache-to` also pushes the cache layers
+   (several GB), so it is slower than later ones.
 2. In the RunPod dashboard: create a Network Volume (50GB+), create a
    Serverless endpoint pointing at the pushed image, attach the volume,
    set `HF_TOKEN` as an endpoint environment variable, select GPU tier (A10
