@@ -28,3 +28,17 @@ func TestWavDuration(t *testing.T) {
 		t.Fatal("expected error for non-WAV input")
 	}
 }
+
+func TestSegmentsFor(t *testing.T) {
+	// 1 segment = 3.72s, each extra segment adds 3.2s. 15 segments gave 48.52s
+	// in a real job, which cut off 52.2s of narration.
+	cases := []struct {
+		seconds float64
+		want    int
+	}{{1, 1}, {3.72, 1}, {3.73, 2}, {48.52, 15}, {48.53, 16}, {52.2, 17}, {60, 19}}
+	for _, c := range cases {
+		if got := segmentsFor(c.seconds); got != c.want {
+			t.Errorf("segmentsFor(%v) = %d, want %d", c.seconds, got, c.want)
+		}
+	}
+}

@@ -5,12 +5,17 @@ Job input:
 {
     "cond_image": "<base64 PNG/JPG>",   # avatar still, background already composited in
     "cond_audio": "<base64 WAV>",       # narration from the Kokoro serverless step
-    "prompt": "<scene-descriptive text>"
+    "prompt": "<scene-descriptive text>",
+    "num_segments": 1,           # optional, default 1
+    "ref_img_index": 10,         # optional, script default 10 (0-24 anchors harder)
+    "mask_frame_range": 3        # optional, script default 3
 }
 
 Job output:
 {
-    "video_b64": "<base64 MP4>"
+    "video_b64": "<base64 MP4>",
+    "output_file": "<name of the chosen mp4>",
+    "applied": {...}             # the optional args actually passed to the script
 }
 
 Model weights are expected on a RunPod Network Volume mounted at /runpod-volume,
@@ -134,9 +139,10 @@ def handler(job):
         # with headroom (confirmed no-op-to-beneficial on H100 in the PR's own
         # corrected benchmark thread), but it OOMs on a 24GB card that has none
         # to spare. Sequential offload alone is what fixes our OOM.
-        # num_segments: each segment is a fixed ~3.7s of video (93 frames @
-        # 25fps); a single call never produces more, regardless of input audio
-        # length. A ~60s narration needs ~16 segments (job caller's job).
+        # num_segments: segment 1 is 93 frames (3.72s @ 25fps); each later
+        # segment reuses 13 frames as conditioning and adds 80 (3.2s). A call
+        # never produces more regardless of audio length, so a 52s narration
+        # needs 17 segments (job caller's job; see video.segmentsFor in Go).
         num_segments = int(job_input.get("num_segments", 1))
 
         cmd = [
@@ -149,6 +155,17 @@ def handler(job):
             f"--output_dir={output_dir}",
             f"--num_segments={num_segments}",
         ]
+
+        # Optional drift-tuning args, forwarded only when the job sets them so
+        # the script's own defaults (10 and 3) apply otherwise. "applied" is
+        # echoed in the response so the caller can confirm what was used.
+        applied = {"num_segments": num_segments}
+        for key in ("ref_img_index", "mask_frame_range"):
+            value = job_input.get(key)
+            if value is not None:
+                applied[key] = int(value)
+                cmd.append(f"--{key}={applied[key]}")
+        print(f"[handler] inference args: {applied}", flush=True)
 
         # The naive QuantizedLinear.forward rematerializes a full bf16 weight
         # from int8 on every forward call, fragmenting the allocator over the
@@ -178,7 +195,7 @@ def handler(job):
         with open(video_path, "rb") as f:
             video_b64 = base64.b64encode(f.read()).decode("utf-8")
 
-        return {"video_b64": video_b64, "output_file": chosen}
+        return {"video_b64": video_b64, "output_file": chosen, "applied": applied}
 
 
 runpod.serverless.start({"handler": handler})

@@ -28,8 +28,10 @@ const (
 
 	runpodBaseURL = "https://api.runpod.ai/v2"
 
-	// Each LongCat segment is 93 frames @ 25fps.
-	segmentSeconds = 3.72
+	// LongCat renders 93 frames @ 25fps for the first segment. Each later
+	// segment reuses 13 frames as conditioning, so it adds only 80 new frames.
+	firstSegmentSeconds = 93.0 / 25
+	nextSegmentSeconds  = 80.0 / 25
 
 	pollInterval = 15 * time.Second
 	// A100 queue waits (12-26min) plus ~42min of compute for a 60s video.
@@ -42,6 +44,15 @@ type VideoResponse struct {
 	Message  string
 	Duration float64 // seconds
 	JobID    string
+	Applied  map[string]any // inference args the handler reports it used
+}
+
+// Options are the optional per-job inference settings. A nil field leaves the
+// handler's (and the script's) default in place.
+type Options struct {
+	Prompt         string
+	RefImgIndex    *int // lower anchors harder to the reference; script default 10
+	MaskFrameRange *int // larger reduces repeated motion; script default 3
 }
 
 // GenerateNarration synthesizes text to a WAV file with Kokoro by shelling out
@@ -68,6 +79,12 @@ func GenerateNarration(text, outputPath string) error {
 // composited in) and audioPath (narration WAV) to the RunPod endpoint, waits
 // for the job, and writes the resulting MP4 to outputPath.
 func GenerateAvatarVideo(imagePath, audioPath, prompt, outputPath string) (*VideoResponse, error) {
+	return GenerateAvatarVideoWithOptions(imagePath, audioPath, outputPath, Options{Prompt: prompt})
+}
+
+// GenerateAvatarVideoWithOptions is GenerateAvatarVideo with per-job settings.
+func GenerateAvatarVideoWithOptions(imagePath, audioPath, outputPath string, opts Options) (*VideoResponse, error) {
+	prompt := opts.Prompt
 	apiKey := os.Getenv("RUNPOD_API_KEY")
 	endpointID := os.Getenv("RUNPOD_ENDPOINT_ID")
 	if apiKey == "" || endpointID == "" {
@@ -93,12 +110,19 @@ func GenerateAvatarVideo(imagePath, audioPath, prompt, outputPath string) (*Vide
 	ctx, cancel := context.WithTimeout(context.Background(), jobTimeout)
 	defer cancel()
 
-	payload := map[string]any{"input": map[string]any{
+	input := map[string]any{
 		"cond_image":   base64.StdEncoding.EncodeToString(imageBytes),
 		"cond_audio":   base64.StdEncoding.EncodeToString(audioBytes),
 		"prompt":       prompt,
-		"num_segments": int(math.Ceil(duration / segmentSeconds)),
-	}}
+		"num_segments": segmentsFor(duration),
+	}
+	if opts.RefImgIndex != nil {
+		input["ref_img_index"] = *opts.RefImgIndex
+	}
+	if opts.MaskFrameRange != nil {
+		input["mask_frame_range"] = *opts.MaskFrameRange
+	}
+	payload := map[string]any{"input": input}
 	var submitted struct {
 		ID string `json:"id"`
 	}
@@ -114,8 +138,9 @@ func GenerateAvatarVideo(imagePath, audioPath, prompt, outputPath string) (*Vide
 			Status string `json:"status"`
 			Error  string `json:"error"`
 			Output struct {
-				VideoB64 string `json:"video_b64"`
-				Error    string `json:"error"`
+				VideoB64 string         `json:"video_b64"`
+				Error    string         `json:"error"`
+				Applied  map[string]any `json:"applied"`
 			} `json:"output"`
 		}
 		if err := runpodRequest(ctx, http.MethodGet, statusURL, apiKey, nil, &job); err != nil {
@@ -135,6 +160,7 @@ func GenerateAvatarVideo(imagePath, audioPath, prompt, outputPath string) (*Vide
 			if err := os.WriteFile(outputPath, videoBytes, 0644); err != nil {
 				return resp, fmt.Errorf("write video: %w", err)
 			}
+			resp.Applied = job.Output.Applied
 			resp.Status = "success"
 			return resp, nil
 		case "FAILED", "CANCELLED", "TIMED_OUT":
@@ -148,6 +174,14 @@ func GenerateAvatarVideo(imagePath, audioPath, prompt, outputPath string) (*Vide
 		case <-time.After(pollInterval):
 		}
 	}
+}
+
+// segmentsFor returns how many LongCat segments cover seconds of narration.
+func segmentsFor(seconds float64) int {
+	if seconds <= firstSegmentSeconds {
+		return 1
+	}
+	return 1 + int(math.Ceil((seconds-firstSegmentSeconds)/nextSegmentSeconds))
 }
 
 func runpodRequest(ctx context.Context, method, url, apiKey string, body any, out any) error {
